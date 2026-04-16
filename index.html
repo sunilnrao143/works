@@ -28,6 +28,7 @@
     color: var(--ink);
     font-size: 16px;
     line-height: 1.75;
+    overflow-x: hidden;
   }
 
   /* COVER */
@@ -766,6 +767,131 @@
     .cover { min-height: auto; padding: 60px; }
     .photo-section, .prompt-section { margin: 0; }
     .chapter { page-break-inside: avoid; }
+  }
+
+  @media (max-width: 768px) {
+    .cover {
+      min-height: 100svh;
+      padding: 56px 20px 40px;
+      justify-content: center;
+    }
+
+    .cover-ornament {
+      font-size: 20px;
+      letter-spacing: 4px;
+      margin-bottom: 20px;
+    }
+
+    .cover-label {
+      font-size: 11px;
+      letter-spacing: 3px;
+      margin-bottom: 14px;
+    }
+
+    .cover-title {
+      font-size: clamp(34px, 11vw, 54px);
+      line-height: 1.05;
+      margin-bottom: 12px;
+    }
+
+    .cover-subtitle {
+      font-size: clamp(17px, 5vw, 22px);
+      margin-bottom: 28px;
+      max-width: 100%;
+    }
+
+    .cover-divider {
+      width: min(160px, 60vw);
+      margin: 18px auto;
+    }
+
+    .cover-tags {
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .cover-tag {
+      width: 100%;
+      max-width: 320px;
+      text-align: center;
+      padding: 8px 14px;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+    }
+
+    .cover-quote {
+      margin-top: 28px;
+      font-size: 15px;
+      max-width: 100%;
+    }
+
+    .toc {
+      padding: 32px 20px;
+    }
+
+    .toc-title {
+      font-size: 10px;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+    }
+
+    .toc-list {
+      grid-template-columns: 1fr;
+    }
+
+    .toc-list li {
+      font-size: 14px;
+      gap: 12px;
+      align-items: flex-start;
+      line-height: 1.5;
+    }
+
+    .page {
+      padding: 0 20px;
+    }
+
+    .chapter {
+      padding-top: 56px;
+    }
+
+    .chapter-number {
+      font-size: 72px;
+      margin-bottom: -32px;
+    }
+
+    .bio-card,
+    .quote-box,
+    .highlight,
+    .photo-section,
+    .prompt-section,
+    .prompt-box {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .bio-grid,
+    .venue-grid,
+    .photo-grid,
+    .photo-source-list,
+    .prompt-tips {
+      grid-template-columns: 1fr;
+    }
+
+    .univ-list {
+      columns: 1;
+    }
+
+    .photo-section,
+    .prompt-section {
+      margin-left: -20px;
+      margin-right: -20px;
+    }
+
+    .award-table {
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
   }
 </style>
 </head>
