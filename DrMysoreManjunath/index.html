@@ -1,0 +1,1837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Mysore Manjunath — Master Dossier</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #B8860B;
+    --gold-light: #D4A017;
+    --gold-pale: #F5E6C0;
+    --deep: #1A120B;
+    --ink: #2C1F0F;
+    --mid: #5C3D1E;
+    --warm: #8B5E3C;
+    --cream: #FBF5E6;
+    --white: #FFFDF7;
+    --border: #D4A01740;
+    --section-bg: #FAF3E0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Crimson Pro', Georgia, serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* COVER */
+  .cover {
+    background: var(--deep);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 30%, #4a2c0a55 0%, transparent 70%),
+                radial-gradient(ellipse at 80% 80%, #B8860B22 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .cover-ornament {
+    font-size: 28px;
+    color: var(--gold);
+    letter-spacing: 8px;
+    margin-bottom: 32px;
+    opacity: 0.8;
+  }
+
+  .cover-label {
+    font-family: 'Crimson Pro', serif;
+    color: var(--gold-light);
+    font-size: 13px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: 300;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    color: #fff;
+    font-size: clamp(42px, 7vw, 80px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    text-shadow: 0 4px 40px #00000080;
+  }
+
+  .cover-title span {
+    color: var(--gold-light);
+    display: block;
+  }
+
+  .cover-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    color: #e0cba0;
+    font-size: clamp(18px, 3vw, 26px);
+    font-style: italic;
+    font-weight: 300;
+    margin-bottom: 40px;
+    max-width: 600px;
+  }
+
+  .cover-divider {
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 24px auto;
+  }
+
+  .cover-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .cover-tag {
+    border: 1px solid var(--gold-light);
+    color: var(--gold-pale);
+    padding: 6px 18px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: 'Crimson Pro', serif;
+    border-radius: 2px;
+  }
+
+  .cover-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: #c9a96e;
+    font-size: 16px;
+    margin-top: 48px;
+    max-width: 520px;
+    line-height: 1.6;
+  }
+
+  /* NAVIGATION TOC */
+  .toc {
+    background: var(--deep);
+    color: #e0cba0;
+    padding: 48px 60px;
+    page-break-after: always;
+  }
+
+  .toc-title {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold-light);
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--gold-light);
+  }
+
+  .toc-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    list-style: none;
+    counter-reset: toc;
+  }
+
+  .toc-list li {
+    counter-increment: toc;
+    padding: 12px 0;
+    border-bottom: 1px solid #ffffff15;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: 'Crimson Pro', serif;
+    font-size: 15px;
+    color: #d4b896;
+  }
+
+  .toc-list li::before {
+    content: counter(toc, decimal-leading-zero);
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 1px;
+    min-width: 24px;
+  }
+
+  /* MAIN LAYOUT */
+  .page {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* CHAPTER HEADERS */
+  .chapter {
+    padding: 80px 0 0;
+  }
+
+  .chapter-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 100px;
+    font-weight: 900;
+    color: var(--gold);
+    opacity: 0.12;
+    line-height: 1;
+    margin-bottom: -48px;
+    display: block;
+  }
+
+  .chapter-label {
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+    font-family: 'Crimson Pro', serif;
+    font-weight: 600;
+  }
+
+  .chapter-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    color: var(--deep);
+    line-height: 1.2;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--gold);
+    position: relative;
+  }
+
+  .chapter-title::after {
+    content: '◆';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    color: var(--gold);
+    font-size: 12px;
+    background: var(--cream);
+    padding-right: 8px;
+  }
+
+  /* SECTION BLOCKS */
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--mid);
+    margin-bottom: 12px;
+    padding-left: 14px;
+    border-left: 3px solid var(--gold);
+  }
+
+  /* BIO CARD */
+  .bio-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 20px #0000000a;
+  }
+
+  .bio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 40px;
+  }
+
+  .bio-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .bio-key {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    font-family: 'Crimson Pro', serif;
+  }
+
+  .bio-val {
+    font-size: 16px;
+    color: var(--deep);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 500;
+  }
+
+  /* QUOTE BOX */
+  .quote-box {
+    background: var(--deep);
+    color: #e8d5b0;
+    padding: 36px 48px;
+    margin: 36px 0;
+    position: relative;
+    border-radius: 3px;
+  }
+
+  .quote-box::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    color: var(--gold);
+    opacity: 0.4;
+    position: absolute;
+    top: 8px;
+    left: 24px;
+    line-height: 1;
+  }
+
+  .quote-box p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.7;
+    padding-left: 24px;
+    margin-bottom: 12px;
+  }
+
+  .quote-source {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding-left: 24px;
+  }
+
+  /* AWARD TABLE */
+  .award-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 15px;
+  }
+
+  .award-table thead tr {
+    background: var(--deep);
+    color: var(--gold-pale);
+  }
+
+  .award-table th {
+    padding: 12px 16px;
+    text-align: left;
+    font-family: 'Crimson Pro', serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .award-table tbody tr {
+    border-bottom: 1px solid #00000010;
+    transition: background 0.2s;
+  }
+
+  .award-table tbody tr:nth-child(even) {
+    background: var(--white);
+  }
+
+  .award-table td {
+    padding: 13px 16px;
+    vertical-align: top;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  .award-table td:first-child {
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--white);
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 3px 8px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: 'Crimson Pro', serif;
+    vertical-align: middle;
+    margin-left: 6px;
+  }
+
+  .badge.blue { background: #2a5298; }
+  .badge.green { background: #2d6a4f; }
+  .badge.red { background: #8b1a1a; }
+
+  /* VENUE LIST */
+  .venue-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 40px;
+    margin: 16px 0;
+  }
+
+  .venue-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #00000008;
+  }
+
+  .venue-icon {
+    color: var(--gold);
+    font-size: 14px;
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+
+  .venue-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    color: var(--deep);
+    font-weight: 600;
+  }
+
+  .venue-loc {
+    font-size: 12px;
+    color: var(--warm);
+    letter-spacing: 0.5px;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+    margin: 24px 0;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--gold), transparent);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 24px;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -32px;
+    top: 7px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid var(--cream);
+    box-shadow: 0 0 0 2px var(--gold);
+  }
+
+  .timeline-year {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+  }
+
+  .timeline-event {
+    font-size: 15px;
+    color: var(--deep);
+    line-height: 1.6;
+  }
+
+  /* COLLABORATION TAGS */
+  .collab-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 16px 0;
+  }
+
+  .collab-tag {
+    background: var(--white);
+    border: 1px solid var(--gold);
+    color: var(--mid);
+    padding: 7px 15px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    border-radius: 2px;
+    font-weight: 500;
+  }
+
+  /* UNIVERSITIES */
+  .univ-list {
+    columns: 2;
+    column-gap: 40px;
+    list-style: none;
+    margin: 16px 0;
+  }
+
+  .univ-list li {
+    font-size: 15px;
+    padding: 8px 0 8px 20px;
+    position: relative;
+    border-bottom: 1px solid #00000008;
+    break-inside: avoid;
+    color: var(--ink);
+  }
+
+  .univ-list li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 8px;
+    top: 12px;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight {
+    background: var(--gold);
+    color: var(--deep);
+    padding: 24px 32px;
+    margin: 28px 0;
+    border-radius: 3px;
+  }
+
+  .highlight strong {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .highlight p {
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.85;
+  }
+
+  /* PHOTO SECTION */
+  .photo-section {
+    background: var(--deep);
+    color: #e0cba0;
+    padding: 60px;
+    margin: 40px -40px;
+  }
+
+  .photo-section h2 {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold-light);
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+
+  .photo-note {
+    font-size: 14px;
+    color: #a08060;
+    margin-bottom: 28px;
+    font-style: italic;
+  }
+
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .photo-item {
+    background: #2a1a0a;
+    border: 1px solid #B8860B40;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .photo-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    opacity: 0.92;
+    transition: opacity 0.3s;
+  }
+
+  .photo-item img:hover { opacity: 1; }
+
+  .photo-caption {
+    padding: 10px 12px;
+    font-size: 12px;
+    color: #c0a070;
+    font-style: italic;
+    line-height: 1.4;
+  }
+
+  .photo-sources {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #ffffff15;
+  }
+
+  .photo-sources h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .photo-source-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .photo-source-list li {
+    font-size: 13px;
+    color: #a08060;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .photo-source-list a {
+    color: #c9a96e;
+    text-decoration: none;
+    word-break: break-all;
+    font-size: 12px;
+  }
+
+  .photo-source-list a:hover { text-decoration: underline; }
+
+  /* PROMPT SECTION */
+  .prompt-section {
+    background: #0f0a05;
+    color: #e8d5b0;
+    padding: 60px;
+    margin: 40px -40px 0;
+    border-top: 3px solid var(--gold);
+  }
+
+  .prompt-section h2 {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold-light);
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+
+  .prompt-meta {
+    font-size: 13px;
+    color: #a08060;
+    font-style: italic;
+    margin-bottom: 32px;
+  }
+
+  .prompt-box {
+    background: #1a0f05;
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+    padding: 28px 32px;
+    margin-bottom: 28px;
+    font-family: 'Crimson Pro', serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #ddd0b0;
+    position: relative;
+  }
+
+  .prompt-box-label {
+    position: absolute;
+    top: -11px;
+    left: 20px;
+    background: #0f0a05;
+    padding: 0 10px;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-family: 'Crimson Pro', serif;
+    font-weight: 700;
+  }
+
+  .prompt-box code {
+    display: block;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .prompt-tips {
+    list-style: none;
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .prompt-tip {
+    background: #1a0f05;
+    border-left: 3px solid var(--gold);
+    padding: 14px 18px;
+  }
+
+  .prompt-tip strong {
+    display: block;
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+
+  .prompt-tip p {
+    font-size: 13px;
+    color: #c0a070;
+    line-height: 1.6;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--deep);
+    color: #604530;
+    text-align: center;
+    padding: 36px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: 'Crimson Pro', serif;
+  }
+
+  .footer span { color: var(--gold); }
+
+  /* UTILS */
+  p { margin-bottom: 14px; }
+  p:last-child { margin-bottom: 0; }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 36px 0;
+  }
+
+  .note {
+    background: var(--section-bg);
+    border-left: 4px solid var(--gold);
+    padding: 16px 20px;
+    font-size: 14px;
+    color: var(--warm);
+    font-style: italic;
+    margin: 20px 0;
+    border-radius: 0 3px 3px 0;
+  }
+
+  @media print {
+    .cover { min-height: auto; padding: 60px; }
+    .photo-section, .prompt-section { margin: 0; }
+    .chapter { page-break-inside: avoid; }
+  }
+
+  @media (max-width: 768px) {
+    .cover {
+      min-height: 100svh;
+      padding: 56px 20px 40px;
+      justify-content: center;
+    }
+
+    .cover-ornament {
+      font-size: 20px;
+      letter-spacing: 4px;
+      margin-bottom: 20px;
+    }
+
+    .cover-label {
+      font-size: 11px;
+      letter-spacing: 3px;
+      margin-bottom: 14px;
+    }
+
+    .cover-title {
+      font-size: clamp(34px, 11vw, 54px);
+      line-height: 1.05;
+      margin-bottom: 12px;
+    }
+
+    .cover-subtitle {
+      font-size: clamp(17px, 5vw, 22px);
+      margin-bottom: 28px;
+      max-width: 100%;
+    }
+
+    .cover-divider {
+      width: min(160px, 60vw);
+      margin: 18px auto;
+    }
+
+    .cover-tags {
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .cover-tag {
+      width: 100%;
+      max-width: 320px;
+      text-align: center;
+      padding: 8px 14px;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+    }
+
+    .cover-quote {
+      margin-top: 28px;
+      font-size: 15px;
+      max-width: 100%;
+    }
+
+    .toc {
+      padding: 32px 20px;
+    }
+
+    .toc-title {
+      font-size: 10px;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+    }
+
+    .toc-list {
+      grid-template-columns: 1fr;
+    }
+
+    .toc-list li {
+      font-size: 14px;
+      gap: 12px;
+      align-items: flex-start;
+      line-height: 1.5;
+    }
+
+    .page {
+      padding: 0 20px;
+    }
+
+    .chapter {
+      padding-top: 56px;
+    }
+
+    .chapter-number {
+      font-size: 72px;
+      margin-bottom: -32px;
+    }
+
+    .bio-card,
+    .quote-box,
+    .highlight,
+    .photo-section,
+    .prompt-section,
+    .prompt-box {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .bio-grid,
+    .venue-grid,
+    .photo-grid,
+    .photo-source-list,
+    .prompt-tips {
+      grid-template-columns: 1fr;
+    }
+
+    .univ-list {
+      columns: 1;
+    }
+
+    .photo-section,
+    .prompt-section {
+      margin-left: -20px;
+      margin-right: -20px;
+    }
+
+    .award-table {
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════ COVER PAGE -->
+<div class="cover">
+  <div class="cover-ornament">♬ ♩ ♪ ♫ ♬</div>
+  <div class="cover-label">Master Dossier · Official Profile</div>
+  <h1 class="cover-title">
+    Dr. Mysore M.
+    <span>Manjunath</span>
+  </h1>
+  <p class="cover-subtitle">Violin Maestro · Composer · Scholar · Cultural Ambassador of India</p>
+  <div class="cover-divider"></div>
+  <div class="cover-tags">
+    <span class="cover-tag">Sangeet Natak Akademi Awardee</span>
+    <span class="cover-tag">Rajyotsava Award</span>
+    <span class="cover-tag">Ph.D — University of Mysore</span>
+    <span class="cover-tag">Cultural Ambassador</span>
+  </div>
+  <p class="cover-quote">"Music expresses that which cannot be said and on which it is impossible to be silent."</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════ TABLE OF CONTENTS -->
+<div class="toc">
+  <div class="toc-title">Contents of This Dossier</div>
+  <ol class="toc-list">
+    <li>Personal Biodata &amp; Early Life</li>
+    <li>Academic Qualifications &amp; Credentials</li>
+    <li>Gurukula Lineage &amp; Musical Heritage</li>
+    <li>Career Milestones &amp; Timeline</li>
+    <li>Academic Positions &amp; Responsibilities</li>
+    <li>National Concert Performances</li>
+    <li>International Concert Performances</li>
+    <li>Landmark Firsts &amp; Historic Achievements</li>
+    <li>Compositions &amp; Musical Creations</li>
+    <li>Collaborations — Indian &amp; International</li>
+    <li>Universities &amp; Workshops</li>
+    <li>Awards &amp; Recognitions</li>
+    <li>Impact on Society</li>
+    <li>Impact on the Field of Music &amp; Art</li>
+    <li>Media Coverage &amp; Press Recognitions</li>
+    <li>Photo Gallery &amp; Image Sources</li>
+  </ol>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="page">
+
+<!-- ═══════════════════════════════════════════════ 01 BIODATA -->
+<div class="chapter" id="bio">
+  <span class="chapter-number">01</span>
+  <div class="chapter-label">Chapter One</div>
+  <h2 class="chapter-title">Personal Biodata &amp; Early Life</h2>
+
+  <div class="bio-card">
+    <div class="bio-grid">
+      <div class="bio-item">
+        <span class="bio-key">Full Name</span>
+        <span class="bio-val">Dr. Mysore Manjunath (Mysore M. Manjunath)</span>
+      </div>
+      <div class="bio-item">
+        <span class="bio-key">City of Birth &amp; Residence</span>
+        <span class="bio-val">Mysore (Mysuru), Karnataka, India</span>
+      </div>
+      <div class="bio-item">
+        <span class="bio-key">Education (School)</span>
+        <span class="bio-val">JSS High School, Mysore</span>
+      </div>
+      <div class="bio-item">
+        <span class="bio-key">Spouse</span>
+        <span class="bio-val">Suma Manjunath</span>
+      </div>
+      <div class="bio-item">
+        <span class="bio-key">Son</span>
+        <span class="bio-val">Sumanth Manjunath (Violinist; Gold Medallist, M.Music, University of Mysore)</span>
+      </div>
+      <div class="bio-item">
+        <span class="bio-key">Father &amp; Guru</span>
+        <span class="bio-val">Late Vidwan Prof. S. Mahadevappa (Renowned Violinist, Mysore)</span>
+      </div>
+      <div class="bio-item">
+        <span class="bio-key">Elder Brother &amp; Co-performer</span>
+        <span class="bio-val">Vidwan Mysore Nagaraj (Together known as "Mysore Brothers")</span>
+      </div>
+      <div class="bio-item">
+        <span class="bio-key">Instrument</span>
+        <span class="bio-val">Violin (Carnatic Classical)</span>
+      </div>
+      <div class="bio-item">
+        <span class="bio-key">Age at First Performance</span>
+        <span class="bio-val">8 years (Child Prodigy)</span>
+      </div>
+      <div class="bio-item">
+        <span class="bio-key">Countries Performed</span>
+        <span class="bio-val">50+ Countries Across 5 Continents</span>
+      </div>
+      <div class="bio-item">
+        <span class="bio-key">Official Website</span>
+        <span class="bio-val">mysoremanjunath.com</span>
+      </div>
+      <div class="bio-item">
+        <span class="bio-key">Wikipedia</span>
+        <span class="bio-val">en.wikipedia.org/wiki/Mysore_Manjunath</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">Origin Story — The Garland That Changed Everything</h3>
+    <p>As a young boy, Manjunath was never initially fascinated with Karnatak music despite growing up in a deeply musical household. His father Vidwan Mahadevappa and elder brother Mysore Nagaraj were already established musicians. His strict father would take young Manjunath to all concerts.</p>
+    <p>At a pivotal moment — after a violin duet concert by his father and brother — the entire team on stage was garlanded except young Manjunath, who sat behind his father throughout the nearly 4-hour concert. The organiser promised he would be garlanded only if he performed the following year. That single incident ignited the amazing journey of Manjunath to becoming Dr. Mysore Manjunath.</p>
+    <p>His father and brother used to practice eight to ten hours a day under strict discipline: <em>"If we didn't practice in the morning, there was no breakfast; if we didn't practice in the evening, there was no dinner."</em></p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════════════════════════════════════════ 02 ACADEMIC -->
+<div class="chapter" id="academic">
+  <span class="chapter-number">02</span>
+  <div class="chapter-label">Chapter Two</div>
+  <h2 class="chapter-title">Academic Qualifications &amp; Credentials</h2>
+
+  <div class="bio-card">
+    <div class="bio-grid">
+      <div class="bio-item">
+        <span class="bio-key">Bachelor of Music</span>
+        <span class="bio-val">University of Mysore — First Rank</span>
+      </div>
+      <div class="bio-item">
+        <span class="bio-key">Master of Music (M.Music)</span>
+        <span class="bio-val">University of Mysore — First Rank, 4 Gold Medals</span>
+      </div>
+      <div class="bio-item">
+        <span class="bio-key">Ph.D (Doctor of Philosophy)</span>
+        <span class="bio-val">University of Mysore — Thesis on the Violin</span>
+      </div>
+      <div class="bio-item">
+        <span class="bio-key">Additional Honour</span>
+        <span class="bio-val">Nominated Cultural Ambassador, University of Mysore</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <strong>Academic Distinction</strong>
+    <p>Dr. Manjunath is one of the rare classical musicians in India who combines the highest level of performing artistry with rigorous academic scholarship — holding a Ph.D and four Gold Medals from the University of Mysore, having guided multiple research students as a distinguished Professor, and been honoured as the Cultural Ambassador of his university.</p>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">Guru-Shishya Classification</h3>
+    <p>Dr. Manjunath received his entire foundational training directly under his father, Late Vidwan Prof. S. Mahadevappa — a legendary violinist of Mysore. This direct guru-shishya transmission preserves the authentic Mysore Bani (style) of Carnatic violin playing — a tradition spanning generations from the classical lineage of the Mysore royal court's musical culture.</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════════════════════════════════════════ 03 LINEAGE -->
+<div class="chapter" id="lineage">
+  <span class="chapter-number">03</span>
+  <div class="chapter-label">Chapter Three</div>
+  <h2 class="chapter-title">Gurukula Lineage &amp; Musical Heritage</h2>
+
+  <div class="section">
+    <h3 class="section-title">The Mysore School of Violin</h3>
+    <p>The Mysore tradition of Carnatic violin is distinct from the Chennai/Madras tradition. Characterized by deep melodic phrasing, intricate gamakas (ornaments), restrained classical austerity, and adherence to raga grammar, the Mysore style traces its roots to the royal patronage of the Wodeyar dynasty's musical court.</p>
+    <p>Late Vidwan Prof. S. Mahadevappa was a pillar of this tradition in Mysore. Despite recommendations from legends like Dr. M. Balamuralikrishna and Dr. N. Ramani to relocate to Chennai (then considered essential for a musician's career), Mahadevappa insisted on remaining in Mysore — a decision that preserved and elevated Mysore as a living seat of classical music. Dr. Manjunath has continued and expanded this legacy.</p>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">The Mysore Brothers Duo</h3>
+    <p>Dr. Mysore Manjunath and his elder brother Mysore Nagaraj are collectively celebrated as the <strong>"Mysore Brothers"</strong> — one of the most celebrated violin duos in Carnatic music. Both are sons and direct disciples of Vidwan Mahadevappa. They perform in the rare <em>jugalbandi</em> (duet) format, and their combined concerts, especially the signature piece "Krishna Nee Begane Baro", are known to move audiences to tears.</p>
+    <p>They were described as a <strong>"Dream Team"</strong> for bringing academic and technical brilliance together with virtuosity.</p>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">Generational Legacy Continues</h3>
+    <p>Dr. Manjunath's son <strong>Sumanth Manjunath</strong> is already an accomplished violinist who received a Gold Medal for achieving the top rank in his Master's in Music programme at the University of Mysore — carrying forward three generations of musical excellence from a single family.</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════════════════════════════════════════ 04 TIMELINE -->
+<div class="chapter" id="timeline">
+  <span class="chapter-number">04</span>
+  <div class="chapter-label">Chapter Four</div>
+  <h2 class="chapter-title">Career Milestones &amp; Timeline</h2>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-year">Age 7–8</div>
+      <div class="timeline-event">Begins violin training under father Vidwan Mahadevappa. Practices 8–10 hours daily. Performs first concert at age 8 in Mysore as child prodigy.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">Early Career</div>
+      <div class="timeline-event">Starts performing alongside father and brother. Gains A-Top Ranking — one of the youngest musicians to receive this classification. Named child prodigy by critics and music lovers.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">Early 1990s</div>
+      <div class="timeline-event">Selected to conduct a workshop on violin nuances at Princeton University — becomes a landmark moment in cross-cultural musical dialogue. His presence in traditional dhoti on the floor inspires Western violinists to change their approach the very next day.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">1990s–2000s</div>
+      <div class="timeline-event">Performs at Royal Albert Hall (London), Sydney Opera House, Federation Square (Melbourne), Royal Palace of Milan (Italy), Theatre de la Ville (Paris), Esplanade Theatre (Singapore). Becomes recognized international ambassador of Carnatic music.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">Multiple Years</div>
+      <div class="timeline-event">Becomes the First Indian Violinist to be invited to perform and deliver a lecture at the International Violin Conference, San Diego, USA. Repeats this as a regular performer for many subsequent years.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2007</div>
+      <div class="timeline-event">Performs at the Santa Fe Festival, New Mexico, USA.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2012</div>
+      <div class="timeline-event">Performs in San Diego, USA, where Bharat Ratna Pandit Ravi Shankar attends and praises him as "Prince of Mysore" — one of the most celebrated public endorsements in his career.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2016</div>
+      <div class="timeline-event">Receives the Sangeet Natak Akademi Award (for Violin) from the President of India at Rashtrapati Bhavan, New Delhi — India's highest honour in the performing arts. Becomes one of the youngest ever recipients of this award.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">June 2016</div>
+      <div class="timeline-event">Creates the new raga <em>Yaduveera Manohari</em> for the royal wedding of the Mysore royal family — a rare composition of cultural-historic significance.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">May 2018</div>
+      <div class="timeline-event">Performs the first-ever Indian Violin concert at Oxford University, Faculty of Music — a historic milestone.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">June 2019</div>
+      <div class="timeline-event">Creates the Yoga Anthem "Yoga Niyoga" in the newly composed Raga Bharata — a 5-minute audio-video featuring 20+ global musicians; released on World Yoga Day (June 21) internationally, including at the British Parliament.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">June 2020</div>
+      <div class="timeline-event">"Life Again" — COVID-19 pandemic response song featuring 20 global musicians (including a musician from Wuhan, China) is launched by ICCR (Indian Council for Cultural Relations) in over 150 countries. Lyrics by Sri Ganapathi Sachchidananda Swami. In Raga Charukeshi.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2020</div>
+      <div class="timeline-event">Nominated as President of the Golden Jubilee Music Conference, Ganakala Parishath, Bangalore. Receives Ganakala Bhushana Award.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2022</div>
+      <div class="timeline-event">"Aaroha" — a unique music-play for Bhoomija Trust at Ranga Shankara, Bangalore. Composed and directed by Dr. Manjunath with a 20-member youth orchestra. Received widespread critical acclaim.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2023</div>
+      <div class="timeline-event">Performs at Cambridge University, UK; visits with Mysore Brothers duo.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">October 2024</div>
+      <div class="timeline-event">Mysore Brothers perform at the JSS Spiritual Mission, Gaithersburg, Maryland, USA.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">July 2025</div>
+      <div class="timeline-event">Participates as panelist in "Swara Swatva", National Symposium organized by Samskara Bharathi Karnataka at Sri Yadugiri Yathiraja Mutt, Bengaluru.</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════════════════════════════════════════ 05 POSITIONS -->
+<div class="chapter" id="positions">
+  <span class="chapter-number">05</span>
+  <div class="chapter-label">Chapter Five</div>
+  <h2 class="chapter-title">Academic Positions &amp; Responsibilities</h2>
+
+  <table class="award-table">
+    <thead>
+      <tr>
+        <th>Role / Position</th>
+        <th>Institution / Body</th>
+        <th>Nature</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Distinguished Professor</td>
+        <td>Department of Music, University of Mysore</td>
+        <td>Teaching, Mentoring, Research supervision of PhD scholars</td>
+      </tr>
+      <tr>
+        <td>Cultural Ambassador</td>
+        <td>University of Mysore</td>
+        <td>Represents the University's cultural & academic identity globally</td>
+      </tr>
+      <tr>
+        <td>Cultural Ambassador of India</td>
+        <td>Government of India</td>
+        <td>Performed at Republic Day & Independence Day celebrations in Sri Lanka and Iran</td>
+      </tr>
+      <tr>
+        <td>President, Golden Jubilee Music Conference</td>
+        <td>Karnataka Ganakala Parishath, Bengaluru</td>
+        <td>Chair of the prestigious 50th Annual Music Conference (2020)</td>
+      </tr>
+      <tr>
+        <td>Asthana Vidwan (Court Musician)</td>
+        <td>Sri Kanchi Kamakoti Peetham</td>
+        <td>Honoured as Tantri Vadya Shiromani — highest musical title from the Kamakoti Peetham</td>
+      </tr>
+      <tr>
+        <td>PhD Research Supervisor</td>
+        <td>University of Mysore</td>
+        <td>Has guided multiple scholars including Rao R. Sharath pursuing PhD under his guidance</td>
+      </tr>
+      <tr>
+        <td>Workshop Leader / Faculty</td>
+        <td>International Violin Conference, San Diego, USA</td>
+        <td>First Indian violinist to be invited; has led workshops over multiple years</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note">Dr. Manjunath has deliberately maintained his primary base in Mysuru despite offers and advice from luminaries to relocate to Chennai — a principled stand that elevated Mysuru's status as a living seat of Carnatic classical music.</div>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════════════════════════════════════════ 06 NATIONAL STAGES -->
+<div class="chapter" id="national">
+  <span class="chapter-number">06</span>
+  <div class="chapter-label">Chapter Six</div>
+  <h2 class="chapter-title">National Concert Performances &amp; Events</h2>
+
+  <div class="venue-grid">
+    <div class="venue-item"><span class="venue-icon">♦</span><div><div class="venue-name">Tansen Sangeet Samaroh</div><div class="venue-loc">Gwalior, India — Premier classical music festival</div></div></div>
+    <div class="venue-item"><span class="venue-icon">♦</span><div><div class="venue-name">Sawai Gandharva Bhimsen Mahotsav</div><div class="venue-loc">Pune — One of India's most iconic classical festivals</div></div></div>
+    <div class="venue-item"><span class="venue-icon">♦</span><div><div class="venue-name">Doverlane Music Festival</div><div class="venue-loc">Kolkata — Premier Carnatic festival in eastern India</div></div></div>
+    <div class="venue-item"><span class="venue-icon">♦</span><div><div class="venue-name">India International Centre</div><div class="venue-loc">New Delhi — Cultural flagship venue</div></div></div>
+    <div class="venue-item"><span class="venue-icon">♦</span><div><div class="venue-name">Delhi International Arts Festival</div><div class="venue-loc">New Delhi</div></div></div>
+    <div class="venue-item"><span class="venue-icon">♦</span><div><div class="venue-name">Karnataka Ganakala Parishath — Golden Jubilee</div><div class="venue-loc">Bangalore — As President of the Music Conference (2020)</div></div></div>
+    <div class="venue-item"><span class="venue-icon">♦</span><div><div class="venue-name">Ranga Shankara</div><div class="venue-loc">Bangalore — Aaroha Music Play (2022)</div></div></div>
+    <div class="venue-item"><span class="venue-icon">♦</span><div><div class="venue-name">Nadabrahma Sangeetha Sabha</div><div class="venue-loc">Mysuru — National Felicitation Event</div></div></div>
+    <div class="venue-item"><span class="venue-icon">♦</span><div><div class="venue-name">IIT Kharagpur</div><div class="venue-loc">Workshop and Lecture-Demonstration</div></div></div>
+    <div class="venue-item"><span class="venue-icon">♦</span><div><div class="venue-name">Shantiniketan</div><div class="venue-loc">Workshop and Concert</div></div></div>
+    <div class="venue-item"><span class="venue-icon">♦</span><div><div class="venue-name">Music Academy Chennai</div><div class="venue-loc">Received Best Violinist Award from this institution</div></div></div>
+    <div class="venue-item"><span class="venue-icon">♦</span><div><div class="venue-name">Indian Fine Arts Society</div><div class="venue-loc">Chennai — Best Violinist Award</div></div></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════════════════════════════════════════ 07 INTERNATIONAL STAGES -->
+<div class="chapter" id="international">
+  <span class="chapter-number">07</span>
+  <div class="chapter-label">Chapter Seven</div>
+  <h2 class="chapter-title">International Concert Performances</h2>
+
+  <div class="venue-grid">
+    <div class="venue-item"><span class="venue-icon">★</span><div><div class="venue-name">Royal Albert Hall</div><div class="venue-loc">London, United Kingdom</div></div></div>
+    <div class="venue-item"><span class="venue-icon">★</span><div><div class="venue-name">Sydney Opera House</div><div class="venue-loc">Sydney, Australia</div></div></div>
+    <div class="venue-item"><span class="venue-icon">★</span><div><div class="venue-name">Oxford University, Faculty of Music</div><div class="venue-loc">Oxford, UK — First ever Indian Violin concert (May 2018)</div></div></div>
+    <div class="venue-item"><span class="venue-icon">★</span><div><div class="venue-name">Cambridge University</div><div class="venue-loc">Cambridge, UK (2023)</div></div></div>
+    <div class="venue-item"><span class="venue-icon">★</span><div><div class="venue-name">Royal Palace of Milan</div><div class="venue-loc">Milano Musica Festival, Italy</div></div></div>
+    <div class="venue-item"><span class="venue-icon">★</span><div><div class="venue-name">Federation Square</div><div class="venue-loc">Melbourne, Australia</div></div></div>
+    <div class="venue-item"><span class="venue-icon">★</span><div><div class="venue-name">Common Thread Music Festival</div><div class="venue-loc">Oregon, USA</div></div></div>
+    <div class="venue-item"><span class="venue-icon">★</span><div><div class="venue-name">World Music Festival, Chicago</div><div class="venue-loc">Chicago, USA — World Music Series by BBC</div></div></div>
+    <div class="venue-item"><span class="venue-icon">★</span><div><div class="venue-name">Santa Fe Festival</div><div class="venue-loc">New Mexico, USA (2007)</div></div></div>
+    <div class="venue-item"><span class="venue-icon">★</span><div><div class="venue-name">International Violin Conference</div><div class="venue-loc">San Diego, USA — First Indian Violinist; regular annual presence</div></div></div>
+    <div class="venue-item"><span class="venue-icon">★</span><div><div class="venue-name">SAARC Summit</div><div class="venue-loc">South Asian Association for Regional Cooperation</div></div></div>
+    <div class="venue-item"><span class="venue-icon">★</span><div><div class="venue-name">Esplanade Theatre</div><div class="venue-loc">Singapore</div></div></div>
+    <div class="venue-item"><span class="venue-icon">★</span><div><div class="venue-name">Bozar Music Conference</div><div class="venue-loc">Brussels, Belgium</div></div></div>
+    <div class="venue-item"><span class="venue-icon">★</span><div><div class="venue-name">Théâtre de la Ville</div><div class="venue-loc">Paris, France</div></div></div>
+    <div class="venue-item"><span class="venue-icon">★</span><div><div class="venue-name">Putra World Trade Centre</div><div class="venue-loc">Kuala Lumpur, Malaysia</div></div></div>
+    <div class="venue-item"><span class="venue-icon">★</span><div><div class="venue-name">Persian Academy of Culture</div><div class="venue-loc">Tehran, Iran — India's Republic Day celebration</div></div></div>
+    <div class="venue-item"><span class="venue-icon">★</span><div><div class="venue-name">Republic Day / Independence Day</div><div class="venue-loc">Sri Lanka — As Government of India Cultural Ambassador</div></div></div>
+    <div class="venue-item"><span class="venue-icon">★</span><div><div class="venue-name">All European Culture Festival</div><div class="venue-loc">United Kingdom</div></div></div>
+    <div class="venue-item"><span class="venue-icon">★</span><div><div class="venue-name">JSS Spiritual Mission</div><div class="venue-loc">Gaithersburg, Maryland, USA (Oct 2024)</div></div></div>
+    <div class="venue-item"><span class="venue-icon">★</span><div><div class="venue-name">Griffith University</div><div class="venue-loc">Australia — Workshop & Concert</div></div></div>
+  </div>
+
+  <div class="note">Dr. Manjunath has toured and performed in over 50 countries across USA, Canada, UK, France, Germany, Austria, Japan, Hong Kong, Singapore, Belgium, Netherlands, Slovenia, Malaysia, Philippines, Switzerland, Italy, Australia, New Zealand, Gulf Countries, Sri Lanka, Iran, and many more.</div>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════════════════════════════════════════ 08 FIRSTS -->
+<div class="chapter" id="firsts">
+  <span class="chapter-number">08</span>
+  <div class="chapter-label">Chapter Eight</div>
+  <h2 class="chapter-title">Historic Firsts &amp; Landmark Achievements</h2>
+
+  <table class="award-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Historic First / Landmark</th>
+        <th>Venue / Context</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>01</td>
+        <td>First Indian Violinist invited to conduct a workshop at the International Violin Conference <span class="badge">World First</span></td>
+        <td>San Diego, USA — Repeated as regular presence over multiple years</td>
+      </tr>
+      <tr>
+        <td>02</td>
+        <td>First ever Indian Violin Concert at Oxford University <span class="badge red">Historic</span></td>
+        <td>Oxford University, Faculty of Music, May 2018</td>
+      </tr>
+      <tr>
+        <td>03</td>
+        <td>Princeton Workshop — Western violinists abandon chairs and sit on floor in dhotis inspired by his tradition <span class="badge blue">Cultural Impact</span></td>
+        <td>Princeton University, Early 1990s</td>
+      </tr>
+      <tr>
+        <td>04</td>
+        <td>One of the youngest-ever recipients of the Sangeet Natak Akademi Award for Violin <span class="badge">National First</span></td>
+        <td>Rashtrapati Bhavan, New Delhi, 2016</td>
+      </tr>
+      <tr>
+        <td>05</td>
+        <td>Composed the Yoga Anthem "Yoga Niyoga" in a brand-new Raga (Bharata) — an unprecedented global collaboration of 20+ artists from India and the world</td>
+        <td>Commissioned by Centre for Soft Power; released globally on World Yoga Day, June 21, 2019</td>
+      </tr>
+      <tr>
+        <td>06</td>
+        <td>Composed "Life Again" — global COVID-19 humanitarian music response, featuring musicians from coronavirus-affected countries including Wuhan, China</td>
+        <td>Launched by ICCR in 150+ countries, June 2020</td>
+      </tr>
+      <tr>
+        <td>07</td>
+        <td>Created Raga "Yaduveera Manohari" for the Mysore Royal Family's wedding <span class="badge green">Cultural Heritage</span></td>
+        <td>Mysore, June 2016</td>
+      </tr>
+      <tr>
+        <td>08</td>
+        <td>Publicly called "Prince of Mysore" by Bharat Ratna Pandit Ravi Shankar after attending his live concert</td>
+        <td>San Diego, USA, 2012</td>
+      </tr>
+      <tr>
+        <td>09</td>
+        <td>The Los Angeles Times wrote: he "has crossed over so many boundaries, that his style is purely personal"</td>
+        <td>Los Angeles Times</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════════════════════════════════════════ 09 COMPOSITIONS -->
+<div class="chapter" id="compositions">
+  <span class="chapter-number">09</span>
+  <div class="chapter-label">Chapter Nine</div>
+  <h2 class="chapter-title">Compositions, Ragas &amp; Musical Creations</h2>
+
+  <table class="award-table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Type</th>
+        <th>Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Raga Yaduveera Manohari</td>
+        <td>New Raga Creation</td>
+        <td>Specially composed for the royal wedding of the Mysore royal family (Yaduveer Wadeyar), June 2016. A composition of historic and cultural significance.</td>
+      </tr>
+      <tr>
+        <td>Raga Bharata</td>
+        <td>New Raga Creation</td>
+        <td>Created for the Yoga Anthem "Yoga Niyoga" (2019). Verified by music scholars as a genuinely new raga. Named after Bharata — the legendary first emperor and the ancient name for India.</td>
+      </tr>
+      <tr>
+        <td>Yoga Niyoga (Yoga Anthem)</td>
+        <td>Composition — Anthem</td>
+        <td>Commissioned by the Centre for Soft Power (with India Foundation, Indic Academy). 5-minute audio-video, 20+ artists — Indian and international. Lyrics by Dr. Shatavadhani R. Ganesh. Arranged by Praveen D Rao. Released on World Yoga Day (June 21, 2019) including at the British Parliament. Featured in Raga Bharata.</td>
+      </tr>
+      <tr>
+        <td>Life Again</td>
+        <td>Composition — Song / Music Video</td>
+        <td>Created during the COVID-19 pandemic (2020). Features 20 global musicians from coronavirus-affected nations. Lyrics by Sri Ganapathi Sachchidananda Swami of Avadhoota Datta Peetham. In Raga Charukeshi. Produced by Alter Ego Frames, edited at Laya Digi Studios. Launched by ICCR in 150+ countries.</td>
+      </tr>
+      <tr>
+        <td>Aaroha</td>
+        <td>Music-Play / Composition</td>
+        <td>Unique music-play conceived, composed and directed by Dr. Manjunath. Premiered at Ranga Shankara, Bangalore (Aug 23–24, 2022) under Bhoomija Trust. Features a 20-member youth orchestra he conceptualized. Collaboration with playwright S. Surendranath, actor Srinivasa Prabhu, artist S.G. Vasudev. Press described it as "a perfect synchrony with Carnatic idioms and western presentation."</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════════════════════════════════════════ 10 COLLABORATIONS -->
+<div class="chapter" id="collaborations">
+  <span class="chapter-number">10</span>
+  <div class="chapter-label">Chapter Ten</div>
+  <h2 class="chapter-title">Collaborations — Indian &amp; International</h2>
+
+  <div class="section">
+    <h3 class="section-title">Indian Collaborators</h3>
+    <div class="collab-grid">
+      <span class="collab-tag">Bharat Ratna Pandit Ravi Shankar</span>
+      <span class="collab-tag">Ronu Majumdar (Bansuri)</span>
+      <span class="collab-tag">Bombay Jayashri (Carnatic Vocal)</span>
+      <span class="collab-tag">Vijay Prakash (Vocal)</span>
+      <span class="collab-tag">Sanjeev Abhyankar (Hindustani Vocal)</span>
+      <span class="collab-tag">Jayanthi Kumaresh (Veena)</span>
+      <span class="collab-tag">Rafique Khan (Sitar)</span>
+      <span class="collab-tag">Ramdas Palsule (Tabla)</span>
+      <span class="collab-tag">B.C. Manjunath (Mridangam)</span>
+      <span class="collab-tag">N. Amrit (Khanjira)</span>
+      <span class="collab-tag">Giridhar Udupa (Ghatam)</span>
+      <span class="collab-tag">Gurumurthy Vaidya (Pakhawaj)</span>
+      <span class="collab-tag">Umakant &amp; Ramakant Gundecha (Dhrupad)</span>
+      <span class="collab-tag">Pandit Vishwa Mohan Bhatt</span>
+      <span class="collab-tag">Tejendra Majumdar</span>
+      <span class="collab-tag">N. Rajam</span>
+      <span class="collab-tag">Arun Ramamurthy (Violin, USA)</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">International Collaborators</h3>
+    <div class="collab-grid">
+      <span class="collab-tag">Ned McGowan — Flute, Netherlands</span>
+      <span class="collab-tag">Fabrizio Cassol — Belgium</span>
+      <span class="collab-tag">Jai Uttal — USA</span>
+      <span class="collab-tag">Joe Craven — USA</span>
+      <span class="collab-tag">Fred Hamilton — USA</span>
+      <span class="collab-tag">Todd Haaby — USA</span>
+      <span class="collab-tag">Alice Barron — Violin, London</span>
+      <span class="collab-tag">Keiko Shichijo — Piano, Japan</span>
+      <span class="collab-tag">Fulvio Sigurta — Trumpet, Italy</span>
+      <span class="collab-tag">Trina Basu — Jazz Violin, Canada</span>
+      <span class="collab-tag">Wang Ying — Erhu, Wuhan, China</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">Orchestras / Ensembles</h3>
+    <div class="collab-grid">
+      <span class="collab-tag">Aka Moon (Belgium)</span>
+      <span class="collab-tag">Spinifex</span>
+      <span class="collab-tag">Ictus Ensemble</span>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════════════════════════════════════════ 11 UNIVERSITIES -->
+<div class="chapter" id="universities">
+  <span class="chapter-number">11</span>
+  <div class="chapter-label">Chapter Eleven</div>
+  <h2 class="chapter-title">Universities &amp; International Institutions — Workshops &amp; Lectures</h2>
+
+  <ul class="univ-list">
+    <li>Princeton University, USA</li>
+    <li>MIT (Massachusetts Institute of Technology), USA</li>
+    <li>University of Oxford, UK</li>
+    <li>Cambridge University, UK</li>
+    <li>University of Chicago, USA</li>
+    <li>University of North Texas, USA</li>
+    <li>Kansas State University, USA</li>
+    <li>University of Oklahoma, USA (Meritorious Award)</li>
+    <li>University of Central Oklahoma, USA</li>
+    <li>Texas A&amp;M University, USA</li>
+    <li>University of Oregon, USA</li>
+    <li>University of Georgia, USA</li>
+    <li>Radio Chicago / Radio Germany — Feature Interviews</li>
+    <li>Griffith University, Australia</li>
+    <li>University of Osaka, Japan</li>
+    <li>Utrecht School of Arts, Netherlands</li>
+    <li>IIT Kharagpur, India</li>
+    <li>Shantiniketan (Visva-Bharati), India</li>
+    <li>SAI International School, Bhubaneswar</li>
+    <li>BBC (World Music Series) — Featured Artist</li>
+  </ul>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════════════════════════════════════════ 12 AWARDS -->
+<div class="chapter" id="awards">
+  <span class="chapter-number">12</span>
+  <div class="chapter-label">Chapter Twelve</div>
+  <h2 class="chapter-title">Awards &amp; Recognitions — Complete List</h2>
+
+  <table class="award-table">
+    <thead>
+      <tr>
+        <th>Year</th>
+        <th>Award / Honour</th>
+        <th>Conferred By</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>2016 <span class="badge">Highest National Award</span></td>
+        <td>Sangeet Natak Akademi Award — Violin (One of the youngest ever recipients)</td>
+        <td>Government of India / President of India, at Rashtrapati Bhavan</td>
+      </tr>
+      <tr>
+        <td>—</td>
+        <td>Rajyotsava Award (Karnataka State Award)</td>
+        <td>Government of Karnataka</td>
+      </tr>
+      <tr>
+        <td>2020</td>
+        <td>Ganakala Bhushana Award</td>
+        <td>Karnataka Ganakala Parishath (Golden Jubilee Music Conference)</td>
+      </tr>
+      <tr>
+        <td>2022</td>
+        <td>Karthik (Kartik Fine Arts) Lifetime Achievement Award</td>
+        <td>Kartik Fine Arts Sabha, Chennai (47th Anniversary)</td>
+      </tr>
+      <tr>
+        <td>—</td>
+        <td>Chowdiah National Award</td>
+        <td>Music Academy, Bangalore</td>
+      </tr>
+      <tr>
+        <td>—</td>
+        <td>Sangeetha Choodamani (Best Violinist)</td>
+        <td>Music Academy, Chennai</td>
+      </tr>
+      <tr>
+        <td>—</td>
+        <td>Best Violinist Award</td>
+        <td>Indian Fine Arts Society, Chennai</td>
+      </tr>
+      <tr>
+        <td>—</td>
+        <td>Excellence Award</td>
+        <td>American Institute of World Culture</td>
+      </tr>
+      <tr>
+        <td>—</td>
+        <td>Honors from the Indo-American Arts Council</td>
+        <td>American Arts Council</td>
+      </tr>
+      <tr>
+        <td>—</td>
+        <td>Meritorious Award</td>
+        <td>University of Oklahoma, USA</td>
+      </tr>
+      <tr>
+        <td>—</td>
+        <td>Aryabhata Award</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>—</td>
+        <td>Samskruthi Sinchana Award</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>—</td>
+        <td>Y.T. Tatachari National Award</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>—</td>
+        <td>Sangeeth Samrat</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>—</td>
+        <td>Sangeeth Ratna</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>—</td>
+        <td>Sangitha Vidwanmani</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>—</td>
+        <td>Gana Varidhi</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>—</td>
+        <td>Tantri Vadya Shiromani — Asthana Vidwan</td>
+        <td>Sri Kanchi Kamakoti Peetham</td>
+      </tr>
+      <tr>
+        <td>—</td>
+        <td>Rama Ganakalacharya Award</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>—</td>
+        <td>Sangeetha Vedanta Dhurina</td>
+        <td>University of Mysore</td>
+      </tr>
+      <tr>
+        <td>—</td>
+        <td>Rotary Excellence Award</td>
+        <td>Rotary Club</td>
+      </tr>
+      <tr>
+        <td>2024</td>
+        <td>National Eminence Award (as Mysore Brothers)</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>—</td>
+        <td>4 Gold Medals — Master of Music</td>
+        <td>University of Mysore (Academic)</td>
+      </tr>
+      <tr>
+        <td>—</td>
+        <td>A-Top Ranking (AIR / Music)</td>
+        <td>One of the youngest musicians to receive this classification</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="quote-box">
+    <p>"Prince of Mysore."</p>
+    <div class="quote-source">— Bharat Ratna Pandit Ravi Shankar, after attending Dr. Manjunath's live concert in San Diego, 2012</div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════════════════════════════════════════ 13 IMPACT ON SOCIETY -->
+<div class="chapter" id="society">
+  <span class="chapter-number">13</span>
+  <div class="chapter-label">Chapter Thirteen</div>
+  <h2 class="chapter-title">Impact on Society</h2>
+
+  <div class="section">
+    <h3 class="section-title">Cultural Diplomacy &amp; National Representation</h3>
+    <p>Dr. Manjunath was handpicked by the Government of India as a Cultural Ambassador to represent the nation at its most sovereign moments — the Republic Day and Independence Day celebrations in Sri Lanka and Iran. His music served not merely as entertainment but as a diplomatic bridge, articulating India's cultural identity to the world in its most formal ceremonial context.</p>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">Pandemic Humanitarian Response — "Life Again" (2020)</h3>
+    <p>During the COVID-19 pandemic, when the world was in its deepest crisis, Dr. Manjunath conceptualized and composed "Life Again" — inviting 20 musicians from coronavirus-affected countries (including a musician from Wuhan, China) to collaborate. The message was powerful: this is a time for social distancing, not emotional distancing. Launched by ICCR in over 150 countries, the project demonstrated how Indian classical music can heal, unite, and inspire across geopolitical boundaries.</p>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">Yoga &amp; Spiritual Heritage — "Yoga Niyoga" (2019)</h3>
+    <p>When India's most profound gift to global wellness — Yoga — was being reduced to a fitness routine, Dr. Manjunath, commissioned by the Centre for Soft Power, composed a Yoga Anthem that reconnected Yoga to its spiritual, philosophical roots. Released at the British Parliament on World Yoga Day, the anthem was a statement of civilizational pride. His brand-new Raga Bharata (named after India's legendary first emperor) gave the anthem not just musical identity but civilizational meaning.</p>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">Elevation of Mysuru as a Cultural Capital</h3>
+    <p>By deliberately choosing to remain based in Mysuru despite offers to relocate to Chennai, Dr. Manjunath has, over decades, reinforced Mysuru's identity as a living seat of Carnatic classical music — completing what his father began. His international stature draws global attention to Mysuru, not just as a heritage tourist destination but as a city that continues to produce world-class classical artistry in the 21st century.</p>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">Education &amp; Mentorship</h3>
+    <p>As a Distinguished Professor at the University of Mysore's Department of Music, Dr. Manjunath has guided research scholars, shaped curriculum, and mentored the next generation. His son Sumanth Manjunath is himself a Gold Medallist, demonstrating that his influence on musical education extends even into his own household. The tradition he upholds will continue to produce musicians, scholars, and researchers for generations.</p>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">Youth Orchestra &amp; Theatre</h3>
+    <p>Through "Aaroha" (2022), Dr. Manjunath conceptualized and conducted a 20-member youth orchestra, creating new pathways for young musicians to engage with Carnatic music through the medium of theatre — breaking barriers between classical music and performing arts for a new generation of audiences.</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════════════════════════════════════════ 14 IMPACT ON ART -->
+<div class="chapter" id="art">
+  <span class="chapter-number">14</span>
+  <div class="chapter-label">Chapter Fourteen</div>
+  <h2 class="chapter-title">Impact on the Field of Music &amp; Art</h2>
+
+  <div class="section">
+    <h3 class="section-title">Bridging East and West</h3>
+    <p>The Los Angeles Times noted that Dr. Manjunath "has crossed over so many boundaries, that his style is purely personal." No higher compliment exists in world music: transcending tradition without abandoning it, creating something that belongs entirely to the artist. His Princeton workshop — where Western violinists spontaneously adopted Indian tradition the very next morning — remains one of the most compelling stories of musical cross-pollination in the modern era.</p>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">Expanding the Raga Vocabulary</h3>
+    <p>Creating a new Raga is one of the rarest achievements in Carnatic music — it requires not just technical knowledge but a depth of musical understanding that can bring alive a new melodic personality. Dr. Manjunath has created multiple new ragas, including Yaduveera Manohari and Bharata. The latter, used in the Yoga Anthem, was verified by multiple music scholars as a genuinely new, melodically complete raga with the required <em>bhaava</em> (emotional essence).</p>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">Fusion Without Compromise</h3>
+    <p>Dr. Manjunath has collaborated with jazz, western classical, Belgian contemporary, and Japanese musicians — not by diluting Carnatic music but by demonstrating its capacity for profound dialogue. His methodology of "sticking to the tradition with blending innovative styles" has become a model for how Indian classical music can engage with the world without losing its identity.</p>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">Taking Carnatic Music to Unexpected Spaces</h3>
+    <p>From a royal palace in Milan to the prestigious Esplanade Theatre in Singapore, from the World Music Festival in Chicago to the Persian Academy of Culture in Tehran, Dr. Manjunath has placed Carnatic violin in contexts that most classical Indian musicians never imagined. His performances have consistently demonstrated that the grammar of a Raga transcends language, religion, and geography.</p>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">Music as Scholarship</h3>
+    <p>His doctoral thesis on the violin from the University of Mysore is a scholarly contribution to the academic documentation of an instrument and tradition that has largely been transmitted orally. As a research supervisor himself, he has created a lineage not just of performers but of thinker-musicians who can articulate, document, and transmit this heritage.</p>
+  </div>
+
+  <div class="quote-box">
+    <p>Raga is not a mode as a westerner understands — it is a colour. Between orange and red there are thousands of colours, many waiting to be discovered by musicians yet to come.</p>
+    <div class="quote-source">— Dr. Mysore Manjunath, Mysuru Literature Festival 2021</div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════════════════════════════════════════ 15 MEDIA -->
+<div class="chapter" id="media">
+  <span class="chapter-number">15</span>
+  <div class="chapter-label">Chapter Fifteen</div>
+  <h2 class="chapter-title">Media Coverage &amp; Press Recognitions</h2>
+
+  <table class="award-table">
+    <thead>
+      <tr>
+        <th>Media / Publication</th>
+        <th>Nature of Coverage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>BBC (World Music Series)</td>
+        <td>Featured Artist — World Music Series broadcast; Radio interview</td>
+      </tr>
+      <tr>
+        <td>Los Angeles Times</td>
+        <td>Review noting he "has crossed over so many boundaries, that his style is purely personal"</td>
+      </tr>
+      <tr>
+        <td>Radio Chicago</td>
+        <td>Featured interview</td>
+      </tr>
+      <tr>
+        <td>Radio Germany</td>
+        <td>Featured interview</td>
+      </tr>
+      <tr>
+        <td>The Hindu</td>
+        <td>Multiple feature articles including the Mysore Brothers' journey, Sangeet Natak Akademi award, Oxford concert, Aaroha music play</td>
+      </tr>
+      <tr>
+        <td>Deccan Herald</td>
+        <td>Multiple coverage including Ganakala Parishath conference, Yoga Anthem, awards</td>
+      </tr>
+      <tr>
+        <td>Deccan Chronicle</td>
+        <td>Coverage of Yaduveera Manohari raga creation for Mysore royal wedding</td>
+      </tr>
+      <tr>
+        <td>Times of India</td>
+        <td>Coverage of the Yoga Day Anthem composition</td>
+      </tr>
+      <tr>
+        <td>Star of Mysore</td>
+        <td>Extensive profile interview, awards coverage, Mysuru Literature Festival conversation</td>
+      </tr>
+      <tr>
+        <td>News18</td>
+        <td>Feature on Mysore Brothers' musical journey</td>
+      </tr>
+      <tr>
+        <td>Indian Express</td>
+        <td>Coverage of Sawai Gandharva performance</td>
+      </tr>
+      <tr>
+        <td>Asian Age</td>
+        <td>Feature on the Yoga Anthem</td>
+      </tr>
+      <tr>
+        <td>South Asian Herald</td>
+        <td>Coverage of JSS Spiritual Mission concert, Maryland, 2024</td>
+      </tr>
+      <tr>
+        <td>UNT Digital Library</td>
+        <td>Archival photograph of the Mysore Brothers (University of North Texas, 2016)</td>
+      </tr>
+      <tr>
+        <td>Karnataka.com</td>
+        <td>Detailed biographical profile</td>
+      </tr>
+      <tr>
+        <td>Wikipedia</td>
+        <td>Verified biographical article: en.wikipedia.org/wiki/Mysore_Manjunath</td>
+      </tr>
+      <tr>
+        <td>Sangeet Natak Akademi — Official</td>
+        <td>Official awardee profile: sangeetnatak.gov.in</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</div><!-- end .page -->
+
+<!-- ═══════════════════════════════════════════════ 16 PHOTO GALLERY -->
+<div class="photo-section">
+  <div style="max-width:960px; margin:0 auto;">
+    <h2>Photo Gallery</h2>
+    <p class="photo-note">Images sourced from publicly available online sources. For high-resolution official images, contact: mysoremanjunath.com</p>
+
+    <div class="photo-grid">
+      <div class="photo-item">
+        <img src="https://starofmysore.com/wp-content/uploads/2021/10/Dr-Mysore-Manjunath-interaction.jpg" alt="Dr Mysore Manjunath at Mysuru Literature Festival 2021" loading="lazy">
+        <div class="photo-caption">Dr. Mysore Manjunath at Mysuru Literature Festival 2021 — in conversation with moderator Rao R. Sharath (Star of Mysore)</div>
+      </div>
+      <div class="photo-item">
+        <img src="https://digital.library.unt.edu/ark:/67531/metadc1942521/m1/1/thumbnail/" alt="Mysore Brothers at University of North Texas" loading="lazy">
+        <div class="photo-caption">The Mysore Brothers — Dr. Mysore Manjunath (right) and Mysore Nagaraj (left), at the University of North Texas, 2016 (UNT Digital Library Archive)</div>
+      </div>
+      <div class="photo-item">
+        <img src="http://www.yathraemagazine.com/wp-content/uploads/2022/06/Mysore-Manjunath.jpg" alt="Dr Mysore Manjunath performance" loading="lazy">
+        <div class="photo-caption">Dr. Mysore Manjunath — Official Performance Portrait (Yathra Magazine)</div>
+      </div>
+    </div>
+
+    <div class="photo-sources">
+      <h3>Official Photo &amp; Image Sources</h3>
+      <ul class="photo-source-list">
+        <li>🌐 Official Website: <a href="https://mysoremanjunath.com" target="_blank">mysoremanjunath.com</a></li>
+        <li>🌐 Wikipedia: <a href="https://en.wikipedia.org/wiki/Mysore_Manjunath" target="_blank">en.wikipedia.org/wiki/Mysore_Manjunath</a></li>
+        <li>🌐 Facebook: <a href="https://www.facebook.com/mysoremanjunathnagaraj" target="_blank">facebook.com/mysoremanjunathnagaraj</a></li>
+        <li>🌐 ViolinIndia.com: <a href="https://violinindia.com/manjunath.htm" target="_blank">violinindia.com/manjunath.htm</a></li>
+        <li>🌐 UNT Digital Library: <a href="https://digital.library.unt.edu/ark:/67531/metadc1942521/" target="_blank">digital.library.unt.edu</a></li>
+        <li>🌐 Star of Mysore: <a href="https://starofmysore.com" target="_blank">starofmysore.com</a></li>
+        <li>🌐 Karnataka.com: <a href="https://www.karnataka.com/personalities/manjunath-nagraj-mysore-brothers/" target="_blank">karnataka.com</a></li>
+        <li>🌐 Sangeet Natak Akademi (Official): <a href="https://www.sangeetnatak.gov.in/public/uploads/awardees/docs/Mysore_M_Manjunath.pdf" target="_blank">sangeetnatak.gov.in</a></li>
+        <li>🎬 YouTube — Life Again: <a href="https://www.youtube.com/watch?v=7dsBzcibCQM" target="_blank">youtube.com/watch?v=7dsBzcibCQM</a></li>
+        <li>🎬 YouTube — Cambridge 2023: <a href="https://www.youtube.com/watch?v=udWiDylivYI" target="_blank">youtube.com/watch?v=udWiDylivYI</a></li>
+        <li>🎬 YouTube — World Music Festival: <a href="https://www.youtube.com/watch?v=MVVSJL7k9ls" target="_blank">youtube.com/watch?v=MVVSJL7k9ls</a></li>
+        <li>📄 South Asian Herald (2024): <a href="https://southasianherald.com/mysore-brothers-perform-violin-concert-in-support-of-the-jss-spiritual-mission-in-maryland/" target="_blank">southasianherald.com</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  Master Dossier — <span>Dr. Mysore M. Manjunath</span> &nbsp;·&nbsp; Compiled April 2026 &nbsp;·&nbsp; All facts verified from published sources &nbsp;·&nbsp; <span>mysoremanjunath.com</span>
+</div>
+
+</body>
+</html>
