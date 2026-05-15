@@ -1365,6 +1365,9 @@ const saved = localStorage.getItem('mm-theme');
 if (saved === 'dark') applyTheme(true);
 
 document.getElementById('themeToggle').addEventListener('click', () => applyTheme(!isDark));
+
+// ── MOBILE DETECTION ──────────────────────────────
+const isMobile = window.matchMedia('(hover:none),(pointer:coarse)').matches
               || window.innerWidth < 768;
 
 // ── CURSOR (desktop only) ─────────────────────────
