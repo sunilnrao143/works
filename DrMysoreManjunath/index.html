@@ -627,52 +627,141 @@ footer{border-top:5px solid transparent;
 [data-theme="dark"] .gi2:hover img{filter:sepia(0%) brightness(1)!important}
 [data-theme="dark"] .gc{background:linear-gradient(transparent,rgba(8,4,1,.93))}
 [data-theme="dark"] .af::after{color:var(--gold);opacity:.06}
+[data-theme="dark"] footer{background:#060302;border-top-color:var(--border)}
+[data-theme="dark"] footer .fn{color:var(--ivory)}
+[data-theme="dark"] footer .ftag{color:var(--muted)}
+[data-theme="dark"] footer .fl a{color:var(--muted)}
+[data-theme="dark"] footer .faw li{color:var(--muted)}
+[data-theme="dark"] footer .fc{color:rgba(122,88,48,.55)}
+[data-theme="dark"] .palace-footer{opacity:.07;filter:none}
+[data-theme="dark"] .sl{background:linear-gradient(180deg,var(--gold),transparent)}
+[data-theme="dark"] .sc2 span{color:var(--muted)}
 
 /* ══════════════════════════════════════════════════════════
    LIGHT MODE — Mallige White specific overrides
-   (default :root already sets vars; this handles hardcoded elems)
 ══════════════════════════════════════════════════════════ */
-/* Hero — pale green sky */
-#hero{background:linear-gradient(180deg,#F5FFF5 0%,#EAF5EA 60%,#F0F9EC 100%)}
-.hero-photo-bg{filter:brightness(.22) saturate(.4) hue-rotate(60deg)}
-body::before{opacity:.015}
-.hpat{opacity:.03}
-/* Nav frosted white */
-nav.sc{background:rgba(248,255,248,.93);border-color:rgba(27,67,50,.14)}
-/* Mobile drawer — pale green */
-.mob-nav{background:rgba(242,252,242,.97);border-color:rgba(27,67,50,.14)}
+
+/* ── HERO: clean, no photo, pure white-to-green gradient ── */
+#hero{
+  background:linear-gradient(160deg,#FFFFFF 0%,#F4FCF4 45%,#E8F5E2 100%);
+}
+/* Hide the photo entirely in light mode — it creates grey fog */
+.hero-photo-bg{display:none}
+/* No dark vignette needed without photo */
+.hvig{background:radial-gradient(ellipse 90% 90% at 50% 50%,transparent 30%,rgba(232,245,226,.7) 100%)}
+/* Subtle lotus pattern */
+.hpat{opacity:.07}
+/* Palace silhouette — visible deep green in light mode */
+.palace-svg{opacity:.25;filter:hue-rotate(180deg) saturate(2) brightness(.4)}
+/* Grain off in light mode */
+body::before{opacity:.01}
+/* Hero text — crystal clear on white */
+.hn{color:#1B4332;text-shadow:none}
+.hn em{color:#8B6A08}
+.hq{color:#2D5A3D;text-shadow:none}
+.heb{color:#4A7C59}
+/* Stats — strong contrast */
+.hs2 .n2{color:#8B6A08}
+.hs2 .l2{color:#4A7C59}
+/* Subtitle — truncate gracefully on small screens */
+.hs{
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+  color:#5A8C6A;
+  letter-spacing:1.5px;
+  font-size:clamp(11px,1.6vw,16px);
+}
+
+/* Subtitle short/full switcher */
+.hs-short{display:none}
+.hs-full{display:inline}
+@media(max-width:600px){
+  .hs-full{display:none}
+  .hs-short{display:inline}
+  .hs{-webkit-line-clamp:unset;overflow:visible}
+}
+/* ── NAV frosted white ── */
+nav.sc{background:rgba(255,255,255,.95);border-color:rgba(27,67,50,.14);
+  box-shadow:0 2px 20px rgba(27,67,50,.08)}
+nav.sc .nl{color:#1B4332}
+
+/* ── MOBILE DRAWER — pale green ── */
+.mob-nav{background:rgba(244,252,244,.98);border-color:rgba(27,67,50,.14)}
 .mob-nav a{color:#1B4332;border-color:rgba(27,67,50,.1)}
 .mob-nav a::before{color:#4A7C59}
 .mob-nav-foot p{color:#4A7C59}
-/* Featured award — keep deep green (high impact on light page) */
-.af{background:linear-gradient(130deg,#1B4332,#0D2618 55%,#163528);border-color:rgba(27,67,50,.45)}
+
+/* ── FEATURED AWARD — deep green (bold contrast on light page) ── */
+.af{background:linear-gradient(130deg,#1B4332,#0D2618 55%,#163528);
+  border-color:rgba(27,67,50,.5);
+  box-shadow:0 8px 40px rgba(27,67,50,.15)}
 .af h3{color:#F5ECD7}
 .af .mt{color:#9ABFA8}
 .af p{color:#C8E4D4}
-.afn{color:#4A7C59;opacity:.18}
-/* Featured quote — forest green bg (matches .af) */
-.qc.ft{background:linear-gradient(130deg,#1B4332,#0D2618);border-color:rgba(27,67,50,.4)}
+.afn{color:#4A7C59;opacity:.16}
+.af small{color:#88c898}
+
+/* ── FEATURED QUOTE — forest green ── */
+.qc.ft{background:linear-gradient(130deg,#1B4332,#0D2618);
+  border-color:rgba(27,67,50,.4)}
 .qc.ft blockquote,.qc.ft .qsr{color:#F5ECD7}
-/* Gallery — full natural colour */
+
+/* ── GALLERY — full natural colours ── */
 .gi2 img{filter:brightness(1)!important}
 .gi2:hover img{transform:scale(1.06);filter:brightness(1.04)!important}
 .gc{background:linear-gradient(transparent,rgba(13,37,20,.88))}
-/* Timeline line — gold on pale green */
+
+/* ── TIMELINE gold line ── */
 .tli::before{background:linear-gradient(90deg,transparent,var(--gold) 4%,var(--gold) 96%,transparent)}
-/* Award featured watermark */
+
+/* ── AWARD watermark tint ── */
 .af::after{color:#4A7C59;opacity:.1}
-/* Map — give it a contained dark panel feel with a green border */
+
+/* ── MAP — shadow border ── */
 #stages .mw{box-shadow:0 4px 32px rgba(27,67,50,.12)}
-/* Silk dividers — same gold/crimson/green, looks great on both themes */
-/* Comp card links */
+
+/* ── INTERACTIVE ELEMENTS ── */
 .cta{color:var(--goldb)}
-/* Press badges */
 .pb2:hover{color:#1B4332;border-color:rgba(27,67,50,.45)}
-/* Collaborator chips */
 .cp:hover{background:rgba(27,67,50,.08);color:#1B4332;border-color:rgba(27,67,50,.35)}
-/* Cursor ring in light mode — visible on pale green */
+
+/* ── SECTION HEADING COLOUR on light surfaces ── */
+.sh{color:#1B4332}
+.s-tag,.st{color:#8B6A08}
+
+/* ── QUOTE cards on light bg ── */
+.qc{background:#FFFFFF;box-shadow:0 2px 16px rgba(27,67,50,.07)}
+.qc blockquote{color:#1B4332}
+.qsr{color:#8B6A08}
+
+/* ── AWARD cards on light ── */
+.ac2{background:#FFFFFF;box-shadow:0 2px 12px rgba(27,67,50,.06)}
+
+/* ── COMPOSITION cards ── */
+.cc{background:#FFFFFF;box-shadow:0 2px 12px rgba(27,67,50,.06)}
+
+/* ── ACADEMIC cards ── */
+.pc{background:#FFFFFF;box-shadow:0 2px 8px rgba(27,67,50,.05)}
+
+/* ── CURSOR ring ── */
 #cur{border-color:#B8860B}
 #cur2{background:#8B6A08}
+/* ── FOOTER in light mode — deep green ── */
+footer{background:#1B4332;border-top-color:rgba(27,67,50,.4)}
+footer .fn{color:#F5ECD7}
+footer .ftag{color:#9ABFA8}
+footer .fl a{color:#88c898}
+footer .fl a:hover{color:#F5ECD7}
+footer .fl a::before{color:#B8860B}
+footer .faw li{color:#88c898}
+footer .faw li::before{color:#B8860B}
+footer .fc{color:rgba(136,200,152,.4)}
+.palace-footer{opacity:.12;filter:invert(1)}
+/* ── SCROLL CUE in light mode ── */
+.sl{background:linear-gradient(180deg,#1B4332,transparent)}
+.sc2 span{color:#4A7C59}
 </style>
 </head>
 <body>
@@ -821,7 +910,10 @@ nav.sc{background:rgba(248,255,248,.93);border-color:rgba(27,67,50,.14)}
   <div class="hc">
     <p class="heb">Violin Maestro of India</p>
     <h1 class="hn">Dr. Mysore <em>Manjunath</em></h1>
-    <p class="hs">Violin Maestro · Composer · Scholar · Cultural Ambassador · National President, Samskara Bharathi</p>
+    <p class="hs">
+      <span class="hs-full">Violin Maestro · Composer · Scholar · Cultural Ambassador · National President, Samskara Bharathi</span>
+      <span class="hs-short">Violin Maestro · Cultural Ambassador · Samskara Bharathi</span>
+    </p>
     <div class="sw">
       <svg id="sv" viewBox="0 0 660 52" preserveAspectRatio="xMidYMid meet">
         <circle class="se" cx="38"  cy="26" r="4.5"/>
