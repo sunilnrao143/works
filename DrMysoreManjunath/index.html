@@ -9,14 +9,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0D0602;--surface:#1A0D05;--surface2:#261508;
-  --gold:#B8860B;--goldb:#D4A017;--pale:#F0D880;
-  --ivory:#F5E6C0;--text:#D8C090;--muted:#7A5830;
-  --border:rgba(184,134,11,.22);--borderb:rgba(212,160,23,.55);
+  /* ── DEFAULT: LIGHT MODE — Mallige White (Mysore Jasmine) ── */
+  --bg:#FAFFF8;--surface:#F0F7EE;--surface2:#E2F0E2;
+  --gold:#B8860B;--goldb:#8B6A08;--pale:#4A3808;
+  --ivory:#1B4332;--text:#2D5A3D;--muted:#5A8C6A;
+  --border:rgba(27,67,50,.16);--borderb:rgba(27,67,50,.45);
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Crimson Pro',Georgia,serif;background:var(--bg);color:var(--text);line-height:1.78;overflow-x:hidden;cursor:none}
+html{scroll-behavior:smooth;transition:background-color .4s ease,color .4s ease}
+body{font-family:'Crimson Pro',Georgia,serif;background:var(--bg);color:var(--text);line-height:1.78;overflow-x:hidden;cursor:none;transition:background-color .4s ease,color .4s ease}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
 
@@ -571,6 +572,107 @@ footer{border-top:5px solid transparent;
   .hn em{font-size:.95em}
   .gg{grid-template-rows:repeat(7,190px)}
 }
+
+/* ══════════════════════════════════════════════════════════
+   THEME TOGGLE BUTTON
+══════════════════════════════════════════════════════════ */
+.theme-toggle{
+  width:38px;height:38px;border-radius:50%;
+  border:1.5px solid var(--gold);
+  background:var(--surface2);
+  cursor:pointer;z-index:901;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .3s,border-color .3s,transform .25s,box-shadow .25s;
+}
+.theme-toggle:hover{
+  transform:scale(1.12);
+  box-shadow:0 0 0 4px rgba(184,134,11,.15);
+}
+.theme-toggle svg{
+  width:17px;height:17px;
+  stroke:var(--gold);fill:none;
+  stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;
+  transition:opacity .2s;pointer-events:none;
+}
+/* Light mode: show moon (click = go dark) */
+.icon-sun{display:none}
+.icon-moon{display:block}
+/* Dark mode: show sun (click = go light) */
+[data-theme="dark"] .icon-sun{display:block}
+[data-theme="dark"] .icon-moon{display:none}
+/* Nav right group */
+.nav-right{display:flex;align-items:center;gap:12px}
+
+/* ══════════════════════════════════════════════════════════
+   DARK MODE — All overrides under [data-theme="dark"]
+══════════════════════════════════════════════════════════ */
+[data-theme="dark"]{
+  --bg:#0D0602;--surface:#1A0D05;--surface2:#261508;
+  --gold:#B8860B;--goldb:#D4A017;--pale:#F0D880;
+  --ivory:#F5E6C0;--text:#D8C090;--muted:#7A5830;
+  --border:rgba(184,134,11,.22);--borderb:rgba(212,160,23,.55);
+}
+[data-theme="dark"] body::before{opacity:.03}
+[data-theme="dark"] #hero{background:linear-gradient(180deg,#080514 0%,#120820 50%,#0d0510 100%)}
+[data-theme="dark"] .hero-photo-bg{filter:brightness(.18) saturate(.6)}
+[data-theme="dark"] .hpat{opacity:.05}
+[data-theme="dark"] nav.sc{background:rgba(13,6,2,.9);border-color:var(--border)}
+[data-theme="dark"] .mob-nav{background:rgba(8,4,2,.97);border-color:var(--border)}
+[data-theme="dark"] .mob-nav a{color:var(--ivory);border-color:rgba(184,134,11,.1)}
+[data-theme="dark"] .mob-nav-foot p{color:var(--muted)}
+[data-theme="dark"] .af{background:linear-gradient(130deg,#2C1A00,#180D00 55%,#251600);border-color:var(--gold)}
+[data-theme="dark"] .af h3,[data-theme="dark"] .af .mt,[data-theme="dark"] .af p{color:inherit}
+[data-theme="dark"] .qc.ft{background:linear-gradient(130deg,#2C1A00,#180D00);border-color:var(--gold)}
+[data-theme="dark"] .gi2 img{filter:sepia(8%) brightness(.88)!important}
+[data-theme="dark"] .gi2:hover img{filter:sepia(0%) brightness(1)!important}
+[data-theme="dark"] .gc{background:linear-gradient(transparent,rgba(8,4,1,.93))}
+[data-theme="dark"] .af::after{color:var(--gold);opacity:.06}
+
+/* ══════════════════════════════════════════════════════════
+   LIGHT MODE — Mallige White specific overrides
+   (default :root already sets vars; this handles hardcoded elems)
+══════════════════════════════════════════════════════════ */
+/* Hero — pale green sky */
+#hero{background:linear-gradient(180deg,#F5FFF5 0%,#EAF5EA 60%,#F0F9EC 100%)}
+.hero-photo-bg{filter:brightness(.22) saturate(.4) hue-rotate(60deg)}
+body::before{opacity:.015}
+.hpat{opacity:.03}
+/* Nav frosted white */
+nav.sc{background:rgba(248,255,248,.93);border-color:rgba(27,67,50,.14)}
+/* Mobile drawer — pale green */
+.mob-nav{background:rgba(242,252,242,.97);border-color:rgba(27,67,50,.14)}
+.mob-nav a{color:#1B4332;border-color:rgba(27,67,50,.1)}
+.mob-nav a::before{color:#4A7C59}
+.mob-nav-foot p{color:#4A7C59}
+/* Featured award — keep deep green (high impact on light page) */
+.af{background:linear-gradient(130deg,#1B4332,#0D2618 55%,#163528);border-color:rgba(27,67,50,.45)}
+.af h3{color:#F5ECD7}
+.af .mt{color:#9ABFA8}
+.af p{color:#C8E4D4}
+.afn{color:#4A7C59;opacity:.18}
+/* Featured quote — forest green bg (matches .af) */
+.qc.ft{background:linear-gradient(130deg,#1B4332,#0D2618);border-color:rgba(27,67,50,.4)}
+.qc.ft blockquote,.qc.ft .qsr{color:#F5ECD7}
+/* Gallery — full natural colour */
+.gi2 img{filter:brightness(1)!important}
+.gi2:hover img{transform:scale(1.06);filter:brightness(1.04)!important}
+.gc{background:linear-gradient(transparent,rgba(13,37,20,.88))}
+/* Timeline line — gold on pale green */
+.tli::before{background:linear-gradient(90deg,transparent,var(--gold) 4%,var(--gold) 96%,transparent)}
+/* Award featured watermark */
+.af::after{color:#4A7C59;opacity:.1}
+/* Map — give it a contained dark panel feel with a green border */
+#stages .mw{box-shadow:0 4px 32px rgba(27,67,50,.12)}
+/* Silk dividers — same gold/crimson/green, looks great on both themes */
+/* Comp card links */
+.cta{color:var(--goldb)}
+/* Press badges */
+.pb2:hover{color:#1B4332;border-color:rgba(27,67,50,.45)}
+/* Collaborator chips */
+.cp:hover{background:rgba(27,67,50,.08);color:#1B4332;border-color:rgba(27,67,50,.35)}
+/* Cursor ring in light mode — visible on pale green */
+#cur{border-color:#B8860B}
+#cur2{background:#8B6A08}
 </style>
 </head>
 <body>
@@ -590,10 +692,30 @@ footer{border-top:5px solid transparent;
     <li><a href="#media">Press</a></li>
     <li><a href="#gallery">Gallery</a></li>
   </ul>
-  <!-- Hamburger (mobile only) -->
-  <button class="hbg" id="hbg" aria-label="Open menu">
-    <span></span><span></span><span></span>
-  </button>
+  <!-- Right controls: theme toggle + hamburger -->
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+      <!-- Sun icon — shown in dark mode -->
+      <svg class="icon-sun" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="1"  x2="12" y2="3"/>
+        <line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22"   x2="5.64"  y2="5.64"/>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1"  y1="12" x2="3"  y2="12"/>
+        <line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78"  x2="5.64"  y2="18.36"/>
+        <line x1="18.36" y1="5.64"  x2="19.78" y2="4.22"/>
+      </svg>
+      <!-- Moon icon — shown in light mode -->
+      <svg class="icon-moon" viewBox="0 0 24 24">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </button>
+    <button class="hbg" id="hbg" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
 <!-- MOBILE OVERLAY -->
@@ -1221,8 +1343,28 @@ footer{border-top:5px solid transparent;
 </footer>
 
 <script>
-// ── MOBILE DETECTION ──────────────────────────────
-const isMobile = window.matchMedia('(hover:none),(pointer:coarse)').matches
+// ── THEME SYSTEM ──────────────────────────────────
+const html = document.documentElement;
+let isDark = false;
+
+function applyTheme(dark) {
+  isDark = dark;
+  if (dark) {
+    html.setAttribute('data-theme', 'dark');
+    localStorage.setItem('mm-theme', 'dark');
+  } else {
+    html.removeAttribute('data-theme');
+    localStorage.setItem('mm-theme', 'light');
+  }
+  // Refresh particle hues for new background
+  if (typeof ps !== 'undefined') ps.forEach(p => p.resetHue());
+}
+
+// Apply saved preference on load (default = light)
+const saved = localStorage.getItem('mm-theme');
+if (saved === 'dark') applyTheme(true);
+
+document.getElementById('themeToggle').addEventListener('click', () => applyTheme(!isDark));
               || window.innerWidth < 768;
 
 // ── CURSOR (desktop only) ─────────────────────────
@@ -1258,10 +1400,20 @@ class P{
   re(){this.x=Math.random()*canvas.width;this.y=canvas.height+10;
     this.s=Math.random()*1.8+.4;
     this.vy=-(Math.random()*.9+.3);this.vx=(Math.random()-.5)*.35;
-    this.life=1;this.dec=Math.random()*.004+.0012;this.h=Math.random()*20+33;}
+    this.life=1;this.dec=Math.random()*.004+.0012;
+    this.resetHue();}
+  resetHue(){
+    // Dark mode: warm amber/gold (33-53). Light mode: slightly richer gold (28-48)
+    this.h = isDark ? Math.random()*20+33 : Math.random()*20+28;
+  }
   upd(){this.x+=this.vx;this.y+=this.vy;this.life-=this.dec;if(this.life<=0)this.re();}
-  drw(){ctx.save();ctx.globalAlpha=this.life*.7;ctx.fillStyle=`hsl(${this.h},80%,55%)`;
-    ctx.shadowBlur=isMobile?3:7;ctx.shadowColor=`hsl(${this.h},80%,55%)`;
+  drw(){
+    const lum = isDark ? 55 : 46;
+    const op  = isDark ? 0.7 : 0.62;
+    ctx.save();ctx.globalAlpha=this.life*op;
+    ctx.fillStyle=`hsl(${this.h},82%,${lum}%)`;
+    ctx.shadowBlur=isMobile?3:(isDark?7:5);
+    ctx.shadowColor=`hsl(${this.h},82%,${lum}%)`;
     ctx.beginPath();ctx.arc(this.x,this.y,this.s,0,Math.PI*2);ctx.fill();ctx.restore();}
 }
 // Fewer particles on mobile for performance
