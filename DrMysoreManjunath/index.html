@@ -363,6 +363,214 @@ footer{border-top:5px solid transparent;
   .gg{grid-template-columns:1fr 1fr;grid-template-rows:220px 220px 220px 220px}
   .gi2:first-child{grid-column:span 2;grid-row:span 1}
 }
+
+/* ══════════════════════════════════════════════════════
+   FULL MOBILE SYSTEM — Hamburger · Drawer · Responsive
+══════════════════════════════════════════════════════ */
+
+/* HAMBURGER BUTTON */
+.hbg{
+  display:none;flex-direction:column;justify-content:center;gap:5px;
+  cursor:pointer;padding:8px;background:none;border:none;z-index:1001;
+}
+.hbg span{
+  display:block;width:24px;height:2px;background:var(--gold);
+  border-radius:1px;transition:all .32s ease;transform-origin:center;
+}
+.hbg.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hbg.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hbg.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* MOBILE NAV DRAWER */
+.mob-nav{
+  position:fixed;top:0;right:-100%;width:min(300px,86vw);height:100vh;
+  background:rgba(8,4,2,.97);backdrop-filter:blur(24px) saturate(1.4);
+  z-index:999;transition:right .38s cubic-bezier(.4,0,.2,1);
+  display:flex;flex-direction:column;padding:90px 40px 48px;
+  border-left:1px solid var(--border);overflow-y:auto;
+}
+.mob-nav.open{right:0}
+.mob-nav-tag{
+  font-size:9px;letter-spacing:4px;text-transform:uppercase;
+  color:var(--muted);margin-bottom:18px;font-family:'Crimson Pro',serif;font-weight:600;
+}
+.mob-nav a{
+  font-family:'Playfair Display',serif;font-size:21px;font-weight:700;
+  color:var(--ivory);padding:14px 0;
+  border-bottom:1px solid rgba(184,134,11,.1);
+  display:flex;align-items:center;gap:12px;
+  transition:color .2s,padding-left .2s;letter-spacing:.5px;
+}
+.mob-nav a::before{
+  content:'◆';font-size:7px;color:var(--gold);
+  opacity:0;transition:opacity .2s;flex-shrink:0;
+}
+.mob-nav a:active,.mob-nav a:hover{color:var(--gold);padding-left:6px}
+.mob-nav a:hover::before{opacity:1}
+.mob-nav-foot{
+  margin-top:auto;padding-top:24px;
+  border-top:1px solid rgba(184,134,11,.1);
+}
+.mob-nav-foot p{font-size:12px;color:var(--muted);font-style:italic;line-height:1.6}
+.mob-nav-foot strong{color:var(--gold);display:block;font-family:'Playfair Display',serif;font-size:14px;margin-bottom:4px}
+
+/* MOBILE OVERLAY */
+.mob-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.68);
+  z-index:998;opacity:0;pointer-events:none;
+  transition:opacity .38s ease;
+}
+.mob-overlay.open{opacity:1;pointer-events:auto}
+
+/* Touch active states — timeline tap & gallery tap */
+.ti.touch-active .tc{opacity:1!important;pointer-events:auto!important;transform:translateX(-50%) translateY(0)!important}
+.ti.touch-active .td{box-shadow:0 0 0 8px rgba(184,134,11,.18),0 0 28px rgba(184,134,11,.65)!important;transform:translate(-50%,-50%) scale(1.5)!important}
+.gi2.tapped .gc{transform:translateY(0)!important}
+
+/* Touch — always show gallery captions */
+@media(hover:none){
+  .gc{transform:translateY(0)!important;background:linear-gradient(transparent,rgba(6,3,1,.94))}
+  .gi2:hover img{transform:none!important;filter:sepia(8%) brightness(.88)!important}
+  body{cursor:auto!important}
+  #cur,#cur2{display:none}
+}
+
+/* ── 960px TABLET ──────────────────────────────── */
+@media(max-width:960px){
+  nav{padding:18px 28px}
+  nav.sc{padding:12px 28px}
+  .nm{display:none}
+  .hbg{display:flex}
+  section{padding:72px 32px}
+  #timeline{padding-left:0;padding-right:0}
+  .tls{padding:24px 32px 48px}
+  .tlh{padding:0 32px}
+  .ag{grid-template-columns:1fr;gap:40px}
+  .of{max-width:380px;margin:0 auto}
+  .mw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  #wm{min-width:620px;display:block}
+  .acgr{grid-template-columns:1fr}
+  .art{margin-top:40px!important}
+  .qg{grid-template-columns:1fr}
+  .qc.ft{grid-column:span 1}
+  .fg{grid-template-columns:1fr;gap:28px}
+  .faw{text-align:left}
+  .hst{gap:22px;flex-wrap:wrap;justify-content:center}
+}
+
+/* ── 600px MOBILE ──────────────────────────────── */
+@media(max-width:600px){
+  nav,nav.sc{padding:14px 20px}
+  .nl{font-size:14px;letter-spacing:1px}
+
+  /* Hero */
+  section#hero{min-height:100svh;min-height:100vh}
+  .hc{padding:0 20px}
+  .hn{font-size:clamp(40px,11vw,60px);line-height:.96}
+  .hs{font-size:11.5px;letter-spacing:1.5px;margin:12px 0 22px}
+  .hq{font-size:15px;padding:0 8px;margin-bottom:24px}
+  .hst{gap:14px;flex-wrap:wrap}
+  .hs2 .n2{font-size:28px}
+  .hs2 .l2{font-size:9px}
+  .sw{max-width:90vw}
+  .palace-svg{opacity:.10;height:60px}
+  .sc2{display:none}
+
+  /* Sections */
+  section{padding:56px 20px}
+  .sh{font-size:clamp(24px,7vw,36px)}
+  .st{font-size:9px;letter-spacing:3.5px}
+  section:not(#hero){border-top-width:3px}
+
+  /* About */
+  .at p{font-size:16px;line-height:1.76}
+  .ap{font-size:17px}
+  .of{max-width:100%;padding:0}
+  .oi{padding:24px 18px}
+  .pb{width:140px;height:172px}
+  .kv li{font-size:12.5px}
+  .kv .v{max-width:60%}
+
+  /* Timeline */
+  .tls{padding:16px 20px 36px;-webkit-overflow-scrolling:touch}
+  .ti{width:155px}
+  .tli::before{top:50%}
+  .tc{width:145px;padding:10px 12px}
+  .tc h4{font-size:13px}
+  .tc p{font-size:11px}
+  .ty{font-size:10px}
+
+  /* Map */
+  #wm{min-width:480px}
+  .mtp{font-size:12px}
+  .mtp h5{font-size:13px}
+
+  /* Awards */
+  .af{padding:24px 20px}
+  .af h3{font-size:20px}
+  .af .mt{font-size:12px}
+  .af p{font-size:14px}
+  .afn{font-size:50px;right:16px;top:18px}
+  .ag2{grid-template-columns:1fr 1fr;gap:8px}
+  .ac2{padding:16px 14px 14px}
+  .ac2 h4{font-size:14px}
+  .ac2 .by{font-size:11px}
+
+  /* Compositions */
+  .cg{grid-template-columns:1fr}
+  .cc{padding:22px}
+  .cc h3{font-size:18px}
+
+  /* Collabs */
+  .cp{font-size:13.5px;padding:6px 13px}
+
+  /* Academic */
+  .abt{font-size:13.5px}
+  .abt caption{font-size:15px}
+  .abt td{padding:9px 0}
+  .pc{padding:14px 16px}
+  .pc h4{font-size:15px}
+
+  /* Quotes */
+  .qc{padding:22px 20px}
+  .qc blockquote{font-size:15.5px;line-height:1.6}
+  .qc.ft blockquote{font-size:19px}
+  .qm{font-size:50px;top:6px;left:14px}
+  .pr{gap:8px}
+  .pb2{font-size:10.5px;padding:5px 10px;letter-spacing:1.5px}
+
+  /* Gallery — single column, always show captions */
+  .gg{
+    grid-template-columns:1fr;
+    grid-template-rows:repeat(7,220px);
+    gap:4px;
+  }
+  .gi2:first-child{grid-column:span 1;grid-row:span 1}
+  .gc{transform:translateY(0)!important;background:linear-gradient(transparent,rgba(6,3,1,.94))}
+  .gc p{font-size:12px}
+  .gc .gs2{font-size:9.5px}
+  .gi2{clip-path:none}
+
+  /* Footer */
+  footer{padding:28px 20px 22px}
+  .fn{font-size:20px}
+  .ftag{font-size:13px}
+  .fl{gap:12px}
+  .fl a{font-size:10px;letter-spacing:1.5px}
+  .faw{display:none}
+  .fc{font-size:10px;padding:0 12px}
+  .palace-footer{height:36px}
+}
+
+/* ── Very small ─────────────────────────────────── */
+@media(max-width:380px){
+  .hn{font-size:36px}
+  .ag2{grid-template-columns:1fr}
+  .hst{gap:10px}
+  .hs2 .n2{font-size:24px}
+  .hn em{font-size:.95em}
+  .gg{grid-template-rows:repeat(7,190px)}
+}
 </style>
 </head>
 <body>
@@ -382,7 +590,31 @@ footer{border-top:5px solid transparent;
     <li><a href="#media">Press</a></li>
     <li><a href="#gallery">Gallery</a></li>
   </ul>
+  <!-- Hamburger (mobile only) -->
+  <button class="hbg" id="hbg" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE OVERLAY -->
+<div class="mob-overlay" id="mobOverlay"></div>
+
+<!-- MOBILE NAV DRAWER -->
+<div class="mob-nav" id="mobNav">
+  <p class="mob-nav-tag">Navigate</p>
+  <a href="#about"        onclick="closeMob()">🪷 About</a>
+  <a href="#timeline"     onclick="closeMob()">⏳ Legacy</a>
+  <a href="#stages"       onclick="closeMob()">🌏 Stages</a>
+  <a href="#awards"       onclick="closeMob()">✦ Awards</a>
+  <a href="#compositions" onclick="closeMob()">🎼 Works</a>
+  <a href="#academic"     onclick="closeMob()">📜 Academic</a>
+  <a href="#media"        onclick="closeMob()">📰 Press</a>
+  <a href="#gallery"      onclick="closeMob()">📸 Gallery</a>
+  <div class="mob-nav-foot">
+    <strong>Dr. Mysore Manjunath</strong>
+    <p>Violin Maestro · Cultural Ambassador · National President, Samskara Bharathi</p>
+  </div>
+</div>
 
 <!-- HERO -->
 <section id="hero">
@@ -989,90 +1221,126 @@ footer{border-top:5px solid transparent;
 </footer>
 
 <script>
-// ── CURSOR ──────────────────────────────────────────
+// ── MOBILE DETECTION ──────────────────────────────
+const isMobile = window.matchMedia('(hover:none),(pointer:coarse)').matches
+              || window.innerWidth < 768;
+
+// ── CURSOR (desktop only) ─────────────────────────
 const cur=document.getElementById('cur'),cur2=document.getElementById('cur2');
-let mx=0,my=0,cx=0,cy=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur2.style.left=mx+'px';cur2.style.top=my+'px';});
-(function tick(){cx+=(mx-cx)*.14;cy+=(my-cy)*.14;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(tick);})();
-document.querySelectorAll('a,button,.ac2,.cc,.gi2,.ti,.dot,.cp').forEach(el=>{
-  el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
-  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
-});
+if(isMobile){ cur.style.display='none'; cur2.style.display='none'; document.body.style.cursor='auto'; }
+else {
+  let mx=0,my=0,cx=0,cy=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur2.style.left=mx+'px';cur2.style.top=my+'px';});
+  (function tick(){cx+=(mx-cx)*.14;cy+=(my-cy)*.14;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(tick);})();
+  document.querySelectorAll('a,button,.ac2,.cc,.gi2,.ti,.dot,.cp').forEach(el=>{
+    el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
+    el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
+  });
+}
+
+// ── HAMBURGER MENU ────────────────────────────────
+const hbg=document.getElementById('hbg');
+const mobNav=document.getElementById('mobNav');
+const mobOverlay=document.getElementById('mobOverlay');
+function openMob(){hbg.classList.add('open');mobNav.classList.add('open');mobOverlay.classList.add('open');document.body.style.overflow='hidden';}
+function closeMob(){hbg.classList.remove('open');mobNav.classList.remove('open');mobOverlay.classList.remove('open');document.body.style.overflow='';}
+hbg.addEventListener('click',()=>hbg.classList.contains('open')?closeMob():openMob());
+mobOverlay.addEventListener('click',closeMob);
+// Close on ESC
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMob();});
 
 // ── PARTICLES ────────────────────────────────────────
 const canvas=document.getElementById('pc'),ctx=canvas.getContext('2d');
 function rsz(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
-rsz();window.addEventListener('resize',rsz);
+rsz(); window.addEventListener('resize',rsz);
 class P{
   constructor(){this.re();}
-  re(){this.x=Math.random()*canvas.width;this.y=canvas.height+10;this.s=Math.random()*1.8+.4;
-    this.vy=-(Math.random()*.9+.3);this.vx=(Math.random()-.5)*.35;this.life=1;
-    this.dec=Math.random()*.004+.0012;this.h=Math.random()*20+33;}
+  re(){this.x=Math.random()*canvas.width;this.y=canvas.height+10;
+    this.s=Math.random()*1.8+.4;
+    this.vy=-(Math.random()*.9+.3);this.vx=(Math.random()-.5)*.35;
+    this.life=1;this.dec=Math.random()*.004+.0012;this.h=Math.random()*20+33;}
   upd(){this.x+=this.vx;this.y+=this.vy;this.life-=this.dec;if(this.life<=0)this.re();}
   drw(){ctx.save();ctx.globalAlpha=this.life*.7;ctx.fillStyle=`hsl(${this.h},80%,55%)`;
-    ctx.shadowBlur=7;ctx.shadowColor=`hsl(${this.h},80%,55%)`;
+    ctx.shadowBlur=isMobile?3:7;ctx.shadowColor=`hsl(${this.h},80%,55%)`;
     ctx.beginPath();ctx.arc(this.x,this.y,this.s,0,Math.PI*2);ctx.fill();ctx.restore();}
 }
+// Fewer particles on mobile for performance
+const pCount = isMobile ? 40 : 95;
 const ps=[];
-for(let i=0;i<95;i++){const p=new P();p.y=Math.random()*canvas.height;p.life=Math.random();ps.push(p);}
+for(let i=0;i<pCount;i++){const p=new P();p.y=Math.random()*canvas.height;p.life=Math.random();ps.push(p);}
 (function loop(){ctx.clearRect(0,0,canvas.width,canvas.height);ps.forEach(p=>{p.upd();p.drw();});requestAnimationFrame(loop);})();
 
-// ── VIOLIN STRING ────────────────────────────────────
+// ── VIOLIN STRING ─────────────────────────────────
 const vs=document.getElementById('vs');
 let phase=0,amp=0,tAmp=28;
 function pluck(a){tAmp=a;}
 (function sl(){amp+=(tAmp-amp)*.07;tAmp*=.965;phase+=.19;
-  const a=amp;
-  const cp1y=26+a*Math.sin(phase);
-  const cp2y=26-a*Math.sin(phase+.55);
+  const cp1y=26+amp*Math.sin(phase);
+  const cp2y=26-amp*Math.sin(phase+.55);
   vs.setAttribute('d',`M 38,26 C 220,${cp1y} 440,${cp2y} 622,26`);
   requestAnimationFrame(sl);
 })();
 setTimeout(()=>pluck(30),1600);
-document.getElementById('sv').addEventListener('mouseenter',()=>pluck(22));
-document.getElementById('sv').addEventListener('click',()=>pluck(36));
+// Touch + mouse support for violin string
+const svEl=document.getElementById('sv');
+svEl.addEventListener('mouseenter',()=>pluck(22));
+svEl.addEventListener('click',()=>pluck(36));
+svEl.addEventListener('touchstart',()=>pluck(36),{passive:true});
 
-// ── NAVBAR ───────────────────────────────────────────
+// ── NAVBAR SCROLL ────────────────────────────────
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('sc',window.scrollY>60));
 
-// ── REVEAL ON SCROLL ─────────────────────────────────
+// ── REVEAL ON SCROLL ─────────────────────────────
 const io=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});
-},{threshold:.12});
+},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
-// ── TIMELINE DATA ────────────────────────────────────
+// ── TIMELINE DATA ────────────────────────────────
 const tlData=[
   {y:'Age 8',t:'Child Prodigy',d:'First concert in Mysore. Trains under father Vidwan Mahadevappa — 8-10 hrs daily.'},
   {y:'Early Career',t:'A-Top Ranking',d:'One of the youngest musicians awarded A-Top ranking in Indian classical music.'},
   {y:'Early 1990s',t:'Princeton Workshop',d:'Western violinists adopt dhoti & floor seating after his workshop. A landmark East-West moment.'},
   {y:'1990s–2000s',t:'Royal Albert Hall',d:'London debut & Sydney Opera House. Carnatic violin on the world\'s greatest stages.'},
-  {y:'Multiple',t:'San Diego — World First',d:'First Indian Violinist to lead the International Violin Conference workshop.'},
+  {y:'Multiple',t:'San Diego First',d:'First Indian Violinist to lead the International Violin Conference workshop.'},
   {y:'2007',t:'Santa Fe Festival',d:'Performs at the prestigious Santa Fe Festival, New Mexico, USA.'},
-  {y:'2012',t:'"Prince of Mysore"',d:'Pandit Ravi Shankar personally calls him "Prince of Mysore" after his San Diego concert.'},
-  {y:'June 2016',t:'Raga Yaduveera',d:'Creates new raga for the Mysore Royal Family\'s wedding — a composition of historic significance.'},
-  {y:'2016',t:'Sangeet Natak Akademi',d:'India\'s highest performing arts award, conferred by the President of India at Rashtrapati Bhavan.'},
-  {y:'May 2018',t:'Oxford University',d:'First-ever Indian Violin concert at Oxford University Faculty of Music — a historic milestone.'},
-  {y:'June 2019',t:'Yoga Anthem',d:'Composes Yoga Niyoga in new Raga Bharata. 20+ global artists. Released at British Parliament.'},
-  {y:'June 2020',t:'Life Again',d:'COVID pandemic music response featuring 20 global musicians. Launched by ICCR in 150+ countries.'},
-  {y:'2020',t:'Ganakala Parishath',d:'President of Golden Jubilee Music Conference. Receives Ganakala Bhushana Award.'},
-  {y:'2022',t:'Aaroha Music-Play',d:'Composes & directs unique music-play with 20-member youth orchestra at Ranga Shankara.'},
+  {y:'2012',t:'"Prince of Mysore"',d:'Pandit Ravi Shankar calls him "Prince of Mysore" after his San Diego concert.'},
+  {y:'June 2016',t:'Raga Yaduveera',d:'Creates new raga for the Mysore Royal Family\'s wedding — historically significant.'},
+  {y:'2016',t:'Sangeet Natak Akademi',d:'India\'s highest performing arts award, conferred by the President at Rashtrapati Bhavan.'},
+  {y:'May 2018',t:'Oxford University',d:'First-ever Indian Violin concert at Oxford University Faculty of Music.'},
+  {y:'June 2019',t:'Yoga Anthem',d:'Composes Yoga Niyoga in Raga Bharata. 20+ global artists. Released at British Parliament.'},
+  {y:'June 2020',t:'Life Again',d:'COVID pandemic music response — 20 global musicians. ICCR launch in 150+ countries.'},
+  {y:'2020',t:'Ganakala Parishath',d:'President of Golden Jubilee Music Conference. Ganakala Bhushana Award.'},
+  {y:'2022',t:'Aaroha Music-Play',d:'Composes & directs unique music-play with 20-member youth orchestra, Ranga Shankara.'},
   {y:'2023',t:'Cambridge University',d:'Mysore Brothers perform and visit Cambridge University, UK.'},
   {y:'Oct 2024',t:'Maryland USA',d:'Mysore Brothers perform at JSS Spiritual Mission, Gaithersburg, Maryland.'},
 ];
 const tli=document.getElementById('tli');
-tlData.forEach((item,i)=>{
+tlData.forEach(item=>{
   const div=document.createElement('div');div.className='ti';
   div.innerHTML=`<div class="td"></div><div class="ty">${item.y}</div><div class="tc"><h4>${item.t}</h4><p>${item.d}</p></div>`;
   tli.appendChild(div);
 });
 
-// ── MAP TOOLTIPS ─────────────────────────────────────
+// Timeline touch support — tap to show card
+tli.querySelectorAll('.ti').forEach(ti=>{
+  ti.addEventListener('touchstart',function(e){
+    const wasActive=this.classList.contains('touch-active');
+    tli.querySelectorAll('.ti').forEach(t=>t.classList.remove('touch-active'));
+    if(!wasActive)this.classList.add('touch-active');
+    e.stopPropagation();
+  },{passive:true});
+});
+document.addEventListener('touchstart',()=>{
+  tli.querySelectorAll('.ti').forEach(t=>t.classList.remove('touch-active'));
+},{passive:true});
+
+// ── MAP TOOLTIPS — Mouse + Touch ──────────────────
 const mtp=document.getElementById('mtp'),mn2=document.getElementById('mn2'),ml2=document.getElementById('ml2');
 const wm=document.getElementById('wm');
 wm.querySelectorAll('.dot').forEach(dot=>{
-  dot.addEventListener('mouseenter',e=>{
+  function showTip(e){
     const r=wm.getBoundingClientRect();
     const fr=dot.getBoundingClientRect();
     const x=fr.left-r.left+fr.width/2;
@@ -1081,9 +1349,23 @@ wm.querySelectorAll('.dot').forEach(dot=>{
     ml2.textContent=dot.dataset.l;
     mtp.style.left=x+'px';mtp.style.top=y+'px';
     mtp.classList.add('on');
-  });
+  }
+  dot.addEventListener('mouseenter',showTip);
   dot.addEventListener('mouseleave',()=>mtp.classList.remove('on'));
+  dot.addEventListener('touchstart',e=>{
+    showTip(e);e.stopPropagation();
+  },{passive:true});
 });
+document.addEventListener('touchstart',()=>mtp.classList.remove('on'),{passive:true});
+
+// ── GALLERY TOUCH — Tap to reveal caption ─────────
+if(isMobile){
+  document.querySelectorAll('.gi2').forEach(gi=>{
+    gi.addEventListener('touchstart',function(){
+      this.classList.toggle('tapped');
+    },{passive:true});
+  });
+}
 </script>
 </body>
 </html>
