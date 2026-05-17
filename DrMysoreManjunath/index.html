@@ -1438,6 +1438,7 @@ footer .fc{color:rgba(136,200,152,.4)}
 // ── THEME SYSTEM ──────────────────────────────────
 const html = document.documentElement;
 let isDark = false;
+let ps = []; // declared here — populated after particle class init
 
 function applyTheme(dark) {
   isDark = dark;
@@ -1448,8 +1449,8 @@ function applyTheme(dark) {
     html.removeAttribute('data-theme');
     localStorage.setItem('mm-theme', 'light');
   }
-  // Refresh particle hues for new background
-  if (typeof ps !== 'undefined') ps.forEach(p => p.resetHue());
+  // Refresh particle hues — safe: ps is [] on load, populated later
+  if (ps.length) ps.forEach(p => p.resetHue());
 }
 
 // Apply saved preference on load (default = light)
@@ -1513,8 +1514,9 @@ class P{
 }
 // Fewer particles on mobile for performance
 const pCount = isMobile ? 40 : 95;
-const ps=[];
 for(let i=0;i<pCount;i++){const p=new P();p.y=Math.random()*canvas.height;p.life=Math.random();ps.push(p);}
+// Refresh hues now that ps is populated (handles case where dark theme was loaded)
+if(isDark) ps.forEach(p=>p.resetHue());
 (function loop(){ctx.clearRect(0,0,canvas.width,canvas.height);ps.forEach(p=>{p.upd();p.drw();});requestAnimationFrame(loop);})();
 
 // ── VIOLIN STRING ─────────────────────────────────
