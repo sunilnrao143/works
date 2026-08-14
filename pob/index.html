@@ -182,12 +182,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 10px;
-            color: var(--gold);
             background: rgba(255, 255, 255, 0.05);
-            font-weight: 700;
-            text-align: center;
             padding: 10px;
+        }
+
+        .logo-placeholder img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 4px;
         }
 
         /* ============ COMMON SLIDE STYLES ============ */
@@ -385,15 +388,15 @@
 
         .sector-card {
             background: linear-gradient(135deg, var(--white) 0%, var(--cream) 100%);
-            padding: 20px;
+            padding: 18px 15px;
             border-radius: 8px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            border-top: 4px solid var(--saffron);
+            border: 2px solid var(--saffron);
             text-align: center;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            min-height: 120px;
+            min-height: 140px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -414,34 +417,61 @@
 
         .sector-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(255, 153, 51, 0.2);
-            border-top-color: var(--gold);
+            box-shadow: 0 12px 30px rgba(255, 153, 51, 0.25);
+            border-color: var(--gold);
+            background: linear-gradient(135deg, #FFFBF5 0%, var(--cream) 100%);
         }
 
         .sector-card.active {
             background: linear-gradient(135deg, var(--saffron) 0%, var(--warm-gold) 100%);
             box-shadow: 0 12px 35px rgba(255, 153, 51, 0.3);
+            border-color: var(--gold);
         }
 
+        .sector-card.active .sector-emoji,
         .sector-card.active .sector-number,
-        .sector-card.active .sector-name {
+        .sector-card.active .sector-name,
+        .sector-card.active .sector-stat {
             color: var(--white);
         }
 
+        .sector-emoji {
+            font-size: 28px;
+            margin-bottom: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .sector-card:hover .sector-emoji {
+            transform: scale(1.15);
+        }
+
         .sector-number {
-            font-size: clamp(24px, 2.5vw, 32px);
+            font-size: clamp(18px, 2vw, 24px);
             font-weight: 900;
             color: var(--saffron);
-            margin-bottom: 5px;
+            margin-bottom: 3px;
             font-family: 'Playfair Display', serif;
             transition: color 0.3s ease;
         }
 
         .sector-name {
-            font-size: clamp(11px, 0.95vw, 14px);
+            font-size: clamp(11px, 0.95vw, 13px);
             font-weight: 700;
             color: var(--deep-blue);
-            line-height: 1.3;
+            line-height: 1.2;
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s ease;
+            margin-bottom: 6px;
+        }
+
+        .sector-stat {
+            font-size: clamp(10px, 0.85vw, 12px);
+            font-weight: 600;
+            color: var(--saffron);
+            background: rgba(255, 153, 51, 0.15);
+            padding: 4px 8px;
+            border-radius: 4px;
             position: relative;
             z-index: 1;
             transition: color 0.3s ease;
@@ -835,7 +865,7 @@
             background: var(--cream);
             padding: 8px 12px;
             border-radius: 4px;
-            display: none;
+            display: block;
         }
 
     </style>
@@ -846,7 +876,9 @@
 
         <!-- SLIDE 1: TITLE -->
         <div class="slide active" id="slide-1">
-            <div class="logo-placeholder"><img src="POB_logo.png" height="100%"></div>
+            <div class="logo-placeholder">
+                <img src="POB_logo.png" alt="Pride of Bharath Logo">
+            </div>
             <div class="slide-content">
                 <div class="title-main">PRIDE OF<br>BHARATH</div>
                 <div class="subtitle-accent">EXPO 2027</div>
@@ -949,307 +981,331 @@
             </div>
         </div>
 
-        <!-- SLIDE 4: SECTORS (1-6) -->
+                <!-- SLIDE 4: SECTORS (1-6) - CRISP & DIFFERENTIATED -->
         <div class="slide" id="slide-4">
             <div class="header-section">
                 <div class="slide-number">03</div>
                 <div>
                     <div class="slide-title">THE 12 SECTORS</div>
-                    <div class="slide-subtitle">Pavilion 1–6: Knowledge & Heritage | Click for Details</div>
+                    <div class="slide-subtitle">Knowledge & Heritage | Click for Differentiators</div>
                 </div>
             </div>
             <div class="slide-container">
                 <div class="sectors-wrapper">
                     <div class="sectors-grid">
                         <div class="sector-card" onclick="showSectorDetails(this, 'sector-1')">
+                            <div class="sector-emoji">🔬</div>
                             <div class="sector-number">01</div>
                             <div class="sector-name">Science & Technology</div>
+                            <div class="sector-stat">Pi to Semiconductors</div>
                         </div>
                         <div class="sector-card" onclick="showSectorDetails(this, 'sector-2')">
+                            <div class="sector-emoji">🎭</div>
                             <div class="sector-number">02</div>
                             <div class="sector-name">Arts & Culture</div>
+                            <div class="sector-stat">8 Title Performances</div>
                         </div>
                         <div class="sector-card" onclick="showSectorDetails(this, 'sector-3')">
+                            <div class="sector-emoji">🧘</div>
                             <div class="sector-number">03</div>
-                            <div class="sector-name">Spirituality & Yogic Science</div>
+                            <div class="sector-name">Spirituality & Yoga</div>
+                            <div class="sector-stat">5,000+ Sessions</div>
                         </div>
                         <div class="sector-card" onclick="showSectorDetails(this, 'sector-4')">
+                            <div class="sector-emoji">🌿</div>
                             <div class="sector-number">04</div>
                             <div class="sector-name">Ayurveda</div>
+                            <div class="sector-stat">10,000+ Consultations</div>
                         </div>
                         <div class="sector-card" onclick="showSectorDetails(this, 'sector-5')">
+                            <div class="sector-emoji">💪</div>
                             <div class="sector-number">05</div>
                             <div class="sector-name">Empowered Bharath</div>
+                            <div class="sector-stat">500+ Women Led</div>
                         </div>
                         <div class="sector-card" onclick="showSectorDetails(this, 'sector-6')">
+                            <div class="sector-emoji">🧵</div>
                             <div class="sector-number">06</div>
                             <div class="sector-name">Bharathiya Fashion</div>
+                            <div class="sector-stat">1,000+ Weavers</div>
                         </div>
                     </div>
 
-                    <!-- Details Area -->
                     <div class="sector-details-area" id="sector-1">
                         <div class="details-header">
-                            <h3 class="details-title">Science & Technology</h3>
+                            <div style="display: flex; align-items: center; gap: 15px;"><span style="font-size: 32px;">🔬</span><h3 class="details-title">Science & Technology</h3></div>
                             <button class="details-close" onclick="closeSectorDetails()">✕</button>
                         </div>
                         <div class="details-content">
-                            <p>An immersive pavilion showcasing India's contributions to science: ancient calculations, space technology, ISRO achievements, AI innovation, and semiconductor manufacturing.</p>
-                            <p><strong>Key Exhibits:</strong> Speaker Theatre with ISRO/DRDO scientists, Innovation Arena with live demos, defence technology showcase, quantum computing displays.</p>
-                            <div class="impact-list">
-                                <div class="impact-list-title">🎯 Impact & Achievements</div>
-                                <div class="impact-item">100+ artisans & innovators engaged</div>
-                                <div class="impact-item">10,000+ student interactions through workshops</div>
-                                <div class="impact-item">Showcase India's space-to-semiconductor journey</div>
-                                <div class="impact-item">Bridge ancient Indian science to modern tech</div>
+                            <p><strong>The Differentiator:</strong> Bridge 5,000 years of Indian scientific achievement—from Aryabhata's Pi calculations to modern ISRO/DRDO innovation.</p>
+                            <div style="margin: 20px 0; padding: 15px; background: rgba(255,153,51,0.1); border-left: 4px solid var(--saffron);">
+                                <p><strong>Key Features:</strong></p>
+                                <p>🎯 ISRO & DRDO Speaker Theatre with live innovation demonstrations<br>
+                                🎯 Ancient Indian science validated through contemporary research<br>
+                                🎯 10,000+ students in interactive workshops & mentorship<br>
+                                🎯 Defence technology showcase & semiconductor manufacturing story</p>
                             </div>
+                            <p><strong>Core Impact:</strong> Prove that India was a centre of scientific knowledge when Europe was in the Dark Ages.</p>
                         </div>
                     </div>
 
                     <div class="sector-details-area" id="sector-2">
                         <div class="details-header">
-                            <h3 class="details-title">Arts & Culture</h3>
+                            <div style="display: flex; align-items: center; gap: 15px;"><span style="font-size: 32px;">🎭</span><h3 class="details-title">Arts & Culture</h3></div>
                             <button class="details-close" onclick="closeSectorDetails()">✕</button>
                         </div>
                         <div class="details-content">
-                            <p>A 2-acre immersive zone celebrating classical dance, music, theatre, and folk traditions. Live performances, artisan demonstrations, and cultural baithaks.</p>
-                            <p><strong>Key Components:</strong> 300-seat main stage, 8 evening title performances, Avadhana literary sessions, Gamaka music forums, Kavi Goshti poetry circles.</p>
-                            <div class="impact-list">
-                                <div class="impact-list-title">🎯 Impact & Achievements</div>
-                                <div class="impact-item">500+ performing artists featured</div>
-                                <div class="impact-item">1.5–2 lakh estimated sector footfall</div>
-                                <div class="impact-item">Live Archive: 3-minute stories of every artisan</div>
-                                <div class="impact-item">Direct revenue to artists through evening sponsorships</div>
+                            <p><strong>The Differentiator:</strong> A 2-acre living pavilion featuring 500+ performing artists, with nightly cultural programs (7–9:30 PM) as the emotional heartbeat of the event.</p>
+                            <div style="margin: 20px 0; padding: 15px; background: rgba(255,153,51,0.1); border-left: 4px solid var(--saffron);">
+                                <p><strong>Key Features:</strong></p>
+                                <p>🎯 300-seat main amphitheatre with 8 evening title performances<br>
+                                🎯 Classical dance, folk traditions, Avadhana, Gamaka, Kavi Goshti sessions<br>
+                                🎯 ₹1–2L sponsorships per evening performance (revenue engine)<br>
+                                🎯 Live archive: 3-minute artisan stories for national documentary</p>
                             </div>
+                            <p><strong>Core Impact:</strong> 500+ artists earn direct income; visitors experience authentic Indian cultural continuity nightly.</p>
                         </div>
                     </div>
 
                     <div class="sector-details-area" id="sector-3">
                         <div class="details-header">
-                            <h3 class="details-title">Spirituality & Yogic Science</h3>
+                            <div style="display: flex; align-items: center; gap: 15px;"><span style="font-size: 32px;">🧘</span><h3 class="details-title">Spirituality & Yogic Science</h3></div>
                             <button class="details-close" onclick="closeSectorDetails()">✕</button>
                         </div>
                         <div class="details-content">
-                            <p>An integrated pavilion linking ancient yogic philosophy to modern wellness science. Practical demonstrations, research exhibits, and daily yoga sessions.</p>
-                            <p><strong>Key Offers:</strong> Morning yoga programs, meditation workshops, philosophical seminars with Vedanta scholars, scientific validation of yogic practices.</p>
-                            <div class="impact-list">
-                                <div class="impact-list-title">🎯 Impact & Achievements</div>
-                                <div class="impact-item">5,000+ daily yoga participants</div>
-                                <div class="impact-item">Research partnerships with yoga universities</div>
-                                <div class="impact-item">International wellness audience engagement</div>
-                                <div class="impact-item">Establish Bharath as centre for yogic wisdom</div>
+                            <p><strong>The Differentiator:</strong> Position yoga as verified wellness science—ancient practice + contemporary validation = global wellness movement anchored in Bharath.</p>
+                            <div style="margin: 20px 0; padding: 15px; background: rgba(255,153,51,0.1); border-left: 4px solid var(--saffron);">
+                                <p><strong>Key Features:</strong></p>
+                                <p>🎯 5,000+ participants in morning yoga sessions (daily)<br>
+                                🎯 Meditation workshops & Vedanta philosophy seminars<br>
+                                🎯 Research partnerships validating yogic practices scientifically<br>
+                                🎯 Wellness garden designed for holistic visitor experience</p>
                             </div>
+                            <p><strong>Core Impact:</strong> Establish Bharath as the global centre for yogic wisdom and wellness innovation.</p>
                         </div>
                     </div>
 
                     <div class="sector-details-area" id="sector-4">
                         <div class="details-header">
-                            <h3 class="details-title">Ayurveda</h3>
+                            <div style="display: flex; align-items: center; gap: 15px;"><span style="font-size: 32px;">🌿</span><h3 class="details-title">Ayurveda</h3></div>
                             <button class="details-close" onclick="closeSectorDetails()">✕</button>
                         </div>
                         <div class="details-content">
-                            <p>A modern Ayurvedic experience pavilion integrating 5,000 years of clinical wisdom with contemporary wellness solutions and research.</p>
-                            <p><strong>Key Activities:</strong> Panchakarma demonstrations, pulse diagnosis consultations, herbal product showcases, scientific seminars with Ayurvedic physicians.</p>
-                            <div class="impact-list">
-                                <div class="impact-list-title">🎯 Impact & Achievements</div>
-                                <div class="impact-item">10,000+ health consultations provided</div>
-                                <div class="impact-item">200+ Ayurvedic practitioners showcased</div>
-                                <div class="impact-item">Ministry of AYUSH partnership</div>
-                                <div class="impact-item">Global promotion of Indian medicine systems</div>
+                            <p><strong>The Differentiator:</strong> Modernize 5,000 years of clinical medicine—show Ayurveda as integrated healthcare, not nostalgia.</p>
+                            <div style="margin: 20px 0; padding: 15px; background: rgba(255,153,51,0.1); border-left: 4px solid var(--saffron);">
+                                <p><strong>Key Features:</strong></p>
+                                <p>🎯 10,000+ health consultations via pulse diagnosis & assessment<br>
+                                🎯 Panchakarma & detoxification demonstrations<br>
+                                🎯 Ministry of AYUSH partnership & validation<br>
+                                🎯 Scientific seminars linking traditional practice to modern wellness</p>
                             </div>
+                            <p><strong>Core Impact:</strong> Global promotion of Indian medicine systems; 200+ practitioners showcase mastery.</p>
                         </div>
                     </div>
 
                     <div class="sector-details-area" id="sector-5">
                         <div class="details-header">
-                            <h3 class="details-title">Empowered Bharath</h3>
+                            <div style="display: flex; align-items: center; gap: 15px;"><span style="font-size: 32px;">💪</span><h3 class="details-title">Empowered Bharath</h3></div>
                             <button class="details-close" onclick="closeSectorDetails()">✕</button>
                         </div>
                         <div class="details-content">
-                            <p>Showcase of India's defence innovations, women empowerment programs, and self-reliance initiatives. Live demonstrations of indigenous defence technology.</p>
-                            <p><strong>Key Features:</strong> Defence technology exhibits, women entrepreneurship zone, Atmanirbhar Bharat case studies, indigenous manufacturing success stories.</p>
-                            <div class="impact-list">
-                                <div class="impact-list-title">🎯 Impact & Achievements</div>
-                                <div class="impact-item">50+ defence & security entities featured</div>
-                                <div class="impact-item">500+ women entrepreneurs showcased</div>
-                                <div class="impact-item">Make-in-India narrative reinforced</div>
-                                <div class="impact-item">Self-reliance movement acceleration</div>
+                            <p><strong>The Differentiator:</strong> Women empowerment + defence innovation + self-reliance narrative = India's economic independence story.</p>
+                            <div style="margin: 20px 0; padding: 15px; background: rgba(255,153,51,0.1); border-left: 4px solid var(--saffron);">
+                                <p><strong>Key Features:</strong></p>
+                                <p>🎯 500+ women entrepreneurs & business leaders featured<br>
+                                🎯 Defence technology exhibits & indigenous innovation showcase<br>
+                                🎯 Make-in-India case studies demonstrating economic strength<br>
+                                🎯 Atmanirbhar Bharat as civilisational imperative</p>
                             </div>
+                            <p><strong>Core Impact:</strong> Demonstrate India's capacity for self-reliance and women-led economic transformation.</p>
                         </div>
                     </div>
 
                     <div class="sector-details-area" id="sector-6">
                         <div class="details-header">
-                            <h3 class="details-title">Bharathiya Fashion</h3>
+                            <div style="display: flex; align-items: center; gap: 15px;"><span style="font-size: 32px;">🧵</span><h3 class="details-title">Bharathiya Fashion</h3></div>
                             <button class="details-close" onclick="closeSectorDetails()">✕</button>
                         </div>
                         <div class="details-content">
-                            <p>Living showcase of India's textile heritage: silks from Tamil Nadu, weaves from Varanasi, tribal fabrics, and contemporary designers celebrating indigenous traditions.</p>
-                            <p><strong>Key Activities:</strong> Live weaving demonstrations, fashion shows, designer collaborations, textile history exhibits, marketplace for weavers.</p>
-                            <div class="impact-list">
-                                <div class="impact-list-title">🎯 Impact & Achievements</div>
-                                <div class="impact-item">1,000+ textile artisans & weavers featured</div>
-                                <div class="impact-item">Direct sales platform for heritage textiles</div>
-                                <div class="impact-item">International fashion community engagement</div>
-                                <div class="impact-item">Revitalization of traditional weaving economies</div>
+                            <p><strong>The Differentiator:</strong> 1,000+ textile artisans + regional heritage weaves + contemporary designer collaboration = living marketplace where tradition meets modernity.</p>
+                            <div style="margin: 20px 0; padding: 15px; background: rgba(255,153,51,0.1); border-left: 4px solid var(--saffron);">
+                                <p><strong>Key Features:</strong></p>
+                                <p>🎯 Live weaving demonstrations (Tamil Nadu silks, Varanasi brocades, tribal fabrics)<br>
+                                🎯 Designer collaborations showcasing heritage textiles in contemporary fashion<br>
+                                🎯 Direct artisan-to-consumer sales platform<br>
+                                🎯 Marketplace revitalization of traditional weaving economies</p>
                             </div>
+                            <p><strong>Core Impact:</strong> 1,000+ artisans earn direct income; heritage textiles gain international recognition.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- SLIDE 5: SECTORS (7-12) -->
+        <!-- SLIDE 5: SECTORS (7-12) - CRISP & DIFFERENTIATED -->
         <div class="slide" id="slide-5">
             <div class="header-section">
                 <div class="slide-number">04</div>
                 <div>
                     <div class="slide-title">THE 12 SECTORS</div>
-                    <div class="slide-subtitle">Pavilion 7–12: Innovation & Tradition | Click for Details</div>
+                    <div class="slide-subtitle">Innovation & Transformation | Click for Differentiators</div>
                 </div>
             </div>
             <div class="slide-container">
                 <div class="sectors-wrapper">
                     <div class="sectors-grid">
                         <div class="sector-card" onclick="showSectorDetails(this, 'sector-7')">
+                            <div class="sector-emoji">📚</div>
                             <div class="sector-number">07</div>
                             <div class="sector-name">Bharathiya Education</div>
+                            <div class="sector-stat">5,000+ Schools</div>
                         </div>
                         <div class="sector-card" onclick="showSectorDetails(this, 'sector-8')">
+                            <div class="sector-emoji">🍛</div>
                             <div class="sector-number">08</div>
-                            <div class="sector-name">Bharathiya Food Culture</div>
+                            <div class="sector-name">Food Culture</div>
+                            <div class="sector-stat">50,000+ Daily</div>
                         </div>
                         <div class="sector-card" onclick="showSectorDetails(this, 'sector-9')">
+                            <div class="sector-emoji">🌾</div>
                             <div class="sector-number">09</div>
-                            <div class="sector-name">Indigenous Cattle & Farming</div>
+                            <div class="sector-name">Indigenous Farming</div>
+                            <div class="sector-stat">10,000+ Farmers</div>
                         </div>
                         <div class="sector-card" onclick="showSectorDetails(this, 'sector-10')">
+                            <div class="sector-emoji">🤺</div>
                             <div class="sector-number">10</div>
-                            <div class="sector-name">Indigenous Sports & Games</div>
+                            <div class="sector-name">Desi Sports</div>
+                            <div class="sector-stat">5,000+ Athletes</div>
                         </div>
                         <div class="sector-card" onclick="showSectorDetails(this, 'sector-11')">
+                            <div class="sector-emoji">🎨</div>
                             <div class="sector-number">11</div>
-                            <div class="sector-name">GI-Tagged Products & Crafts</div>
+                            <div class="sector-name">GI & Crafts</div>
+                            <div class="sector-stat">1,000+ Artisans</div>
                         </div>
                         <div class="sector-card" onclick="showSectorDetails(this, 'sector-12')">
+                            <div class="sector-emoji">✈️</div>
                             <div class="sector-number">12</div>
-                            <div class="sector-name">Cultural & Heritage Tourism</div>
+                            <div class="sector-name">Heritage Tourism</div>
+                            <div class="sector-stat">100+ Destinations</div>
                         </div>
                     </div>
 
-                    <!-- Details Area -->
                     <div class="sector-details-area" id="sector-7">
                         <div class="details-header">
-                            <h3 class="details-title">Bharathiya Education</h3>
+                            <div style="display: flex; align-items: center; gap: 15px;"><span style="font-size: 32px;">📚</span><h3 class="details-title">Bharathiya Education</h3></div>
                             <button class="details-close" onclick="closeSectorDetails()">✕</button>
                         </div>
                         <div class="details-content">
-                            <p>Reimagining education through Bharathiya knowledge systems: Gurukul traditions, Sanskrit scholarship, Vedic sciences, and contemporary pedagogy integration.</p>
-                            <p><strong>Key Programs:</strong> Gurukul model exhibits, Sanskrit learning zones, ancient university showcases, teacher development seminars.</p>
-                            <div class="impact-list">
-                                <div class="impact-list-title">🎯 Impact & Achievements</div>
-                                <div class="impact-item">5,000+ school & college groups engaged</div>
-                                <div class="impact-item">100+ educational institutions partnering</div>
-                                <div class="impact-item">Sanskrit revival momentum</div>
-                                <div class="impact-item">New curriculum models demonstrated</div>
+                            <p><strong>The Differentiator:</strong> Reimagine education for the future—Gurukul traditions + Vedic sciences + Sanskrit scholarship = curriculum model for tomorrow's India.</p>
+                            <div style="margin: 20px 0; padding: 15px; background: rgba(255,153,51,0.1); border-left: 4px solid var(--saffron);">
+                                <p><strong>Key Features:</strong></p>
+                                <p>🎯 5,000+ school & college groups in interactive learning zones<br>
+                                🎯 Gurukul model exhibits & ancient university showcases<br>
+                                🎯 Sanskrit revival & Vedic mathematics demonstrations<br>
+                                🎯 Teacher development workshops for curriculum reimagining</p>
                             </div>
+                            <p><strong>Core Impact:</strong> 100+ educational institutions partnering; new curriculum models demonstrated nationally.</p>
                         </div>
                     </div>
 
                     <div class="sector-details-area" id="sector-8">
                         <div class="details-header">
-                            <h3 class="details-title">Bharathiya Food Culture</h3>
+                            <div style="display: flex; align-items: center; gap: 15px;"><span style="font-size: 32px;">🍛</span><h3 class="details-title">Bharathiya Food Culture</h3></div>
                             <button class="details-close" onclick="closeSectorDetails()">✕</button>
                         </div>
                         <div class="details-content">
-                            <p>A culinary journey across India's regions: regional cuisines, food traditions, medicinal food science, and guest-region dining experiences.</p>
-                            <p><strong>Key Features:</strong> Aahara Court serving regional cuisines, cooking demonstrations, food science seminars, traditional recipe documentation.</p>
-                            <div class="impact-list">
-                                <div class="impact-list-title">🎯 Impact & Achievements</div>
-                                <div class="impact-item">All 28 states' cuisines represented</div>
-                                <div class="impact-item">50,000+ daily food court visitors</div>
-                                <div class="impact-item">Regional chef collaborations</div>
-                                <div class="impact-item">Food heritage documentation for archives</div>
+                            <p><strong>The Differentiator:</strong> The Aahara Court: largest daily visitor hub featuring all 28 states' cuisines, medicinal food science, and culinary heritage documentation.</p>
+                            <div style="margin: 20px 0; padding: 15px; background: rgba(255,153,51,0.1); border-left: 4px solid var(--saffron);">
+                                <p><strong>Key Features:</strong></p>
+                                <p>🎯 50,000+ daily visitors in regional food courts<br>
+                                🎯 Live cooking demonstrations & regional chef collaborations<br>
+                                🎯 Medicinal food science seminars (food as preventative medicine)<br>
+                                🎯 Heritage recipe documentation for national archive</p>
                             </div>
+                            <p><strong>Core Impact:</strong> All 28 states' food traditions celebrated; visitors experience India's culinary diversity daily.</p>
                         </div>
                     </div>
 
                     <div class="sector-details-area" id="sector-9">
                         <div class="details-header">
-                            <h3 class="details-title">Indigenous Cattle & Organic Farming</h3>
+                            <div style="display: flex; align-items: center; gap: 15px;"><span style="font-size: 32px;">🌾</span><h3 class="details-title">Indigenous Cattle & Organic Farming</h3></div>
                             <button class="details-close" onclick="closeSectorDetails()">✕</button>
                         </div>
                         <div class="details-content">
-                            <p>Showcasing indigenous cattle breeds, Zero-Budget Natural Farming (ZBNF), sustainable agriculture, and farmer empowerment models.</p>
-                            <p><strong>Key Activities:</strong> Live cattle demonstrations, farming technique workshops, organic product marketplace, soil health seminars.</p>
-                            <div class="impact-list">
-                                <div class="impact-list-title">🎯 Impact & Achievements</div>
-                                <div class="impact-item">500+ farmers & breeders showcased</div>
-                                <div class="impact-item">10,000+ farmers trained in ZBNF</div>
-                                <div class="impact-item">Direct sales of organic products</div>
-                                <div class="impact-item">Soil regeneration awareness campaign</div>
+                            <p><strong>The Differentiator:</strong> Zero-Budget Natural Farming (ZBNF) at scale—train 10,000+ farmers in regenerative agriculture while preserving indigenous cattle breeds.</p>
+                            <div style="margin: 20px 0; padding: 15px; background: rgba(255,153,51,0.1); border-left: 4px solid var(--saffron);">
+                                <p><strong>Key Features:</strong></p>
+                                <p>🎯 Live cattle breed demonstrations & preservation programs<br>
+                                🎯 ZBNF workshop training for 10,000+ farmers<br>
+                                🎯 Soil health & regeneration seminars<br>
+                                🎯 Direct organic product marketplace for farmers</p>
                             </div>
+                            <p><strong>Core Impact:</strong> Agricultural transformation model proven at scale; farmer incomes increase, soil regenerates.</p>
                         </div>
                     </div>
 
                     <div class="sector-details-area" id="sector-10">
                         <div class="details-header">
-                            <h3 class="details-title">Indigenous Sports & Games</h3>
+                            <div style="display: flex; align-items: center; gap: 15px;"><span style="font-size: 32px;">🤺</span><h3 class="details-title">Indigenous Sports & Games</h3></div>
                             <button class="details-close" onclick="closeSectorDetails()">✕</button>
                         </div>
                         <div class="details-content">
-                            <p>Celebration of India's indigenous sports heritage: Kabaddi, Kho-Kho, Mallakhamb, Silambam, and other traditional games with live competitions.</p>
-                            <p><strong>Key Features:</strong> Live sporting events, skill demonstrations, athletic competitions, federation partnerships, coaching workshops.</p>
-                            <div class="impact-list">
-                                <div class="impact-list-title">🎯 Impact & Achievements</div>
-                                <div class="impact-item">5,000+ athletes & coaches featured</div>
-                                <div class="impact-item">Daily sports tournaments & exhibitions</div>
-                                <div class="impact-item">Youth athlete recruitment opportunities</div>
-                                <div class="impact-item">Olympic recognition push for indigenous sports</div>
+                            <p><strong>The Differentiator:</strong> Olympic pathway for desi sports—Kabaddi, Kho-Kho, Mallakhamb, Silambam—daily tournaments showcase 5,000+ athletes competing.</p>
+                            <div style="margin: 20px 0; padding: 15px; background: rgba(255,153,51,0.1); border-left: 4px solid var(--saffron);">
+                                <p><strong>Key Features:</strong></p>
+                                <p>🎯 5,000+ athletes & coaches featured in live competitions<br>
+                                🎯 Daily sporting tournaments & skill demonstrations<br>
+                                🎯 Youth athlete recruitment & mentorship programs<br>
+                                🎯 Federation partnerships & Olympic recognition advocacy</p>
                             </div>
+                            <p><strong>Core Impact:</strong> Prove desi sports deserve global recognition; pathway to youth excellence.</p>
                         </div>
                     </div>
 
                     <div class="sector-details-area" id="sector-11">
                         <div class="details-header">
-                            <h3 class="details-title">GI-Tagged Products & Crafts</h3>
+                            <div style="display: flex; align-items: center; gap: 15px;"><span style="font-size: 32px;">🎨</span><h3 class="details-title">GI-Tagged Products & Crafts</h3></div>
                             <button class="details-close" onclick="closeSectorDetails()">✕</button>
                         </div>
                         <div class="details-content">
-                            <p>A national marketplace for Geographical Indication-tagged products and traditional crafts: handicrafts, textiles, spices, pottery from all regions.</p>
-                            <p><strong>Key Setup:</strong> Paramparika Mela, artisan stalls, live craft demonstrations, direct-to-consumer sales platform, craft master workshops.</p>
-                            <div class="impact-list">
-                                <div class="impact-list-title">🎯 Impact & Achievements</div>
-                                <div class="impact-item">1,000+ artisans & craftspersons</div>
-                                <div class="impact-item">Direct income generation for rural communities</div>
-                                <div class="impact-item">Global market exposure for GI products</div>
-                                <div class="impact-item">Craft knowledge preservation</div>
+                            <p><strong>The Differentiator:</strong> The Paramparika Mela—national marketplace connecting 1,000+ artisans directly to consumers, bypassing intermediaries, generating immediate income.</p>
+                            <div style="margin: 20px 0; padding: 15px; background: rgba(255,153,51,0.1); border-left: 4px solid var(--saffron);">
+                                <p><strong>Key Features:</strong></p>
+                                <p>🎯 1,000+ artisans & traditional craftspeople in direct-to-consumer marketplace<br>
+                                🎯 Live craft demonstrations & skill-building workshops<br>
+                                🎯 GI product validation & global market exposure<br>
+                                🎯 Craft knowledge preservation through documentation</p>
                             </div>
+                            <p><strong>Core Impact:</strong> Artisan income generation; rural communities strengthened; traditional crafts revived.</p>
                         </div>
                     </div>
 
                     <div class="sector-details-area" id="sector-12">
                         <div class="details-header">
-                            <h3 class="details-title">Cultural & Heritage Tourism</h3>
+                            <div style="display: flex; align-items: center; gap: 15px;"><span style="font-size: 32px;">✈️</span><h3 class="details-title">Cultural & Heritage Tourism</h3></div>
                             <button class="details-close" onclick="closeSectorDetails()">✕</button>
                         </div>
                         <div class="details-content">
-                            <p>Connecting visitors to India's heritage destinations, temple tourism, cultural circuits, and experiential travel opportunities across the country.</p>
-                            <p><strong>Key Offerings:</strong> Heritage destination showcases, tourism circuit maps, cultural itinerary planning, guide trainings, NRI & international promotion.</p>
-                            <div class="impact-list">
-                                <div class="impact-list-title">🎯 Impact & Achievements</div>
-                                <div class="impact-item">100+ heritage sites & destinations promoted</div>
-                                <div class="impact-item">International tourism growth catalyst</div>
-                                <div class="impact-item">Local tourism economy strengthening</div>
-                                <div class="impact-item">Civilisational tourism narrative building</div>
+                            <p><strong>The Differentiator:</strong> Connect Pride of Bharath to 100+ heritage destinations across India—turn visitors into ambassadors for civilisational tourism.</p>
+                            <div style="margin: 20px 0; padding: 15px; background: rgba(255,153,51,0.1); border-left: 4px solid var(--saffron);">
+                                <p><strong>Key Features:</strong></p>
+                                <p>🎯 100+ heritage sites & destinations promoted via digital maps<br>
+                                🎯 Curated cultural itineraries connecting temples, monuments, traditions<br>
+                                🎯 Guide training & NRI/international visitor outreach<br>
+                                🎯 Destination-specific seminars & cultural deep dives</p>
                             </div>
+                            <p><strong>Core Impact:</strong> Tourism economy catalyst; international audience for Indian heritage; civilisational tourism narrative globally.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- SLIDE 6: EXECUTION -->
+
+
+<!-- SLIDE 6: EXECUTION -->
         <div class="slide" id="slide-6">
             <div class="header-section">
                 <div class="slide-number">05</div>
@@ -1368,7 +1424,7 @@
     </div>
 
     <div class="slide-indicator" id="indicator">1 / 8</div>
-    <div class="keyboard-hint" >Press ← → or Click buttons to navigate | Click sectors for details</div>
+    <div class="keyboard-hint">Press ← → or Click buttons to navigate | Click sectors for details</div>
 
     <script>
         let currentSlide = 0;
