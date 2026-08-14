@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pride of Bharath Expo 2027 - Strategic Presentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            background: #0a0a0a;
+            overflow: hidden;
+        }
+
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            display: none;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Color Palette - Indian Heritage */
+        :root {
+            --saffron: #FF9933;
+            --white: #FFFFFF;
+            --forest-green: #0B5345;
+            --deep-blue: #1F3A5C;
+            --gold: #D4AF37;
+            --warm-gold: #B8860B;
+            --cream: #F5F1E8;
+            --dark-brown: #3E2723;
+            --burgundy: #8B3A3A;
+            --slate: #2C3E50;
+        }
+
+        /* ============ SLIDE 1: TITLE PAGE ============ */
+        #slide-1 {
+            background: linear-gradient(135deg, var(--deep-blue) 0%, var(--forest-green) 50%, var(--dark-brown) 100%);
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        #slide-1::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 153, 51, 0.06) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        #slide-1::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(212, 175, 55, 0.03) 2px, rgba(212, 175, 55, 0.03) 4px),
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(212, 175, 55, 0.03) 2px, rgba(212, 175, 55, 0.03) 4px);
+            pointer-events: none;
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            padding: 40px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .title-main {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(48px, 8vw, 92px);
+            font-weight: 900;
+            color: var(--saffron);
+            line-height: 1;
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            letter-spacing: -2px;
+        }
+
+        .subtitle-accent {
+            font-size: clamp(32px, 5vw, 48px);
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        .divider-line {
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--saffron), var(--gold), transparent);
+            margin-bottom: 25px;
+        }
+
+        .tagline {
+            font-size: clamp(14px, 1.5vw, 20px);
+            color: var(--cream);
+            font-style: italic;
+            max-width: 700px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        .info-box {
+            display: flex;
+            gap: 40px;
+            align-items: flex-end;
+            flex-wrap: wrap;
+        }
+
+        .info-item {
+            text-align: left;
+        }
+
+        .info-label {
+            font-size: 11px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+
+        .info-value {
+            font-size: clamp(16px, 2vw, 24px);
+            color: var(--white);
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .logo-placeholder {
+            position: absolute;
+            top: 20%;
+            right: 40px;
+            width: 380px;
+            height: 400px;
+            border: 3px solid var(--gold);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: var(--gold);
+            background: rgba(255, 255, 255, 0.05);
+            font-weight: 700;
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* ============ COMMON SLIDE STYLES ============ */
+        .header-section {
+            width: 100%;
+            padding: 30px 60px;
+            border-bottom: 3px solid var(--deep-blue);
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            flex-shrink: 0;
+        }
+
+        .slide-number {
+            font-size: clamp(40px, 6vw, 80px);
+            font-weight: 900;
+            color: var(--saffron);
+            opacity: 0.2;
+            line-height: 1;
+            min-width: max-content;
+        }
+
+        .slide-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(40px, 5vw, 64px);
+            color: var(--deep-blue);
+            font-weight: 900;
+        }
+
+        .slide-subtitle {
+            font-size: clamp(12px, 1.2vw, 18px);
+            color: var(--burgundy);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .slide-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 30px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .slide-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .slide-container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .slide-container::-webkit-scrollbar-thumb {
+            background: var(--saffron);
+            border-radius: 4px;
+        }
+
+        /* ============ SLIDE 2: THE VISION ============ */
+        #slide-2 {
+            background: linear-gradient(180deg, var(--cream) 0%, #EAE4D9 100%);
+            justify-content: flex-start;
+        }
+
+        #slide-2 .header-section {
+            border-bottom-color: var(--deep-blue);
+        }
+
+        .vision-content {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+            align-items: start;
+            width: 100%;
+        }
+
+        .vision-text {
+            font-size: clamp(14px, 1.1vw, 18px);
+            line-height: 1.8;
+            color: var(--dark-brown);
+        }
+
+        .vision-text p {
+            margin-bottom: 15px;
+        }
+
+        .vision-highlight {
+            background: linear-gradient(120deg, rgba(212, 175, 55, 0.2), rgba(255, 153, 51, 0.1));
+            padding: 20px 30px;
+            border-left: 5px solid var(--saffron);
+            border-radius: 4px;
+            margin: 20px 0;
+            font-style: italic;
+            color: var(--deep-blue);
+            font-weight: 600;
+            font-size: clamp(12px, 1vw, 14px);
+        }
+
+        .vision-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid var(--saffron);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 900;
+            color: var(--saffron);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stat-label {
+            font-size: clamp(12px, 1vw, 14px);
+            color: var(--slate);
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        /* ============ SLIDE 3: THE STRATEGY ============ */
+        #slide-3 {
+            background: linear-gradient(180deg, var(--white) 0%, #F9F7F4 100%);
+            justify-content: flex-start;
+        }
+
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .strategy-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid var(--saffron);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .strategy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .strategy-icon {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .strategy-title {
+            font-size: clamp(14px, 1.2vw, 20px);
+            font-weight: 700;
+            color: var(--deep-blue);
+            margin-bottom: 12px;
+        }
+
+        .strategy-description {
+            font-size: clamp(12px, 0.95vw, 14px);
+            color: var(--slate);
+            line-height: 1.6;
+        }
+
+        /* ============ SLIDE 4-5: SECTORS ============ */
+        #slide-4, #slide-5 {
+            background: linear-gradient(135deg, var(--white) 0%, #FFF9F0 100%);
+            justify-content: flex-start;
+        }
+
+        .sectors-wrapper {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sectors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        .sector-card {
+            background: linear-gradient(135deg, var(--white) 0%, var(--cream) 100%);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid var(--saffron);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .sector-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.1), transparent);
+            pointer-events: none;
+        }
+
+        .sector-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(255, 153, 51, 0.2);
+            border-top-color: var(--gold);
+        }
+
+        .sector-card.active {
+            background: linear-gradient(135deg, var(--saffron) 0%, var(--warm-gold) 100%);
+            box-shadow: 0 12px 35px rgba(255, 153, 51, 0.3);
+        }
+
+        .sector-card.active .sector-number,
+        .sector-card.active .sector-name {
+            color: var(--white);
+        }
+
+        .sector-number {
+            font-size: clamp(24px, 2.5vw, 32px);
+            font-weight: 900;
+            color: var(--saffron);
+            margin-bottom: 5px;
+            font-family: 'Playfair Display', serif;
+            transition: color 0.3s ease;
+        }
+
+        .sector-name {
+            font-size: clamp(11px, 0.95vw, 14px);
+            font-weight: 700;
+            color: var(--deep-blue);
+            line-height: 1.3;
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s ease;
+        }
+
+        /* Sector Details Area */
+        .sector-details-area {
+            flex: 1;
+            width: 100%;
+            margin-top: 20px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(255, 153, 51, 0.05) 0%, rgba(212, 175, 55, 0.08) 100%);
+            border-radius: 12px;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            overflow-y: auto;
+            display: none;
+        }
+
+        .sector-details-area.show {
+            display: block;
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .details-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--saffron);
+        }
+
+        .details-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--saffron);
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+        }
+
+        .details-close {
+            font-size: 24px;
+            color: var(--saffron);
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .details-close:hover {
+            transform: rotate(90deg);
+            color: var(--gold);
+        }
+
+        .details-content {
+            font-size: 14px;
+            color: var(--dark-brown);
+            line-height: 1.8;
+        }
+
+        .details-content p {
+            margin-bottom: 15px;
+        }
+
+        .details-content strong {
+            color: var(--deep-blue);
+        }
+
+        .impact-list {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .impact-list-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--saffron);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .impact-item {
+            font-size: 13px;
+            color: var(--deep-blue);
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .impact-item::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--saffron);
+            font-weight: 900;
+            font-size: 16px;
+        }
+
+        /* ============ SLIDE 6: EXECUTION ============ */
+        #slide-6 {
+            background: linear-gradient(180deg, var(--deep-blue) 0%, var(--forest-green) 100%);
+            justify-content: flex-start;
+        }
+
+        #slide-6 .header-section {
+            border-bottom-color: var(--saffron);
+        }
+
+        #slide-6 .slide-title {
+            color: var(--saffron);
+        }
+
+        .execution-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            width: 100%;
+            align-items: start;
+        }
+
+        .execution-column h3 {
+            font-size: clamp(16px, 1.5vw, 24px);
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .timeline-item {
+            padding: 15px;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.08);
+            border-left: 4px solid var(--saffron);
+            border-radius: 4px;
+            color: var(--cream);
+        }
+
+        .timeline-item-time {
+            font-size: clamp(10px, 0.9vw, 12px);
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .timeline-item-text {
+            font-size: clamp(12px, 1vw, 15px);
+            line-height: 1.6;
+        }
+
+        .infrastructure-item {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 18px;
+            color: var(--cream);
+        }
+
+        .infrastructure-icon {
+            font-size: 20px;
+            color: var(--saffron);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .infrastructure-text {
+            font-size: clamp(12px, 1vw, 14px);
+            line-height: 1.6;
+        }
+
+        /* ============ SLIDE 7: IMPACT & SCALE ============ */
+        #slide-7 {
+            background: linear-gradient(135deg, var(--saffron) 0%, var(--warm-gold) 50%, var(--burgundy) 100%);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #slide-7::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .impact-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .impact-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(48px, 7vw, 76px);
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 20px;
+            line-height: 1.1;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .impact-subtitle {
+            font-size: clamp(20px, 2.5vw, 32px);
+            color: var(--deep-blue);
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .impact-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .impact-metric {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 20px 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .impact-metric-value {
+            font-size: clamp(28px, 3.5vw, 40px);
+            font-weight: 900;
+            color: var(--white);
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 8px;
+        }
+
+        .impact-metric-label {
+            font-size: clamp(10px, 0.9vw, 12px);
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        /* ============ SLIDE 8: CLOSING ============ */
+        #slide-8 {
+            background: linear-gradient(180deg, var(--dark-brown) 0%, var(--deep-blue) 100%);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #slide-8::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(212, 175, 55, 0.02) 2px, rgba(212, 175, 55, 0.02) 4px);
+            pointer-events: none;
+        }
+
+        .closing-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .closing-main {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(48px, 7vw, 84px);
+            font-weight: 900;
+            color: var(--saffron);
+            margin-bottom: 25px;
+            line-height: 1.1;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .closing-divider {
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--saffron), var(--gold), transparent);
+            margin: 20px auto;
+        }
+
+        .closing-text {
+            font-size: clamp(16px, 2vw, 24px);
+            color: var(--cream);
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .closing-cta {
+            font-size: clamp(16px, 1.8vw, 22px);
+            color: var(--saffron);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-top: 30px;
+        }
+
+        /* ============ NAVIGATION ============ */
+        .nav-controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .nav-button {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            background: var(--saffron);
+            color: var(--white);
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-button:hover {
+            background: var(--gold);
+            transform: scale(1.1);
+        }
+
+        .nav-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .slide-indicator {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            font-size: 16px;
+            color: var(--saffron);
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .keyboard-hint {
+            position: fixed;
+            top: 15px;
+            right: 30px;
+            font-size: 12px;
+            color: var(--slate);
+            background: var(--cream);
+            padding: 8px 12px;
+            border-radius: 4px;
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="presentation-container">
+
+        <!-- SLIDE 1: TITLE -->
+        <div class="slide active" id="slide-1">
+            <div class="logo-placeholder"><img src="POB_logo.png" height="100%"></div>
+            <div class="slide-content">
+                <div class="title-main">PRIDE OF<br>BHARATH</div>
+                <div class="subtitle-accent">EXPO 2027</div>
+                <div class="divider-line"></div>
+                <div class="tagline">"Our Roots. Our Transformation. Our Heritage. Our Future"<br>Rediscover • Reconnect • Rise</div>
+                <div class="info-box">
+                    <div class="info-item">
+                        <div class="info-label">Dates</div>
+                        <div class="info-value">14–21 February 2027</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Venue</div>
+                        <div class="info-value">Palace Grounds, Bengaluru</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 2: THE VISION -->
+        <div class="slide" id="slide-2">
+            <div class="header-section">
+                <div class="slide-number">01</div>
+                <div>
+                    <div class="slide-title">THE VISION</div>
+                    <div class="slide-subtitle">The Visionary's Idea | Our Mission</div>
+                </div>
+            </div>
+            <div class="slide-container">
+                <div class="vision-content">
+                    <div>
+                        <div class="vision-text">
+                            <p><strong>Pride of Bharath is not an expo—it is a civilisational awakening.</strong></p>
+                            <p>We are building a mirror in which Bharath sees itself clearly, perhaps for the first time in generations. An event so overwhelming, so undeniable, and so emotionally resonant that 10 lakh visitors walk away transformed.</p>
+                            <div class="vision-highlight">
+                                "When a young engineer realizes his ancestors calculated Pi to 11 decimals when Europe was in the Dark Ages—something shifts. That shift, multiplied across millions, is our real output."
+                            </div>
+                            <p>This is not about nostalgia. This is about reclaiming the civilisational narrative with evidence, beauty, depth, and pride.</p>
+                        </div>
+                    </div>
+                    <div class="vision-stats">
+                        <div class="stat-card">
+                            <div class="stat-number">10 L</div>
+                            <div class="stat-label">Expected Visitors</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">8 Days</div>
+                            <div class="stat-label">Transformational Journey</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">1000+</div>
+                            <div class="stat-label">Artisans Supported</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: THE STRATEGY -->
+        <div class="slide" id="slide-3">
+            <div class="header-section">
+                <div class="slide-number">02</div>
+                <div>
+                    <div class="slide-title">STRATEGIC PILLARS</div>
+                    <div class="slide-subtitle">How We Execute The Visionary's Vision</div>
+                </div>
+            </div>
+            <div class="slide-container">
+                <div class="strategy-grid">
+                    <div class="strategy-card">
+                        <div class="strategy-icon">🎯</div>
+                        <div class="strategy-title">Scale & Reach</div>
+                        <div class="strategy-description">50,000–75,000 daily visitors across 8 peak days with world-class infrastructure and capacity management.</div>
+                    </div>
+                    <div class="strategy-card">
+                        <div class="strategy-icon">🏛️</div>
+                        <div class="strategy-title">12 Experience Sectors</div>
+                        <div class="strategy-description">Each pavilion a world unto itself—from Science & Tech to Ayurveda, from Arts to Organic Farming.</div>
+                    </div>
+                    <div class="strategy-card">
+                        <div class="strategy-icon">📚</div>
+                        <div class="strategy-title">Gyan Maha Sabha</div>
+                        <div class="strategy-description">Knowledge Parliament with scholars, scientists, practitioners, and spiritual leaders creating intellectual depth.</div>
+                    </div>
+                    <div class="strategy-card">
+                        <div class="strategy-icon">💼</div>
+                        <div class="strategy-title">Economic Impact</div>
+                        <div class="strategy-description">1,000+ artisan livelihoods, direct support to craftspeople, and catalyst for heritage commerce.</div>
+                    </div>
+                    <div class="strategy-card">
+                        <div class="strategy-icon">🎨</div>
+                        <div class="strategy-title">Evening Programs</div>
+                        <div class="strategy-description">Nightly cultural celebrations featuring classical, folk, and tribal traditions of Bharath.</div>
+                    </div>
+                    <div class="strategy-card">
+                        <div class="strategy-icon">🌱</div>
+                        <div class="strategy-title">Legacy & Archive</div>
+                        <div class="strategy-description">Encyclopaedia, documentary series, digital archive ensuring impact beyond 8 days.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: SECTORS (1-6) -->
+        <div class="slide" id="slide-4">
+            <div class="header-section">
+                <div class="slide-number">03</div>
+                <div>
+                    <div class="slide-title">THE 12 SECTORS</div>
+                    <div class="slide-subtitle">Pavilion 1–6: Knowledge & Heritage | Click for Details</div>
+                </div>
+            </div>
+            <div class="slide-container">
+                <div class="sectors-wrapper">
+                    <div class="sectors-grid">
+                        <div class="sector-card" onclick="showSectorDetails(this, 'sector-1')">
+                            <div class="sector-number">01</div>
+                            <div class="sector-name">Science & Technology</div>
+                        </div>
+                        <div class="sector-card" onclick="showSectorDetails(this, 'sector-2')">
+                            <div class="sector-number">02</div>
+                            <div class="sector-name">Arts & Culture</div>
+                        </div>
+                        <div class="sector-card" onclick="showSectorDetails(this, 'sector-3')">
+                            <div class="sector-number">03</div>
+                            <div class="sector-name">Spirituality & Yogic Science</div>
+                        </div>
+                        <div class="sector-card" onclick="showSectorDetails(this, 'sector-4')">
+                            <div class="sector-number">04</div>
+                            <div class="sector-name">Ayurveda</div>
+                        </div>
+                        <div class="sector-card" onclick="showSectorDetails(this, 'sector-5')">
+                            <div class="sector-number">05</div>
+                            <div class="sector-name">Empowered Bharath</div>
+                        </div>
+                        <div class="sector-card" onclick="showSectorDetails(this, 'sector-6')">
+                            <div class="sector-number">06</div>
+                            <div class="sector-name">Bharathiya Fashion</div>
+                        </div>
+                    </div>
+
+                    <!-- Details Area -->
+                    <div class="sector-details-area" id="sector-1">
+                        <div class="details-header">
+                            <h3 class="details-title">Science & Technology</h3>
+                            <button class="details-close" onclick="closeSectorDetails()">✕</button>
+                        </div>
+                        <div class="details-content">
+                            <p>An immersive pavilion showcasing India's contributions to science: ancient calculations, space technology, ISRO achievements, AI innovation, and semiconductor manufacturing.</p>
+                            <p><strong>Key Exhibits:</strong> Speaker Theatre with ISRO/DRDO scientists, Innovation Arena with live demos, defence technology showcase, quantum computing displays.</p>
+                            <div class="impact-list">
+                                <div class="impact-list-title">🎯 Impact & Achievements</div>
+                                <div class="impact-item">100+ artisans & innovators engaged</div>
+                                <div class="impact-item">10,000+ student interactions through workshops</div>
+                                <div class="impact-item">Showcase India's space-to-semiconductor journey</div>
+                                <div class="impact-item">Bridge ancient Indian science to modern tech</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sector-details-area" id="sector-2">
+                        <div class="details-header">
+                            <h3 class="details-title">Arts & Culture</h3>
+                            <button class="details-close" onclick="closeSectorDetails()">✕</button>
+                        </div>
+                        <div class="details-content">
+                            <p>A 2-acre immersive zone celebrating classical dance, music, theatre, and folk traditions. Live performances, artisan demonstrations, and cultural baithaks.</p>
+                            <p><strong>Key Components:</strong> 300-seat main stage, 8 evening title performances, Avadhana literary sessions, Gamaka music forums, Kavi Goshti poetry circles.</p>
+                            <div class="impact-list">
+                                <div class="impact-list-title">🎯 Impact & Achievements</div>
+                                <div class="impact-item">500+ performing artists featured</div>
+                                <div class="impact-item">1.5–2 lakh estimated sector footfall</div>
+                                <div class="impact-item">Live Archive: 3-minute stories of every artisan</div>
+                                <div class="impact-item">Direct revenue to artists through evening sponsorships</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sector-details-area" id="sector-3">
+                        <div class="details-header">
+                            <h3 class="details-title">Spirituality & Yogic Science</h3>
+                            <button class="details-close" onclick="closeSectorDetails()">✕</button>
+                        </div>
+                        <div class="details-content">
+                            <p>An integrated pavilion linking ancient yogic philosophy to modern wellness science. Practical demonstrations, research exhibits, and daily yoga sessions.</p>
+                            <p><strong>Key Offers:</strong> Morning yoga programs, meditation workshops, philosophical seminars with Vedanta scholars, scientific validation of yogic practices.</p>
+                            <div class="impact-list">
+                                <div class="impact-list-title">🎯 Impact & Achievements</div>
+                                <div class="impact-item">5,000+ daily yoga participants</div>
+                                <div class="impact-item">Research partnerships with yoga universities</div>
+                                <div class="impact-item">International wellness audience engagement</div>
+                                <div class="impact-item">Establish Bharath as centre for yogic wisdom</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sector-details-area" id="sector-4">
+                        <div class="details-header">
+                            <h3 class="details-title">Ayurveda</h3>
+                            <button class="details-close" onclick="closeSectorDetails()">✕</button>
+                        </div>
+                        <div class="details-content">
+                            <p>A modern Ayurvedic experience pavilion integrating 5,000 years of clinical wisdom with contemporary wellness solutions and research.</p>
+                            <p><strong>Key Activities:</strong> Panchakarma demonstrations, pulse diagnosis consultations, herbal product showcases, scientific seminars with Ayurvedic physicians.</p>
+                            <div class="impact-list">
+                                <div class="impact-list-title">🎯 Impact & Achievements</div>
+                                <div class="impact-item">10,000+ health consultations provided</div>
+                                <div class="impact-item">200+ Ayurvedic practitioners showcased</div>
+                                <div class="impact-item">Ministry of AYUSH partnership</div>
+                                <div class="impact-item">Global promotion of Indian medicine systems</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sector-details-area" id="sector-5">
+                        <div class="details-header">
+                            <h3 class="details-title">Empowered Bharath</h3>
+                            <button class="details-close" onclick="closeSectorDetails()">✕</button>
+                        </div>
+                        <div class="details-content">
+                            <p>Showcase of India's defence innovations, women empowerment programs, and self-reliance initiatives. Live demonstrations of indigenous defence technology.</p>
+                            <p><strong>Key Features:</strong> Defence technology exhibits, women entrepreneurship zone, Atmanirbhar Bharat case studies, indigenous manufacturing success stories.</p>
+                            <div class="impact-list">
+                                <div class="impact-list-title">🎯 Impact & Achievements</div>
+                                <div class="impact-item">50+ defence & security entities featured</div>
+                                <div class="impact-item">500+ women entrepreneurs showcased</div>
+                                <div class="impact-item">Make-in-India narrative reinforced</div>
+                                <div class="impact-item">Self-reliance movement acceleration</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sector-details-area" id="sector-6">
+                        <div class="details-header">
+                            <h3 class="details-title">Bharathiya Fashion</h3>
+                            <button class="details-close" onclick="closeSectorDetails()">✕</button>
+                        </div>
+                        <div class="details-content">
+                            <p>Living showcase of India's textile heritage: silks from Tamil Nadu, weaves from Varanasi, tribal fabrics, and contemporary designers celebrating indigenous traditions.</p>
+                            <p><strong>Key Activities:</strong> Live weaving demonstrations, fashion shows, designer collaborations, textile history exhibits, marketplace for weavers.</p>
+                            <div class="impact-list">
+                                <div class="impact-list-title">🎯 Impact & Achievements</div>
+                                <div class="impact-item">1,000+ textile artisans & weavers featured</div>
+                                <div class="impact-item">Direct sales platform for heritage textiles</div>
+                                <div class="impact-item">International fashion community engagement</div>
+                                <div class="impact-item">Revitalization of traditional weaving economies</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: SECTORS (7-12) -->
+        <div class="slide" id="slide-5">
+            <div class="header-section">
+                <div class="slide-number">04</div>
+                <div>
+                    <div class="slide-title">THE 12 SECTORS</div>
+                    <div class="slide-subtitle">Pavilion 7–12: Innovation & Tradition | Click for Details</div>
+                </div>
+            </div>
+            <div class="slide-container">
+                <div class="sectors-wrapper">
+                    <div class="sectors-grid">
+                        <div class="sector-card" onclick="showSectorDetails(this, 'sector-7')">
+                            <div class="sector-number">07</div>
+                            <div class="sector-name">Bharathiya Education</div>
+                        </div>
+                        <div class="sector-card" onclick="showSectorDetails(this, 'sector-8')">
+                            <div class="sector-number">08</div>
+                            <div class="sector-name">Bharathiya Food Culture</div>
+                        </div>
+                        <div class="sector-card" onclick="showSectorDetails(this, 'sector-9')">
+                            <div class="sector-number">09</div>
+                            <div class="sector-name">Indigenous Cattle & Farming</div>
+                        </div>
+                        <div class="sector-card" onclick="showSectorDetails(this, 'sector-10')">
+                            <div class="sector-number">10</div>
+                            <div class="sector-name">Indigenous Sports & Games</div>
+                        </div>
+                        <div class="sector-card" onclick="showSectorDetails(this, 'sector-11')">
+                            <div class="sector-number">11</div>
+                            <div class="sector-name">GI-Tagged Products & Crafts</div>
+                        </div>
+                        <div class="sector-card" onclick="showSectorDetails(this, 'sector-12')">
+                            <div class="sector-number">12</div>
+                            <div class="sector-name">Cultural & Heritage Tourism</div>
+                        </div>
+                    </div>
+
+                    <!-- Details Area -->
+                    <div class="sector-details-area" id="sector-7">
+                        <div class="details-header">
+                            <h3 class="details-title">Bharathiya Education</h3>
+                            <button class="details-close" onclick="closeSectorDetails()">✕</button>
+                        </div>
+                        <div class="details-content">
+                            <p>Reimagining education through Bharathiya knowledge systems: Gurukul traditions, Sanskrit scholarship, Vedic sciences, and contemporary pedagogy integration.</p>
+                            <p><strong>Key Programs:</strong> Gurukul model exhibits, Sanskrit learning zones, ancient university showcases, teacher development seminars.</p>
+                            <div class="impact-list">
+                                <div class="impact-list-title">🎯 Impact & Achievements</div>
+                                <div class="impact-item">5,000+ school & college groups engaged</div>
+                                <div class="impact-item">100+ educational institutions partnering</div>
+                                <div class="impact-item">Sanskrit revival momentum</div>
+                                <div class="impact-item">New curriculum models demonstrated</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sector-details-area" id="sector-8">
+                        <div class="details-header">
+                            <h3 class="details-title">Bharathiya Food Culture</h3>
+                            <button class="details-close" onclick="closeSectorDetails()">✕</button>
+                        </div>
+                        <div class="details-content">
+                            <p>A culinary journey across India's regions: regional cuisines, food traditions, medicinal food science, and guest-region dining experiences.</p>
+                            <p><strong>Key Features:</strong> Aahara Court serving regional cuisines, cooking demonstrations, food science seminars, traditional recipe documentation.</p>
+                            <div class="impact-list">
+                                <div class="impact-list-title">🎯 Impact & Achievements</div>
+                                <div class="impact-item">All 28 states' cuisines represented</div>
+                                <div class="impact-item">50,000+ daily food court visitors</div>
+                                <div class="impact-item">Regional chef collaborations</div>
+                                <div class="impact-item">Food heritage documentation for archives</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sector-details-area" id="sector-9">
+                        <div class="details-header">
+                            <h3 class="details-title">Indigenous Cattle & Organic Farming</h3>
+                            <button class="details-close" onclick="closeSectorDetails()">✕</button>
+                        </div>
+                        <div class="details-content">
+                            <p>Showcasing indigenous cattle breeds, Zero-Budget Natural Farming (ZBNF), sustainable agriculture, and farmer empowerment models.</p>
+                            <p><strong>Key Activities:</strong> Live cattle demonstrations, farming technique workshops, organic product marketplace, soil health seminars.</p>
+                            <div class="impact-list">
+                                <div class="impact-list-title">🎯 Impact & Achievements</div>
+                                <div class="impact-item">500+ farmers & breeders showcased</div>
+                                <div class="impact-item">10,000+ farmers trained in ZBNF</div>
+                                <div class="impact-item">Direct sales of organic products</div>
+                                <div class="impact-item">Soil regeneration awareness campaign</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sector-details-area" id="sector-10">
+                        <div class="details-header">
+                            <h3 class="details-title">Indigenous Sports & Games</h3>
+                            <button class="details-close" onclick="closeSectorDetails()">✕</button>
+                        </div>
+                        <div class="details-content">
+                            <p>Celebration of India's indigenous sports heritage: Kabaddi, Kho-Kho, Mallakhamb, Silambam, and other traditional games with live competitions.</p>
+                            <p><strong>Key Features:</strong> Live sporting events, skill demonstrations, athletic competitions, federation partnerships, coaching workshops.</p>
+                            <div class="impact-list">
+                                <div class="impact-list-title">🎯 Impact & Achievements</div>
+                                <div class="impact-item">5,000+ athletes & coaches featured</div>
+                                <div class="impact-item">Daily sports tournaments & exhibitions</div>
+                                <div class="impact-item">Youth athlete recruitment opportunities</div>
+                                <div class="impact-item">Olympic recognition push for indigenous sports</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sector-details-area" id="sector-11">
+                        <div class="details-header">
+                            <h3 class="details-title">GI-Tagged Products & Crafts</h3>
+                            <button class="details-close" onclick="closeSectorDetails()">✕</button>
+                        </div>
+                        <div class="details-content">
+                            <p>A national marketplace for Geographical Indication-tagged products and traditional crafts: handicrafts, textiles, spices, pottery from all regions.</p>
+                            <p><strong>Key Setup:</strong> Paramparika Mela, artisan stalls, live craft demonstrations, direct-to-consumer sales platform, craft master workshops.</p>
+                            <div class="impact-list">
+                                <div class="impact-list-title">🎯 Impact & Achievements</div>
+                                <div class="impact-item">1,000+ artisans & craftspersons</div>
+                                <div class="impact-item">Direct income generation for rural communities</div>
+                                <div class="impact-item">Global market exposure for GI products</div>
+                                <div class="impact-item">Craft knowledge preservation</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sector-details-area" id="sector-12">
+                        <div class="details-header">
+                            <h3 class="details-title">Cultural & Heritage Tourism</h3>
+                            <button class="details-close" onclick="closeSectorDetails()">✕</button>
+                        </div>
+                        <div class="details-content">
+                            <p>Connecting visitors to India's heritage destinations, temple tourism, cultural circuits, and experiential travel opportunities across the country.</p>
+                            <p><strong>Key Offerings:</strong> Heritage destination showcases, tourism circuit maps, cultural itinerary planning, guide trainings, NRI & international promotion.</p>
+                            <div class="impact-list">
+                                <div class="impact-list-title">🎯 Impact & Achievements</div>
+                                <div class="impact-item">100+ heritage sites & destinations promoted</div>
+                                <div class="impact-item">International tourism growth catalyst</div>
+                                <div class="impact-item">Local tourism economy strengthening</div>
+                                <div class="impact-item">Civilisational tourism narrative building</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: EXECUTION -->
+        <div class="slide" id="slide-6">
+            <div class="header-section">
+                <div class="slide-number">05</div>
+                <div>
+                    <div class="slide-title">EXECUTION ROADMAP</div>
+                    <div class="slide-subtitle">Timeline & Infrastructure</div>
+                </div>
+            </div>
+            <div class="slide-container">
+                <div class="execution-content">
+                    <div class="execution-column">
+                        <h3>📅 Critical Milestones</h3>
+                        <div class="timeline-item">
+                            <div class="timeline-item-time">August 2026</div>
+                            <div class="timeline-item-text">Institutional outreach & artisan confirmations</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-time">September 2026</div>
+                            <div class="timeline-item-text">Out-of-state artisan & troupe bookings deadline</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-time">October–December 2026</div>
+                            <div class="timeline-item-text">Pavilion construction & speaker confirmations</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-time">January 2027</div>
+                            <div class="timeline-item-text">Final rehearsals & media outreach</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-time">14–21 February 2027</div>
+                            <div class="timeline-item-text">Event execution (10 AM – 10:30 PM daily)</div>
+                        </div>
+                    </div>
+                    <div class="execution-column">
+                        <h3>🏗️ Core Infrastructure</h3>
+                        <div class="infrastructure-item">
+                            <div class="infrastructure-icon">✓</div>
+                            <div class="infrastructure-text">12 Sector Pavilions with immersive design</div>
+                        </div>
+                        <div class="infrastructure-item">
+                            <div class="infrastructure-icon">✓</div>
+                            <div class="infrastructure-text">Central Amphitheatre (2,000+ capacity)</div>
+                        </div>
+                        <div class="infrastructure-item">
+                            <div class="infrastructure-icon">✓</div>
+                            <div class="infrastructure-text">Gyan Maha Sabha Halls (300+ seats)</div>
+                        </div>
+                        <div class="infrastructure-item">
+                            <div class="infrastructure-icon">✓</div>
+                            <div class="infrastructure-text">Aahara Court (Regional cuisines)</div>
+                        </div>
+                        <div class="infrastructure-item">
+                            <div class="infrastructure-icon">✓</div>
+                            <div class="infrastructure-text">GI & Paramparika Mela Marketplace</div>
+                        </div>
+                        <div class="infrastructure-item">
+                            <div class="infrastructure-icon">✓</div>
+                            <div class="infrastructure-text">Children's Discovery Zone</div>
+                        </div>
+                        <div class="infrastructure-item">
+                            <div class="infrastructure-icon">✓</div>
+                            <div class="infrastructure-text">Meditation & Wellness Garden</div>
+                        </div>
+                        <div class="infrastructure-item">
+                            <div class="infrastructure-icon">✓</div>
+                            <div class="infrastructure-text">Press, Media & Operations Hubs</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 7: IMPACT & SCALE -->
+        <div class="slide" id="slide-7">
+            <div class="impact-content">
+                <div class="impact-title">SCALE & IMPACT</div>
+                <div class="impact-subtitle">What We're Achieving</div>
+                <div class="impact-metrics">
+                    <div class="impact-metric">
+                        <div class="impact-metric-value">10 L</div>
+                        <div class="impact-metric-label">Total Visitors</div>
+                    </div>
+                    <div class="impact-metric">
+                        <div class="impact-metric-value">1000+</div>
+                        <div class="impact-metric-label">Artisans Supported</div>
+                    </div>
+                    <div class="impact-metric">
+                        <div class="impact-metric-value">12</div>
+                        <div class="impact-metric-label">Experience Sectors</div>
+                    </div>
+                    <div class="impact-metric">
+                        <div class="impact-metric-value">8</div>
+                        <div class="impact-metric-label">Days of Transformation</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 8: CLOSING -->
+        <div class="slide" id="slide-8">
+            <div class="closing-content">
+                <div class="closing-main">NO STONE SHALL<br>BE LEFT UNTURNED</div>
+                <div class="closing-divider"></div>
+                <div class="closing-text">From The Visionary's Vision to Global Impact</div>
+                <div class="closing-text" style="font-size: clamp(14px, 1.5vw, 18px); color: var(--gold); margin-bottom: 30px;">February 14–21, 2027 | Palace Grounds, Bengaluru</div>
+                <div class="closing-cta">Ready to Make History</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- NAVIGATION -->
+    <div class="nav-controls">
+        <button class="nav-button" id="prev-btn" onclick="previousSlide()">❮</button>
+        <button class="nav-button" id="next-btn" onclick="nextSlide()">❯</button>
+    </div>
+
+    <div class="slide-indicator" id="indicator">1 / 8</div>
+    <div class="keyboard-hint" >Press ← → or Click buttons to navigate | Click sectors for details</div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[n].classList.add('active');
+            
+            document.getElementById('indicator').textContent = `${n + 1} / ${totalSlides}`;
+            document.getElementById('prev-btn').disabled = n === 0;
+            document.getElementById('next-btn').disabled = n === totalSlides - 1;
+
+            // Close any open details when changing slides
+            closeSectorDetails();
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        }
+
+        function previousSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        }
+
+        function showSectorDetails(element, sectorId) {
+            // Close all open details
+            const allDetails = document.querySelectorAll('.sector-details-area');
+            const allCards = document.querySelectorAll('.sector-card');
+            
+            allDetails.forEach(detail => detail.classList.remove('show'));
+            allCards.forEach(card => card.classList.remove('active'));
+
+            // Show selected details
+            const detailElement = document.getElementById(sectorId);
+            if (detailElement) {
+                detailElement.classList.add('show');
+                element.classList.add('active');
+                
+                // Scroll to details
+                detailElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+
+        function closeSectorDetails() {
+            const allDetails = document.querySelectorAll('.sector-details-area');
+            const allCards = document.querySelectorAll('.sector-card');
+            
+            allDetails.forEach(detail => detail.classList.remove('show'));
+            allCards.forEach(card => card.classList.remove('active'));
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') previousSlide();
+            if (e.key === 'Escape') closeSectorDetails();
+        });
+
+        // Initialize
+        showSlide(0);
+    </script>
+
+</body>
+</html>
