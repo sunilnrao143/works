@@ -1,0 +1,31 @@
+{
+  "source": { "file": "reference/original-template.jpg", "dimensions": "896x1344" },
+  "notes": [
+    "Paths in this file are live as of the current build and match the real folder layout.",
+    "The original '-candidate.png' cutouts shipped as RGB with white backgrounds and were 93-99% blank; they are NOT used by the build. See BUILD-NOTES.md.",
+    "Photography is re-extracted from the master crops with a feathered alpha edge so it blends into the dark background.",
+    "Decorative line art is rebuilt as SVG. Text, navigation, cards, buttons and statistics stay HTML/CSS."
+  ],
+  "assets": [
+    { "id": "H01", "name": "Hero artist",    "file": "assets/images/hero/hero-artist.png",       "type": "RGBA, feathered", "source": "01-hero-master.jpg (498,52)-(954,486)", "use": "Hero foreground, right-anchored" },
+    { "id": "H02", "name": "Temple",         "file": "assets/images/hero/temple.png",            "type": "RGBA, feathered", "source": "01-hero-master.jpg (0,140)-(116,366)",  "use": "Hero left landmark" },
+    { "id": "H03", "name": "Mandala",        "file": "assets/svg/decorative/mandala.svg",        "type": "SVG",             "source": "traced from hero-mandala-context.jpg",  "use": "Reusable ornament; hero glow is baked into H01" },
+    { "id": "H04", "name": "Wave divider",   "file": "assets/svg/decorative/wave-divider.svg",   "type": "SVG",             "source": "hero-bottom-ornament-context.jpg",      "use": "Hero to About transition" },
+    { "id": "H05", "name": "Lotus",          "file": "assets/svg/decorative/lotus.svg",          "type": "SVG",             "source": "hero-bottom-ornament-context.jpg",      "use": "Medallion centred on the wave" },
+    { "id": "A01", "name": "About portrait", "file": "assets/images/about/about-portrait.jpg",   "type": "JPEG",            "source": "02-about-master.jpg (92,14)-(354,437)", "use": "About portrait, arched frame included" },
+    { "id": "M01", "name": "Music cards",    "file": "assets/images/music/music-01.jpg … -05.jpg","type": "JPEG 360x268",   "source": "music-0N-reference.jpg, caption cropped off", "use": "Card image only; titles are HTML" },
+    { "id": "T01", "name": "Tour photo",     "file": "assets/images/tours/tour-photo.png",       "type": "RGBA, feathered", "source": "04-tours-master.jpg right edge",        "use": "Tours right-hand visual" },
+    { "id": "C01", "name": "Corner floral",  "file": "assets/svg/decorative/corner-floral.svg",  "type": "SVG",             "source": "top-left/right-ornament-context.jpg",   "use": "Mirrored into all four corners via CSS" },
+    { "id": "S01", "name": "Diamond rule",   "file": "assets/svg/decorative/diamond-rule.svg",   "type": "SVG",             "source": "hero headline divider",                 "use": "Headline and section separators" },
+    { "id": "S02", "name": "Gold rule",      "file": "assets/svg/decorative/gold-rule.svg",      "type": "SVG",             "source": "supplied",                              "use": "Generic separator" },
+    { "id": "S03", "name": "Flourish",       "file": "assets/svg/decorative/ornament-flourish.svg","type": "SVG",           "source": "supplied",                              "use": "Heading accent" },
+    { "id": "S04", "name": "Section divider","file": "assets/svg/decorative/section-divider.svg","type": "SVG",             "source": "supplied",                              "use": "Alternate separator" }
+  ],
+  "unused_originals": {
+    "reason": "RGB with white background, 93-99% blank, or contain baked-in layout text.",
+    "files": [
+      "*-candidate.png (all nine)",
+      "assets/images/tours/tour-background.jpg (superseded by tour-photo.png)"
+    ]
+  }
+}

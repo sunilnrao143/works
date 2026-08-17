@@ -1,0 +1,10 @@
+{
+  "background": "#050B10",
+  "background_secondary": "#0B141C",
+  "gold": "#C89A4B",
+  "gold_light": "#E0B866",
+  "gold_muted": "#92703A",
+  "text": "#E6D8BC",
+  "text_muted": "#A99C84",
+  "border": "rgba(200,154,75,.45)"
+}

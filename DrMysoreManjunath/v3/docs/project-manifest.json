@@ -1,0 +1,21 @@
+{
+  "project": "Sumanth Manjunath Website Reconstruction",
+  "source_reference": "reference/original-template.jpg",
+  "principle": "Reference image is visual source of truth; UI is rebuilt as HTML/CSS/SVG.",
+  "folder_rules": {
+    "assets/images/hero": "Hero photographic/transparent assets",
+    "assets/images/about": "About portraits",
+    "assets/images/music": "Music card image crops",
+    "assets/images/tours": "Tour imagery",
+    "assets/images/common": "Reusable photographic/decorative images",
+    "assets/images/reference-crops": "Unmodified context crops for forensic reference",
+    "assets/svg/decorative": "Recreated scalable decorative artwork",
+    "assets/svg/icons": "Scalable UI icons",
+    "components": "Reusable HTML fragments",
+    "pages": "Future individual pages",
+    "css/components": "Component-specific styles",
+    "js/modules": "Behaviour modules",
+    "docs": "Asset/design documentation",
+    "prototype": "Previous prototype material"
+  }
+}

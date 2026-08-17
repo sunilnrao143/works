@@ -1,0 +1,63 @@
+/* Hero: headline, artist, temple, mandala glow, particles, wave transition. */
+
+.hero{
+  position:relative;min-height:clamp(620px,92vh,860px);
+  display:flex;align-items:center;overflow:hidden;
+  background:
+    radial-gradient(circle at 72% 40%,rgba(200,154,75,.15),transparent 30%),
+    radial-gradient(circle at 26% 62%,rgba(15,40,55,.40),transparent 38%),
+    var(--bg);
+}
+
+.hero-particles{position:absolute;inset:0;z-index:2;pointer-events:none}
+
+.hero-temple{
+  position:absolute;left:0;bottom:8%;width:clamp(78px,10vw,132px);
+  z-index:2;opacity:.92;
+}
+
+.hero-art{
+  position:absolute;right:0;bottom:0;
+  width:clamp(320px,52vw,660px);z-index:3;
+}
+
+.hero-content{position:relative;z-index:6;padding-left:var(--rail);padding-top:4rem;max-width:min(660px,60%)}
+.hero-content h1{margin-bottom:.2rem}
+.hero-content .lede{margin-block:.2rem .55rem}
+
+.hero-meta{
+  display:flex;flex-wrap:wrap;gap:.55rem;align-items:center;
+  font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light);
+  margin-bottom:1.7rem;
+}
+.hero-meta span::after{content:"·";margin-left:.55rem;opacity:.7}
+.hero-meta span:last-child::after{content:none}
+
+.hero-actions{display:flex;flex-wrap:wrap;gap:.75rem}
+
+/* module rail + promo tab ------------------------------------------------ */
+.hero-rail{position:absolute;left:0;bottom:12%;width:var(--rail);text-align:center;z-index:7;color:var(--gold-light)}
+.hero-rail b{display:block;font:400 clamp(1.7rem,2.6vw,2.5rem)/1 var(--serif)}
+.hero-rail span{display:block;font-size:.55rem;letter-spacing:.14em;color:var(--muted);margin-top:.3rem}
+
+.promo-tab{
+  position:absolute;right:0;top:50%;transform:translateY(-50%);z-index:8;
+  display:flex;flex-direction:column;align-items:center;gap:.7rem;
+  padding:1rem .5rem;border:1px solid var(--line);border-right:0;
+  background:rgba(5,11,16,.55);backdrop-filter:blur(2px);
+  transition:background .2s ease;
+}
+.promo-tab:hover,.promo-tab:focus-visible{background:rgba(200,154,75,.14)}
+.promo-tab img{width:20px;height:20px}
+.promo-tab span{
+  writing-mode:vertical-rl;font-size:.6rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--text);
+}
+
+/* wavy transition into the About module --------------------------------- */
+.hero-wave{position:absolute;left:0;right:0;bottom:-1px;z-index:7;pointer-events:none;line-height:0}
+.hero-wave img{width:100%;height:clamp(38px,5vw,74px)}
+.hero-wave .lotus{
+  position:absolute;left:50%;bottom:34%;width:clamp(42px,4.5vw,64px);
+  transform:translateX(-50%);
+}

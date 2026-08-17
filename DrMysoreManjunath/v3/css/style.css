@@ -1,0 +1,201 @@
+/* ==========================================================================
+   Sumanth Manjunath — base layer
+   Design tokens, reset, typography, buttons and shared section chrome.
+   Component rules live in css/components/*.css and load after this file.
+   ========================================================================== */
+
+:root{
+  /* palette — docs/palette.json */
+  --bg:#050B10;
+  --bg-2:#0B141C;
+  --panel:rgba(0,0,0,.24);
+  --gold:#C89A4B;
+  --gold-light:#E0B866;
+  --gold-muted:#92703A;
+  --text:#E6D8BC;
+  --muted:#A99C84;
+  --line:rgba(200,154,75,.38);
+  --line-soft:rgba(200,154,75,.18);
+
+  /* type */
+  --serif:"Playfair Display",Georgia,"Times New Roman",serif;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+
+  /* layout */
+  --max:1280px;
+  --rail:78px;          /* gutter reserved for the 01/02/03 module labels */
+  --gap:clamp(1.5rem,3vw,2.875rem);
+  --section-y:clamp(3.5rem,7vw,6rem);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--sans);
+  font-size:clamp(.9rem,.86rem + .2vw,1rem);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+img,svg{max-width:100%;display:block}
+img{height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+input{font:inherit}
+
+/* --- accessibility floor ------------------------------------------------ */
+
+:focus-visible{
+  outline:2px solid var(--gold-light);
+  outline-offset:3px;
+  border-radius:2px;
+}
+
+.skip-link{
+  position:absolute;left:8px;top:-64px;z-index:200;
+  padding:.7rem 1.1rem;background:var(--gold);color:#0B0B0B;
+  font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+  transition:top .18s ease;
+}
+.skip-link:focus{top:8px}
+
+.visually-hidden{
+  position:absolute!important;width:1px;height:1px;
+  margin:-1px;padding:0;overflow:hidden;
+  clip-path:inset(50%);white-space:nowrap;
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    animation-duration:.01ms!important;animation-iteration-count:1!important;
+    transition-duration:.01ms!important;scroll-behavior:auto!important;
+  }
+}
+
+/* --- layout primitives -------------------------------------------------- */
+
+.container{width:min(var(--max),92vw);margin-inline:auto}
+
+.section{position:relative;overflow:hidden}
+.section + .section{border-top:1px solid var(--line-soft)}
+.section-inner{padding-block:var(--section-y);padding-left:var(--rail);position:relative;z-index:2}
+
+/* module label in the left gutter — 01/02/03 is a real sequence in the
+   reference layout, so the numbering carries order, not decoration. */
+.module-label{
+  position:absolute;left:0;top:50%;transform:translateY(-50%);
+  z-index:3;color:var(--gold-light);text-align:center;width:var(--rail);
+  pointer-events:none;
+}
+.module-label b{display:block;font:400 clamp(1.6rem,2.4vw,2.4rem)/1 var(--serif)}
+.module-label span{display:block;font-size:.55rem;letter-spacing:.14em;color:var(--muted);margin-top:.35rem}
+
+/* --- typography --------------------------------------------------------- */
+
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08;margin:0}
+
+h1{
+  font-size:clamp(2.6rem,6.4vw,5.1rem);
+  font-variant-caps:small-caps;
+  letter-spacing:.012em;
+  color:var(--text);
+}
+
+h2{font-size:clamp(1.75rem,3.6vw,2.85rem);margin-block:.35rem .9rem}
+h3{font-size:1rem;letter-spacing:.03em}
+
+p{margin:0 0 1rem;color:var(--muted);max-width:62ch}
+p:last-child{margin-bottom:0}
+
+.eyebrow{
+  display:flex;align-items:center;gap:.65rem;
+  font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--gold-light);margin-bottom:.4rem;
+}
+.eyebrow::before,.eyebrow::after{content:"✦";font-size:.6rem;opacity:.75}
+.eyebrow::after{margin-left:-.2rem}
+.eyebrow--start::after{content:none}
+
+.lede{font-size:.86rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text)}
+
+.rule{width:min(360px,100%);height:16px;opacity:.9;margin:1.1rem 0}
+
+/* --- buttons ------------------------------------------------------------ */
+
+.btn{
+  display:inline-flex;align-items:center;gap:.6rem;
+  padding:.8rem 1.25rem;border:1px solid var(--gold);
+  font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--text);background:rgba(200,154,75,.07);
+  transition:background .2s ease,color .2s ease,border-color .2s ease;
+}
+.btn img{width:15px;height:15px;flex:none}
+.btn:hover,.btn:focus-visible{background:rgba(200,154,75,.18);border-color:var(--gold-light)}
+
+.btn--primary{background:var(--gold);color:#0B0B0B;border-color:var(--gold);font-weight:500}
+.btn--primary img{filter:brightness(0) saturate(100%)}
+.btn--primary:hover,.btn--primary:focus-visible{background:var(--gold-light);border-color:var(--gold-light);color:#0B0B0B}
+
+.btn--sm{padding:.55rem .85rem;font-size:.58rem;letter-spacing:.12em}
+
+/* pill "view all" control that sits on the section's closing rule */
+.btn-pill{
+  display:inline-flex;align-items:center;gap:.7rem;
+  padding:.75rem 2rem;border:1px solid var(--gold);
+  background:var(--bg);color:var(--text);
+  font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;
+  clip-path:polygon(14px 0,calc(100% - 14px) 0,100% 50%,calc(100% - 14px) 100%,14px 100%,0 50%);
+  transition:background .2s ease;
+}
+.btn-pill:hover,.btn-pill:focus-visible{background:rgba(200,154,75,.14)}
+.btn-pill img{width:15px;height:15px}
+
+.pill-row{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:2.4rem}
+.pill-row::before,.pill-row::after{content:"";flex:1;max-width:210px;height:1px;background:linear-gradient(90deg,transparent,var(--line))}
+.pill-row::after{background:linear-gradient(270deg,transparent,var(--line))}
+
+/* --- decorative corners (shared) ---------------------------------------- */
+
+.corner{
+  position:absolute;width:clamp(80px,9vw,150px);aspect-ratio:160/200;
+  background:url("../assets/svg/decorative/corner-floral.svg") no-repeat center/contain;
+  opacity:.42;pointer-events:none;z-index:1;
+}
+.corner--tl{top:0;left:0}
+.corner--tr{top:0;right:0;transform:scaleX(-1)}
+.corner--br{bottom:0;right:0;transform:scale(-1)}
+
+/* --- scroll reveal (progressive enhancement; JS adds .is-in) ------------- */
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.is-in{opacity:1;transform:none}
+.no-js .reveal{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+
+/* --- interior page header band (pages/*.html) ---------------------------- */
+.page-head{
+  position:relative;padding-block:clamp(7rem,14vh,10rem) clamp(2.5rem,5vw,4rem);
+  background:radial-gradient(circle at 68% 46%,rgba(200,154,75,.13),transparent 34%),var(--bg);
+  border-bottom:1px solid var(--line-soft);overflow:hidden;
+}
+.page-head .container{position:relative;z-index:3}
+.page-head h1{font-size:clamp(2.1rem,5vw,3.6rem)}
+.page-head .rule{margin-top:1rem}
+.breadcrumb{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:.8rem}
+.breadcrumb a:hover{color:var(--gold-light)}
+
+.page-body{padding-block:var(--section-y)}
+.page-body h2{font-size:clamp(1.4rem,2.6vw,2rem)}
+.placeholder-note{
+  border:1px dashed var(--line);background:var(--panel);
+  padding:1.25rem 1.4rem;margin-top:1.5rem;
+}
+.placeholder-note p{font-size:.8rem;margin:0}
+.placeholder-note b{color:var(--gold-light);font-weight:600}

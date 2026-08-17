@@ -1,0 +1,34 @@
+/* Footer: brand, contact, follow, newsletter, colophon. */
+
+.footer{position:relative;background:var(--bg-2);border-top:1px solid var(--line-soft)}
+.footer .container{position:relative;z-index:2}
+
+.footer-grid{
+  display:grid;grid-template-columns:1.25fr 1fr .8fr 1.2fr;gap:var(--gap);
+  padding-block:clamp(2.5rem,5vw,3.6rem) 1.6rem;
+}
+.footer h2{font-size:.68rem;font-family:var(--sans);font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light);margin:0 0 .7rem}
+.footer p{font-size:.78rem;line-height:1.6}
+
+.footer-brand{display:flex;align-items:flex-start;gap:12px}
+
+.newsletter form{display:flex;align-items:center;border:1px solid var(--line);margin-top:.8rem}
+.newsletter input{
+  flex:1;min-width:0;padding:.75rem .85rem;
+  background:transparent;border:0;color:var(--text);font-size:.76rem;
+}
+.newsletter input::placeholder{color:var(--muted)}
+.newsletter input:focus{outline:none}
+.newsletter form:focus-within{border-color:var(--gold-light)}
+.newsletter button{display:grid;place-items:center;padding:.6rem .85rem;border-left:1px solid var(--line-soft)}
+.newsletter button:hover{background:rgba(200,154,75,.14)}
+.newsletter button img{width:17px;height:17px}
+.form-note{margin-top:.55rem;font-size:.66rem;color:var(--muted);min-height:1.1em}
+
+.colophon{
+  display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;justify-content:space-between;align-items:center;
+  border-top:1px solid var(--line-soft);padding-block:1rem 1.2rem;
+  font-size:.66rem;color:var(--muted);
+}
+.colophon span{display:inline-flex;align-items:center;gap:.4rem}
+.colophon img{width:13px;height:13px;display:inline-block}

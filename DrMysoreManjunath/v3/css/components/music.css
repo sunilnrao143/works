@@ -1,0 +1,36 @@
+/* Music: five-card collaboration set with scroll controls. */
+
+.music{background:var(--bg-2)}
+.music-head{text-align:center;display:grid;justify-items:center}
+.music-head .eyebrow{justify-content:center}
+.music-head p{margin-top:.35rem;font-size:.86rem}
+
+.music-rail{position:relative;margin-top:2.2rem}
+
+.music-grid{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:14px;
+  scrollbar-width:thin;scrollbar-color:var(--line) transparent;
+}
+
+.music-card{
+  border:1px solid var(--line-soft);background:#081019;overflow:hidden;
+  transition:border-color .25s ease,transform .25s ease;
+}
+.music-card:hover{border-color:var(--line);transform:translateY(-4px)}
+.music-card img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.music-card-body{padding:.85rem .75rem 1.1rem;text-align:center}
+.music-card h3{font-size:.92rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text)}
+.music-card p{margin:.4rem 0 0;font-size:.7rem;line-height:1.45;color:var(--muted);max-width:none}
+
+/* carousel controls — only shown when the rail actually scrolls */
+.rail-btn{
+  position:absolute;top:38%;z-index:5;display:none;place-items:center;
+  width:36px;height:36px;border-radius:50%;
+  border:1px solid var(--line);background:rgba(5,11,16,.85);
+}
+.rail-btn[data-visible="true"]{display:grid}
+.rail-btn:hover{border-color:var(--gold-light);background:rgba(200,154,75,.16)}
+.rail-btn img{width:17px;height:17px}
+.rail-btn--prev{left:-14px}
+.rail-btn--next{right:-14px}
+.rail-btn[disabled]{opacity:.3;cursor:default}

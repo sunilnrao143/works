@@ -1,0 +1,30 @@
+/* Tours: five date cards in a single row plus the tour photograph. */
+
+.tours{position:relative;background:var(--bg)}
+.tours-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:1.8rem}
+.tours-head .lede{font-size:.72rem;letter-spacing:.14em;color:var(--muted)}
+
+.tours-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(200px,286px);gap:var(--gap);align-items:stretch}
+
+.tour-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+
+.tour-card{
+  border:1px solid var(--line-soft);background:rgba(7,16,25,.85);
+  padding:.9rem .85rem 1rem;display:flex;flex-direction:column;
+  transition:border-color .25s ease;
+}
+.tour-card:hover{border-color:var(--line)}
+
+.tour-when{display:flex;align-items:baseline;gap:.5rem;border-bottom:1px solid var(--line-soft);padding-bottom:.6rem}
+.tour-day{font:400 1.75rem/1 var(--serif);color:var(--gold-light)}
+.tour-month{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.tour-month span{display:block}
+
+.tour-where{margin-top:.6rem}
+.tour-city{font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text)}
+.tour-country{display:block;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:.2rem}
+.tour-venue{margin:.55rem 0 0;font-size:.68rem;line-height:1.45;color:var(--muted);max-width:none;flex:1}
+.tour-card .btn{margin-top:.9rem;justify-content:center}
+
+.tour-photo{position:relative;min-height:300px;overflow:hidden}
+.tour-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% 50%}

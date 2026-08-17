@@ -1,0 +1,91 @@
+/* ==========================================================================
+   Responsive art direction. Loads last so it wins the cascade.
+   Breakpoints: 1180 (rail collapse) · 1000 (tablet) · 700 (mobile)
+   ========================================================================== */
+
+/* --- 1180: pull in the module-label gutter ------------------------------- */
+@media (max-width:1180px){
+  :root{--rail:56px}
+  .tour-grid{grid-template-columns:repeat(3,1fr)}
+  .tours-layout{grid-template-columns:minmax(0,1fr) minmax(180px,240px)}
+}
+
+/* --- 1000: tablet -------------------------------------------------------- */
+@media (max-width:1000px){
+  .navlinks{display:none}
+  .menu-toggle{display:inline-flex}
+  .site-header .socials{display:none}
+  .site-header .container{justify-content:space-between}
+
+  .hero-content{max-width:none;width:100%;padding-top:6.5rem}
+  .hero-art{width:min(72vw,520px);opacity:.55}
+  .promo-tab{display:none}
+
+  .about-grid{grid-template-columns:minmax(190px,236px) minmax(0,1fr)}
+  .traits{grid-column:1/-1}
+
+  .music-grid{grid-template-columns:repeat(3,1fr)}
+
+  .tours-layout{grid-template-columns:1fr}
+  .tour-photo{min-height:230px;order:-1}
+
+  .footer-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+/* --- 700: mobile --------------------------------------------------------- */
+@media (max-width:700px){
+  :root{--rail:0px}
+
+  .section-inner{padding-left:0}
+  .module-label{
+    position:static;transform:none;width:auto;text-align:left;
+    display:flex;align-items:baseline;gap:.5rem;margin-bottom:1rem;
+  }
+  .module-label b{font-size:1.5rem}
+  .module-label span{margin-top:0;font-size:.56rem}
+
+  /* hero: artist becomes an ambient backdrop so the headline stays legible */
+  .hero{min-height:auto;padding-block:7.5rem 4.5rem;align-items:flex-start}
+  .hero-content{padding-left:0;padding-top:0}
+  .hero-art{width:118vw;right:-26vw;bottom:0;opacity:.3}
+  .hero-temple{width:74px;bottom:2%;opacity:.5}
+  .hero-rail{position:static;width:auto;text-align:left;display:flex;align-items:baseline;gap:.5rem;margin-bottom:1.4rem}
+  .hero-rail b{font-size:1.5rem}
+  .hero-rail span{margin-top:0}
+  .hero-actions .btn{flex:1 1 auto;justify-content:center}
+  .rule{width:100%}
+
+  /* about */
+  .about-grid{grid-template-columns:1fr;gap:2rem}
+  .portrait{max-width:290px;margin-inline:auto}
+  .stats{grid-template-columns:repeat(2,1fr);gap:1.4rem 1rem}
+
+  /* dense card sets scroll horizontally rather than stacking */
+  .music-grid,.tour-grid{
+    display:flex;gap:12px;overflow-x:auto;
+    scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    padding-bottom:.75rem;margin-inline:-4vw;padding-inline:4vw;
+  }
+  .music-card{min-width:min(74vw,240px);scroll-snap-align:start}
+  .tour-card{min-width:min(62vw,210px);scroll-snap-align:start}
+  .rail-btn{display:none!important}
+
+  .tours-head{display:block}
+  .tours-head .lede{margin-top:.5rem}
+
+  .footer-grid{grid-template-columns:1fr;gap:2rem}
+  .colophon{justify-content:flex-start}
+}
+
+/* --- fine pointer only: hide scrollbars on snap rails -------------------- */
+@media (hover:hover){
+  .music-grid::-webkit-scrollbar,.tour-grid::-webkit-scrollbar{height:6px}
+  .music-grid::-webkit-scrollbar-thumb,.tour-grid::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px}
+}
+
+/* --- print ---------------------------------------------------------------- */
+@media print{
+  .site-header,.drawer,.promo-tab,.hero-particles,.rail-btn,.corner{display:none!important}
+  body{background:#fff;color:#111}
+  .section{border:0}
+}

@@ -1,0 +1,64 @@
+/* Header: brand lockup, primary navigation, social row, mobile drawer. */
+
+.site-header{position:absolute;inset:0 0 auto;z-index:40;padding-block:18px}
+.site-header .container{display:flex;align-items:center;gap:clamp(12px,2vw,28px)}
+
+/* brand ------------------------------------------------------------------ */
+.brand{display:flex;align-items:center;gap:12px;flex:none}
+.brand-mark{width:38px;height:38px;opacity:.95}
+.brand-name{font-family:var(--serif);font-size:1.12rem;line-height:1.06;color:var(--text)}
+.brand-role{display:block;font-size:.46rem;letter-spacing:.28em;color:var(--muted);margin-top:5px;text-transform:uppercase}
+
+/* nav -------------------------------------------------------------------- */
+.navlinks{display:flex;gap:clamp(14px,2vw,30px);margin-inline:auto}
+.navlinks a{
+  position:relative;padding-block:6px;
+  font-size:.68rem;letter-spacing:.11em;text-transform:uppercase;color:var(--text);
+  transition:color .2s ease;
+}
+.navlinks a:hover{color:var(--gold-light)}
+.navlinks a::after{
+  content:"";position:absolute;left:0;right:0;bottom:-3px;height:1px;
+  background:var(--gold);transform:scaleX(0);transition:transform .25s ease;
+}
+.navlinks a:hover::after,.navlinks a[aria-current="page"]::after{transform:scaleX(1)}
+/* active link carries the centre dot from the reference */
+.navlinks a[aria-current="page"]{color:var(--gold-light)}
+.navlinks a[aria-current="page"]::before{
+  content:"";position:absolute;left:50%;bottom:-6px;width:5px;height:5px;
+  margin-left:-2.5px;border:1px solid var(--gold);border-radius:50%;background:var(--bg);
+}
+
+/* socials ---------------------------------------------------------------- */
+.socials{display:flex;gap:9px;flex:none}
+.socials a{
+  display:grid;place-items:center;width:30px;height:30px;border-radius:50%;
+  border:1px solid var(--line);transition:border-color .2s ease,background .2s ease;
+}
+.socials a:hover,.socials a:focus-visible{border-color:var(--gold-light);background:rgba(200,154,75,.12)}
+.socials img{width:15px;height:15px}
+
+/* mobile drawer ---------------------------------------------------------- */
+.menu-toggle{
+  display:none;align-items:center;gap:.5rem;flex:none;
+  padding:.5rem .8rem;border:1px solid var(--line);
+  font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text);
+}
+.menu-toggle:hover{border-color:var(--gold)}
+
+.drawer{
+  position:fixed;inset:0;z-index:60;display:none;
+  background:rgba(3,7,11,.97);
+  padding:clamp(3rem,10vh,6rem) 8vw;
+  overflow-y:auto;
+}
+.drawer[data-open="true"]{display:block}
+.drawer-close{position:absolute;top:20px;right:6vw;font-size:1.6rem;line-height:1;color:var(--gold-light)}
+.drawer nav{display:flex;flex-direction:column;gap:.35rem;margin-bottom:2.5rem}
+.drawer nav a{
+  padding:.85rem 0;border-bottom:1px solid var(--line-soft);
+  font-family:var(--serif);font-size:1.4rem;color:var(--text);
+}
+.drawer nav a:hover{color:var(--gold-light)}
+.drawer .socials{justify-content:flex-start}
+body[data-drawer="open"]{overflow:hidden}

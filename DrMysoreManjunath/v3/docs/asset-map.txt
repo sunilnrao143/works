@@ -1,0 +1,27 @@
+ASSET MAP  (live paths — regenerate if the tree moves)
+======================================================
+
+HERO
+- assets/images/hero/hero-artist.png ....... foreground artist + mandala glow (RGBA, feathered)
+- assets/images/hero/temple.png ............ left landmark (RGBA, feathered)
+- assets/svg/decorative/mandala.svg ........ traced ornament, reusable
+- assets/svg/decorative/wave-divider.svg ... hero -> about transition
+- assets/svg/decorative/lotus.svg .......... medallion on the wave crest
+
+ABOUT
+- assets/images/about/about-portrait.jpg ... portrait, arched frame included
+- assets/svg/decorative/diamond-rule.svg ... heading separator
+
+MUSIC
+- assets/images/music/music-01..05.jpg ..... photo only; card titles are HTML
+
+TOURS
+- assets/images/tours/tour-photo.png ....... right-hand visual (RGBA, feathered)
+
+COMMON
+- assets/svg/decorative/corner-floral.svg .. mirrored into all four corners via CSS
+- assets/svg/icons/*.svg ................... 18 icons incl. logo-violin, spotify, chevrons
+
+REFERENCE ONLY — never shipped to the page
+- reference/original-template.jpg .......... visual source of truth
+- assets/images/reference-crops/*.jpg ...... forensic context crops
