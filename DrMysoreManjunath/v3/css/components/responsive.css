@@ -17,9 +17,17 @@
   .site-header .socials{display:none}
   .site-header .container{justify-content:space-between}
 
-  .hero-content{max-width:none;width:100%;padding-top:6.5rem}
-  .hero-art{width:min(72vw,520px);opacity:.55}
+  /* keep .container's 92vw + auto margins; width:100% would full-bleed it.
+     Cap the text column so the headline clears the artist instead of running
+     across him — the figure's feathered left edge covers the overlap. */
+  .hero-content{max-width:min(520px,56%);padding-top:6.5rem}
+  .hero-figure{width:min(58vw,450px)}
+  .hero-art{opacity:.6}
   .promo-tab{display:none}
+  /* the temple sits under the 01 module rail at this width and both become
+     unreadable — the artist carries the composition here */
+  .hero-temple{display:none}
+  .hero{min-height:min(80vh,720px)}
 
   .about-grid{grid-template-columns:minmax(190px,236px) minmax(0,1fr)}
   .traits{grid-column:1/-1}
@@ -27,7 +35,10 @@
   .music-grid{grid-template-columns:repeat(3,1fr)}
 
   .tours-layout{grid-template-columns:1fr}
-  .tour-photo{min-height:230px;order:-1}
+  .tour-photo{min-height:200px;order:-1}
+  /* the source crop is only 246px wide — frame the figure rather than
+     upscaling into a blurry close-up of the violin */
+  .tour-photo img{object-position:44% 26%}
 
   .footer-grid{grid-template-columns:repeat(2,1fr)}
 }
@@ -43,16 +54,59 @@
   }
   .module-label b{font-size:1.5rem}
   .module-label span{margin-top:0;font-size:.56rem}
+  /* the label is now inline, so the section no longer needs a full top pad */
+  .section-inner{padding-top:2.25rem}
 
-  /* hero: artist becomes an ambient backdrop so the headline stays legible */
-  .hero{min-height:auto;padding-block:7.5rem 4.5rem;align-items:flex-start}
-  .hero-content{padding-left:0;padding-top:0}
-  .hero-art{width:118vw;right:-26vw;bottom:0;opacity:.3}
-  .hero-temple{width:74px;bottom:2%;opacity:.5}
-  .hero-rail{position:static;width:auto;text-align:left;display:flex;align-items:baseline;gap:.5rem;margin-bottom:1.4rem}
-  .hero-rail b{font-size:1.5rem}
+  /* Hero, mobile: image-first. On a phone the artist is the hero — showing him
+     at 22% behind a wall of text made the whole module unreadable. Column flex
+     lets the figure lead, with a scrim dissolving it into the headline. */
+  /* align-items:stretch is required — .hero inherits center, which would
+     shrink-wrap and centre the module rail instead of left-aligning it. */
+  .hero{display:flex;flex-direction:column;align-items:stretch;
+        min-height:auto;padding:0 0 2.75rem}
+
+  .hero-figure{
+    order:-1;position:relative;right:auto;bottom:auto;
+    width:100%;height:min(56vh,430px);min-height:280px;
+    margin-bottom:1.5rem;
+  }
+  .hero-art{width:100%;height:100%;object-fit:cover;object-position:50% 8%;opacity:1}
+  /* top scrim keeps the logo and MENU legible over the photograph */
+  .hero-figure::before{
+    content:"";position:absolute;inset:0 0 auto;height:30%;z-index:1;
+    background:linear-gradient(180deg,rgba(5,11,16,.75),transparent);
+    pointer-events:none;
+  }
+  /* bottom scrim dissolves the crop edge into the page */
+  .hero-figure::after{
+    content:"";position:absolute;inset:auto 0 -2px;height:52%;z-index:1;
+    background:linear-gradient(180deg,transparent,rgba(5,11,16,.55) 45%,
+               rgba(5,11,16,.92) 78%,var(--bg) 97%);
+    pointer-events:none;
+  }
+
+  .hero-content{order:1;padding-left:0;padding-top:0;max-width:none}
+  .hero-content h1{font-size:clamp(1.75rem,7.4vw,2.35rem);letter-spacing:.005em}
+  .hero-content .lede{font-size:.7rem;letter-spacing:.12em}
+  .hero-content .rule{margin:.85rem 0 .7rem}
+
+  .hero-meta{font-size:.58rem;letter-spacing:.12em;margin-bottom:1.15rem;gap:.35rem}
+
+  .hero-actions{order:1;gap:.55rem}
+  .hero-actions .btn{flex:1 1 100%;justify-content:center;padding:.72rem 1rem;font-size:.62rem}
+
+  .hero-rail{
+    order:2;position:static;width:auto;text-align:left;
+    display:flex;align-items:baseline;gap:.5rem;
+    margin:1.4rem 0 0;padding-left:4vw;
+  }
+  .hero-rail b{font-size:1.3rem}
   .hero-rail span{margin-top:0}
-  .hero-actions .btn{flex:1 1 auto;justify-content:center}
+
+  /* the temple reads as a dark smudge at this size — the figure carries it */
+  .hero-temple{display:none}
+  .hero-particles{height:min(56vh,430px)}
+  .hero-wave img{height:30px}
   .rule{width:100%}
 
   /* about */

@@ -13,9 +13,6 @@
 <meta property="og:image" content="assets/images/reference-crops/01-hero-master.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap">
 
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/components/header.css">
@@ -92,9 +89,17 @@
     <img class="hero-temple" src="assets/images/hero/temple.png" alt=""
          width="116" height="226" aria-hidden="true">
     <canvas class="hero-particles" data-particles aria-hidden="true"></canvas>
-    <img class="hero-art" src="assets/images/hero/hero-artist.png"
-         alt="Sumanth Manjunath performing on the Carnatic violin"
-         width="456" height="434" fetchpriority="high" decoding="async">
+    <div class="hero-figure">
+      <picture>
+        <source media="(max-width:700px)" type="image/webp"
+                srcset="assets/images/hero/hero-artist-mobile.webp">
+        <source media="(max-width:700px)"
+                srcset="assets/images/hero/hero-artist-mobile.jpg">
+        <img class="hero-art" src="assets/images/hero/hero-artist.png"
+             alt="Sumanth Manjunath performing on the Carnatic violin"
+             width="456" height="434" fetchpriority="high" decoding="async">
+      </picture>
+    </div>
 
     <div class="container hero-content">
       <h1>A Legacy<br>of Strings.<br>A Voice Without<br>Borders.</h1>

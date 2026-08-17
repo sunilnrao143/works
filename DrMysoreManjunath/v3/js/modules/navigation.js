@@ -41,8 +41,13 @@ window.SM.navigation = function initNavigation(){
 
   var map = {};
   links.forEach(function(a){
-    var el = document.querySelector(a.getAttribute('href'));
-    if (el) map[el.id] = a;
+    var href = a.getAttribute('href');
+    // '#' alone is not a valid selector and throws — skip placeholder links
+    if (!href || href.length < 2) return;
+    var el = null;
+    try { el = document.querySelector(href); } catch (e) { return; }
+    // first link to a section wins; a later duplicate must not steal it
+    if (el && el.id && !map[el.id]) map[el.id] = a;
   });
 
   var spy = new IntersectionObserver(function(entries){

@@ -87,6 +87,53 @@ of view or the tab is hidden.
 
 ---
 
+## Mobile fixes (verified in headless Chromium at 360/390/820/1440)
+
+Earlier mobile passes were written without a browser. With one, four real bugs:
+
+1. **The hero was `display:flex`, and the mobile rule made `.hero-rail` static** —
+   so it became a *flex sibling*, sitting at x=285 and stealing 105px. The
+   headline was squeezed to 285px, flush at x=0, breaking into 5 cramped lines.
+   The hero is now `display:block` below 700px.
+2. **`.hero-content{width:100%}` at the 1000px breakpoint overrode `.container`'s
+   `92vw`**, so the hero alone ran edge-to-edge while every other section had
+   margins. Removed — hero now sits on the same grid (x=16, w=359 at 390px).
+3. **The scroll-reveal could strand whole sections blank.** It now triggers 300px
+   early, is visible by default (JS opts *in* via `html.js-reveal`), and has a
+   4s safety net. Content beats animation.
+4. **`querySelector('#')` threw**, killing the whole navigation module — which
+   meant the mobile drawer button did nothing. Guarded.
+
+Also: fonts are now **self-hosted** in `assets/fonts/` (6 woff2, SIL OFL) with no
+third-party request; the headline was scaled from 82px to reference proportions
+(~62px at 1440) so it breaks into 4 lines as designed; the tour photo is reframed
+on mobile rather than upscaling into a blurry close-up; and a duplicate nav link
+no longer steals the active state from Home.
+
+Verified: no horizontal overflow, zero console errors, all reveals fire, at
+360x780, 390x844, 820x1180 and 1440x900.
+
+## Mobile hero redesign
+
+The first mobile build put the artist at 22% opacity as a backdrop behind the
+headline. On a phone that made the hero a wall of text with an invisible subject
+— the opposite of what the reference is doing.
+
+It is now **image-first**: the hero is a column flex, an art-directed portrait
+crop leads, and the headline sits beneath it.
+
+- **`assets/images/hero/hero-artist-mobile.jpg|webp`** — a separate crop framing
+  the face, violin and mandala, served via `<picture media="(max-width:700px)">`.
+  This is the art direction `docs/asset-extraction-guide.md` §4 asked for.
+- The crop is **extended upward with a graded fade** so the brand lockup has
+  clear space instead of sitting on his hair.
+- Scrims top and bottom keep the header legible and dissolve the crop edge.
+- Headline down to `clamp(1.75rem,7.4vw,2.35rem)`; buttons and meta reduced.
+- `.hero` needed explicit `align-items:stretch` — it inherits `center`, which was
+  shrink-wrapping and centring the `01` module rail.
+- Tablet: the text column is capped at 56% so the headline clears the artist, and
+  the temple is hidden where it collided with the module rail.
+
 ## What still needs you
 
 - **Tour dates are May–Aug 2024** — two years stale. Real dates needed.

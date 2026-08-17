@@ -1,3 +1,11 @@
+/* self-hosted webfonts (SIL OFL 1.1) */
+@font-face{font-family:"Playfair Display";src:url("../assets/fonts/playfair-display-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Playfair Display";src:url("../assets/fonts/playfair-display-latin-500-normal.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Playfair Display";src:url("../assets/fonts/playfair-display-latin-600-normal.woff2") format("woff2");font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:"Inter";src:url("../assets/fonts/inter-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Inter";src:url("../assets/fonts/inter-latin-500-normal.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Inter";src:url("../assets/fonts/inter-latin-600-normal.woff2") format("woff2");font-weight:600;font-style:normal;font-display:swap}
+
 /* ==========================================================================
    Sumanth Manjunath — base layer
    Design tokens, reset, typography, buttons and shared section chrome.
@@ -102,7 +110,7 @@ input{font:inherit}
 h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08;margin:0}
 
 h1{
-  font-size:clamp(2.6rem,6.4vw,5.1rem);
+  font-size:clamp(2.6rem,4.6vw,4.15rem);
   font-variant-caps:small-caps;
   letter-spacing:.012em;
   color:var(--text);
@@ -174,10 +182,14 @@ p:last-child{margin-bottom:0}
 
 /* --- scroll reveal (progressive enhancement; JS adds .is-in) ------------- */
 
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
-.reveal.is-in{opacity:1;transform:none}
-.no-js .reveal{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+/* Visible by default. JS opts in by adding .js-reveal to <html>, so if the
+   script never runs the content is still on screen. */
+.reveal{opacity:1;transform:none}
+html.js-reveal .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+html.js-reveal .reveal.is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html.js-reveal .reveal{opacity:1;transform:none}
+}
 
 /* --- interior page header band (pages/*.html) ---------------------------- */
 .page-head{

@@ -16,12 +16,13 @@
   z-index:2;opacity:.92;
 }
 
-.hero-art{
-  position:absolute;right:0;bottom:0;
-  width:clamp(320px,52vw,660px);z-index:3;
+.hero-figure{
+  position:absolute;right:0;bottom:0;z-index:3;
+  width:clamp(320px,52vw,660px);
 }
+.hero-art{width:100%}
 
-.hero-content{position:relative;z-index:6;padding-left:var(--rail);padding-top:4rem;max-width:min(660px,60%)}
+.hero-content{position:relative;z-index:6;padding-left:var(--rail);padding-top:4rem;max-width:min(720px,62%)}
 .hero-content h1{margin-bottom:.2rem}
 .hero-content .lede{margin-block:.2rem .55rem}
 
