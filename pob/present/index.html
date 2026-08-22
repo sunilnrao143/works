@@ -329,7 +329,7 @@ a{color:inherit}
   display:block;font-family:var(--display);font-style:italic;font-weight:500;
   font-size:1.02rem;color:var(--turmeric);margin-bottom:7px;
 }
-.notlist span{font-size:.78rem;line-height:1.5;color:var(--cream-70)}
+.notlist span{font-size:.78rem;line-height:1.5;}
 
 /* II · REACH */
 .c-reach{background:var(--paper)}
@@ -594,6 +594,14 @@ a{color:inherit}
   font-family:var(--body);font-weight:600;
   font-size:.76rem;line-height:1.32;color:var(--ink);
 }
+.assoc__list--lead{
+  display:flex;justify-content:center;
+  margin-left:auto;margin-right:auto;
+}
+.assoc__list--lead li{
+  width:clamp(130px,15vw,180px);
+  flex:0 0 auto;
+}
 @media (max-width:1080px){.assoc__list{grid-template-columns:repeat(5,1fr)}}
 @media (max-width:768px){.assoc__list{grid-template-columns:repeat(4,1fr)}}
 @media (max-width:480px){.assoc__list{grid-template-columns:repeat(3,1fr)}.assoc__name{font-size:.7rem}}
@@ -606,6 +614,7 @@ a{color:inherit}
   .assoc__list li{gap:6px}
   .assoc__name{font-size:10.4px;line-height:1.28}
   .fig .num{font-size:26px;margin-bottom:6px}
+  .assoc__list--lead li{width:110px}
 }
 
 /* ═══ PRINT — exactly two A4 sheets ════════════════════════
@@ -722,6 +731,7 @@ a{color:inherit}
   .pav,.imp,.fig,.zone,.tier,.notlist li,.chan{break-inside:avoid}
   h2,h3{break-after:avoid}
 }
+
 </style>
 </head>
 <body>
@@ -785,7 +795,7 @@ a{color:inherit}
         <p>Sri Krishna Vihar and Tripuravasini give a combined indoor–outdoor footprint at Palace Grounds — twelve pavilions plus the shared spaces that hold the crowd between them.</p>
         <dl class="hours">
           <div><dt>Open daily</dt><dd>10:00 AM – 10:30 PM</dd></div>
-          <div><dt>Seminars</dt><dd>10:00 AM – 6:00 PM</dd></div>
+          <div><dt>Seminars</dt><dd>10:00 AM – 2:00 PM</dd></div>
           <div><dt>Main stage address</dt><dd>5:00 – 6:00 PM</dd></div>
           <div><dt>Cultural programme</dt><dd>7:00 – 9:30 PM</dd></div>
           <div><dt>Valediction</dt><dd>Sunday, 21 February 2027</dd></div>
@@ -935,8 +945,8 @@ a{color:inherit}
   <section class="band assoc">
     <div class="wrap">
       <div class="assoc__head">
-        <span class="eyebrow assoc__eye">In association with</span> <h4><em>Leab By</em> </h4>
-          <ul class="assoc__list">
+        <h4><em>Lead By</em> </h4>
+          <ul class="assoc__list assoc__list--lead">
             <li>
               <span class="assoc__logo">
                 <img src="logos/15.png" alt="Swadeshi Jagaran Manch logo" onerror="this.remove()">
@@ -945,6 +955,7 @@ a{color:inherit}
             </li>
           </ul>
           <br/><br/>
+          <span class="eyebrow assoc__eye">In association with</span> 
         <h2>Multiple organisations, <em>one purpose.</em></h2>
       </div>
       <ul class="assoc__list">
@@ -1042,7 +1053,7 @@ a{color:inherit}
   <footer class="close">
     <div class="close__top">
       <span class="eyebrow">Partner with us</span>
-      <h2>Sponsorship here is not advertising. It is <b>participation in a civilisational responsibility.</b></h2>
+      <h2>Sponsorship here is not only about advertising. It is <b>participation in a civilisational responsibility.</b></h2>
     </div>
 
     <div class="tiers">
