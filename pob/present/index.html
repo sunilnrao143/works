@@ -426,7 +426,7 @@ a{color:inherit}
   padding:clamp(20px,2.6vw,30px) 0 clamp(26px,3.4vw,40px);
   display:flex;flex-wrap:wrap;gap:22px;justify-content:space-between;align-items:flex-end;
 }
-.colophon__l{max-width:66ch}
+.colophon__l{max-width:46ch}
 .colophon__l b{display:block;font-family:var(--display);font-weight:600;font-size:1.05rem;margin-bottom:5px}
 .colophon__l p{margin:0;font-size:.78rem;color:var(--cream-70);line-height:1.55}
 .colophon__r{text-align:right;font-size:.75rem;color:var(--cream-42);line-height:1.6}
@@ -489,6 +489,123 @@ a{color:inherit}
 }
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   READABILITY PASS
+   Bodoni Moda is a high-contrast didone — its hairline strokes
+   thin out and vanish at small sizes. It is now reserved for
+   large display type only. Everything small, and every number,
+   is set in Karla (plain sans) at a heavier weight.
+   ═══════════════════════════════════════════════════════════ */
+
+/* numerals — the Reach figures were the worst offenders */
+.num{
+  font-family:var(--body);font-weight:800;
+  font-variant-numeric:lining-nums tabular-nums;
+  line-height:1;letter-spacing:-.01em;
+}
+.fig .num{
+  font-size:clamp(1.85rem,3.5vw,2.6rem);
+  letter-spacing:-.02em;margin-bottom:10px;
+}
+.fig .num sub{
+  font-family:var(--body);font-size:.4em;font-weight:800;
+  letter-spacing:.08em;margin-left:5px;
+}
+.tier .num{font-size:1.05rem;letter-spacing:.06em}
+
+/* small text → plain sans, heavier, larger */
+.factbar dd{font-family:var(--body);font-weight:700;font-size:clamp(1rem,1.42vw,1.18rem);letter-spacing:-.005em}
+.factbar dd small{font-size:.78rem;line-height:1.45;margin-top:5px}
+.factbar dt{font-size:.62rem;letter-spacing:.18em}
+
+.pav__no{font-family:var(--body);font-weight:800;font-size:.78rem;letter-spacing:.1em}
+.pav h3{font-family:var(--body);font-weight:700;font-size:clamp(.96rem,1.2vw,1.06rem);line-height:1.28;letter-spacing:0}
+.pav__alt{font-family:var(--body);font-style:normal;font-weight:600;font-size:.78rem;letter-spacing:.02em}
+.pav p{font-size:.845rem;line-height:1.52}
+
+.zone b{font-family:var(--body);font-weight:700;font-size:.94rem;line-height:1.3}
+.zone span{font-size:.8rem;line-height:1.5}
+.hours div{font-size:.86rem}
+
+.chan b{font-family:var(--body);font-weight:700;font-size:.96rem;line-height:1.3}
+.chan p{font-size:.845rem;line-height:1.55}
+.fig b{font-size:.82rem;letter-spacing:.01em}
+.fig span{font-size:.775rem;line-height:1.45}
+
+.imp > b{font-family:var(--body);font-weight:700;font-size:1rem;line-height:1.3}
+.imp > p{font-size:.845rem;line-height:1.55}
+.imp li{font-size:.83rem;line-height:1.5}
+
+.notlist b{font-family:var(--body);font-style:normal;font-weight:700;font-size:.96rem}
+.notlist span{font-size:.83rem;line-height:1.55}
+.c-why__body{font-size:.945rem;line-height:1.6}
+
+.tier b{font-family:var(--body);font-weight:600;font-size:.88rem;line-height:1.3}
+.colophon__l b{font-family:var(--body);font-weight:700;font-size:.98rem}
+.colophon__l p{font-size:.83rem;line-height:1.6}
+.colophon__r{font-size:.8rem}
+
+/* eyebrows: less tracking, a touch larger */
+.eyebrow{font-size:.68rem;letter-spacing:.16em}
+.csr span.eyebrow{font-size:.68rem;letter-spacing:.16em}
+.csr span{font-size:.79rem}
+.sechead p{font-size:clamp(.92rem,1.1vw,1rem)}
+.p2head p{font-size:.93rem}
+
+/* ── IN ASSOCIATION WITH ───────────────────────────────── */
+.assoc{background:var(--paper)}
+.assoc__head{text-align:center;margin-bottom:clamp(24px,3vw,36px)}
+.assoc__eye{display:block;color:var(--sindoor);margin-bottom:11px}
+.assoc__head h2{
+  font-family:var(--display);font-weight:500;margin:0;
+  font-size:clamp(1.5rem,3vw,2.35rem);line-height:1.04;letter-spacing:-.02em;
+}
+.assoc__head h2 em{font-style:italic;color:var(--sindoor)}
+.assoc__list{
+  list-style:none;margin:0;padding:0;
+  display:grid;grid-template-columns:repeat(7,1fr);
+  gap:clamp(12px,1.6vw,22px);
+}
+.assoc__list li{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px}
+.assoc__logo{
+  position:relative;width:100%;aspect-ratio:1/1;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--cream);border:1px solid rgba(200,56,32,.28);
+  border-radius:3px;overflow:hidden;
+  transition:border-color .3s,box-shadow .3s,transform .3s;
+}
+.assoc__logo b{
+  font-family:var(--body);font-weight:800;
+  font-size:clamp(.85rem,1.5vw,1.15rem);letter-spacing:.04em;
+  color:var(--sindoor);opacity:.5;
+}
+.assoc__logo img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:contain;padding:12%;
+}
+.assoc__list li:hover .assoc__logo{
+  border-color:rgba(200,56,32,.6);transform:translateY(-3px);
+  box-shadow:0 14px 26px -18px rgba(94,20,9,.6);
+}
+.assoc__name{
+  font-family:var(--body);font-weight:600;
+  font-size:.76rem;line-height:1.32;color:var(--ink);
+}
+@media (max-width:1080px){.assoc__list{grid-template-columns:repeat(5,1fr)}}
+@media (max-width:768px){.assoc__list{grid-template-columns:repeat(4,1fr)}}
+@media (max-width:480px){.assoc__list{grid-template-columns:repeat(3,1fr)}.assoc__name{font-size:.7rem}}
+
+@media print{
+  .assoc{padding:20px 48px}
+  .assoc__head{margin-bottom:16px}
+  .assoc__head h2{font-size:24px}
+  .assoc__list{grid-template-columns:repeat(7,1fr);gap:12px}
+  .assoc__list li{gap:6px}
+  .assoc__name{font-size:10.4px;line-height:1.28}
+  .fig .num{font-size:26px;margin-bottom:6px}
 }
 
 /* ═══ PRINT — exactly two A4 sheets ════════════════════════
@@ -631,6 +748,7 @@ a{color:inherit}
       </dl>
     </div>
   </header>
+
 
   <!--<div class="band band--paper">
     <div class="wrap">
@@ -813,6 +931,116 @@ a{color:inherit}
     </div>
   </section>
 
+  
+  <section class="band assoc">
+    <div class="wrap">
+      <div class="assoc__head">
+        <span class="eyebrow assoc__eye">In association with</span>
+        <h2>Multiple organisations, <em>one purpose.</em></h2>
+      </div>
+      <ul class="assoc__list">
+        <li>
+          <span class="assoc__logo">
+            <b>SB</b>
+            <img src="logos/1.png" alt="Samskara Bharati logo" onerror="this.remove()">
+          </span>
+          <span class="assoc__name">Samskara Bharati</span>
+        </li>
+        <li>
+          <span class="assoc__logo">
+            <b>PP</b>
+            <img src="logos/2.png" alt="Prajna Pravah logo" onerror="this.remove()">
+          </span>
+          <span class="assoc__name">Prajna Pravah</span>
+        </li>
+        <li>
+          <span class="assoc__logo">
+            <b>RP</b>
+            <img src="logos/3.png" alt="Rashtrotthana Parishat logo" onerror="this.remove()">
+          </span>
+          <span class="assoc__name">Rashtrotthana Parishat</span>
+        </li>
+        <li>
+          <span class="assoc__logo">
+            <b>PM</b>
+            <img src="logos/4.png" alt="PARAM logo" onerror="this.remove()">
+          </span>
+          <span class="assoc__name">PARAM</span>
+        </li>
+        <li>
+          <span class="assoc__logo">
+            <b>DB</b>
+            <img src="logos/5.png" alt="Disha Bharat logo" onerror="this.remove()">
+          </span>
+          <span class="assoc__name">Disha Bharat</span>
+        </li>
+        <li>
+          <span class="assoc__logo">
+            <b>KB</b>
+            <img src="logos/6.png" alt="Kreeda Bharati logo" onerror="this.remove()">
+          </span>
+          <span class="assoc__name">Kreeda Bharati</span>
+        </li>
+        <li>
+          <span class="assoc__logo">
+            <b>VVG</b>
+            <img src="logos/7.png" alt="Veda Vignana Gurukula logo" onerror="this.remove()">
+          </span>
+          <span class="assoc__name">Veda Vignana Gurukula</span>
+        </li>
+        <li>
+          <span class="assoc__logo">
+            <b>ABVP</b>
+            <img src="logos/8.png" alt="Akhil Bharatiya Vidyarthi Parishad (ABVP) logo" onerror="this.remove()">
+          </span>
+          <span class="assoc__name">Akhil Bharatiya Vidyarthi Parishad (ABVP)</span>
+        </li>
+        <li>
+          <span class="assoc__logo">
+            <b>VIBHA</b>
+            <img src="logos/9.png" alt="Vijnana Bharati (VIBHA) logo" onerror="this.remove()">
+          </span>
+          <span class="assoc__name">Vijnana Bharati (VIBHA)</span>
+        </li>
+        <li>
+          <span class="assoc__logo">
+            <b>AA</b>
+            <img src="logos/10.png" alt="Agnivesh Ayurved logo" onerror="this.remove()">
+          </span>
+          <span class="assoc__name">Agnivesh Ayurved</span>
+        </li>
+        <li>
+          <span class="assoc__logo">
+            <b>YFS</b>
+            <img src="logos/11.png" alt="Youth for Seva (YFS) logo" onerror="this.remove()">
+          </span>
+          <span class="assoc__name">Youth for Seva (YFS)</span>
+        </li>
+        <li>
+          <span class="assoc__logo">
+            <b>AB</b>
+            <img src="logos/12.png" alt="Arogya Bharati logo" onerror="this.remove()">
+          </span>
+          <span class="assoc__name">Arogya Bharati</span>
+        </li>
+        <li>
+          <span class="assoc__logo">
+            <b>YB</b>
+            <img src="logos/13.png" alt="Yuva Brigade logo" onerror="this.remove()">
+          </span>
+          <span class="assoc__name">Yuva Brigade</span>
+        </li>
+        <li>
+          <span class="assoc__logo">
+            <b>CU</b>
+            <img src="logos/14.png" alt="Chanakya University logo" onerror="this.remove()">
+          </span>
+          <span class="assoc__name">Chanakya University</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
   <!-- PARTNER CLOSE -->
   <footer class="close">
     <div class="close__top">
@@ -827,37 +1055,18 @@ a{color:inherit}
       <div class="tier"><span class="num">04</span><b>Evening Performance Sponsors</b></div>
       <div class="tier"><span class="num">05</span><b>Knowledge Partners</b></div>
     </div>
-
-    <!--<div class="csr">
-      <span class="eyebrow">CSR alignment — choose the sector closest to your identity</span>
-      <span>Education &amp; youth</span><span>Arts &amp; culture</span><span>Artisan livelihood</span><span>Knowledge &amp; research</span><span>Technology &amp; innovation</span><span>Sustainability &amp; agriculture</span><span>Heritage &amp; tourism</span>
-    </div>-->
-
     <div class="colophon">
       <div class="colophon__l">
         <b>Contact : <a href="tel:+9845303047">9845303047</a> | <a href="tel:+9986762726">9986762726</a> | <a href="tel:+9980017337">9980017337</a></b>
         
 
-        <p>In association with Swadeshi Jagaran Manch,Samskara Bharati Prajna Pravah,
-Rashtrotthana Parishat,
-PARAM,
-Disha Bharat,
-Kreeda Bharati,
-Veda Vignana Gurukula,
-Akhil Bharatiya Vidyarthi Parishad (ABVP),
-Vijnana Bharati (VIBHA),
-Agnivesh Ayurveda,
-Youth for Seva (YFS),
-Arogya Bharati,
-Yuva Brigade,
-Chanakya University. 
-<br/><br/>
-Sponsorship may be structured as financial contribution. A full concept note and budget are available on request.</p>
+        <p>Sponsorship may be structured as financial contribution, CSR partnership or in-kind support. A full concept note and budget are available on request.</p>
       </div>
     </div>
     <br/><br/>
     <div class="torana torana--cream" aria-hidden="true" style="transform:rotate(180deg)"></div>
   </footer>
+  
 </section>
 
 <nav class="pagenav" aria-label="Page">
